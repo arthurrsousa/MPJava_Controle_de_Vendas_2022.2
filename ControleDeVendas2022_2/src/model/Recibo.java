@@ -1,20 +1,74 @@
 package model;
 
+import java.util.Date;
+
 public class Recibo {
-	private Produto[] produtos;
-	private String data;
 	private int codigo;
-	private float valor_total;
-	private String cpf_cnpj;
+	private ClientePessoa compradorFis;
+	private ClienteEmpresa compradorJur;
+	private Date data;
+	private double valor_total;
+	private int[] qtd;
+	private Produto[] produtos;
+	
 
-
-	public Recibo(Produto[] prods, String data, int codigo, float total, String cpf_cnpj) {
+	public Recibo(int cod, ClientePessoa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
+		this.setCodigo(cod);
+		this.setCompradorFis(cli);
+		this.setData(dt);
+		this.setValor_total(vt);
+		this.setQtd(qtd);
 		this.setProdutos(prods);
-		this.setData(data);
-		this.setCodigo(codigo);
-		this.setValor_total(total);
-		this.setCpf_cnpj(cpf_cnpj);
-		}
+	}
+	
+	public Recibo(int cod, ClienteEmpresa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
+		this.setCodigo(cod);
+		this.setCompradorJur(cli);
+		this.setData(dt);
+		this.setValor_total(vt);
+		this.setQtd(qtd);
+		this.setProdutos(prods);
+	}
+	
+	
+	public String getCodigo() {
+		return String.valueOf(codigo);
+	}
+	
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
+	
+	public String getData() {
+		return String.valueOf(data);
+	}
+	
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
+	
+	
+	public double getValor_total() {
+		return valor_total;
+	}
+	
+	
+	public void setValor_total(double valor_total) {
+		this.valor_total = valor_total;
+	}
+
+	
+	public int[] getQtd() {
+		return qtd;
+	}
+
+	
+	public void setQtd(int[] qtd) {
+		this.qtd = qtd;
+	}
+	
 
 	public Produto[] getProdutos() {
 		return produtos;
@@ -24,35 +78,23 @@ public class Recibo {
 		this.produtos = produtos;
 	}
 
-	public String getData() {
-		return data;
+	public ClientePessoa getCompradorFis() {
+		return compradorFis;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public void setCompradorFis(ClientePessoa compradorFis) {
+		this.compradorFis = compradorFis;
 	}
 
-	public int getCodigo() {
-		return codigo;
+	public ClienteEmpresa getCompradorJur() {
+		return compradorJur;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCompradorJur(ClienteEmpresa compradorJur) {
+		this.compradorJur = compradorJur;
 	}
 
-	public float getValor_total() {
-		return valor_total;
-	}
-
-	public void setValor_total(float valor_total) {
-		this.valor_total = valor_total;
-	}
-
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
-	}
-
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
-	}
+	
+	
 }
+

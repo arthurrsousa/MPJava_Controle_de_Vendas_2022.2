@@ -1,6 +1,7 @@
 package model;
 
 public class Estoque {
+	private Produto produto;
 	private int qtdAtual;
 	private int qtdMinima;
 	private int qtdCompras;
@@ -40,5 +41,15 @@ public class Estoque {
 
 	public void setQtdCompras(int qtdCompras) {
 		this.qtdCompras = qtdCompras;
+	}
+
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 }

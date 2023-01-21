@@ -1,39 +1,29 @@
 package model;
 
 public class Imposto {
-	private float valorImporto;
-	private float valorLiquido;
-	private float aliquota;
+	private double valorImposto;
+	private double valorLiquido;
 	
-	
-	public Imposto(float imposto, float liquido, float aliq) {
-		this.setValorImporto(imposto);
+	public Imposto(double imposto, double liquido) {
+		this.setValorImposto(imposto);
 		this.setValorLiquido(liquido);
-		this.setAliquota(aliq);
 	}
 	
-	public float getValorImporto() {
-		return valorImporto;
+	public double getValorImposto() {
+		return valorImposto;
 	}
 	
-	public void setValorImporto(float valorImporto) {
-		this.valorImporto = valorImporto;
+	public void setValorImposto(double valorImposto) {
+		this.valorImposto = valorImposto;
 	}
 	
-	public float getValorLiquido() {
+	public double getValorLiquido() {
 		return valorLiquido;
 	}
 	
-	public void setValorLiquido(float valorLiquido) {
+	public void setValorLiquido(double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
 	
-	public float getAliquota() {
-		return aliquota;
-	}
-	
-	public void setAliquota(float aliquota) {
-		this.aliquota = aliquota;
-	}
 }
 
