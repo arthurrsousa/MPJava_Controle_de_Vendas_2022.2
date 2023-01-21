@@ -26,5 +26,5 @@ public class Fornecedor extends PessoaJuridica{
 		this.valorEntrega = valorEntrega;
 	}
 	
-	
+	// sadasasdasd
 }
