@@ -2,19 +2,19 @@ package model;
 
 public abstract class PessoaFisica extends Pessoa{
 
-	private String cpf;
+	private int cpf;
 	
-	public PessoaFisica(String n, int tel, String end, String cpf) {
+	public PessoaFisica(String n, int tel, String end, int i) {
 		super(n, tel, end);
-		this.setCpf(cpf);
+		this.setCpf(i);
 	}
 
-	public String getCpf() {
+	public int getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(int i) {
+		this.cpf = i;
 	}
 
 }
