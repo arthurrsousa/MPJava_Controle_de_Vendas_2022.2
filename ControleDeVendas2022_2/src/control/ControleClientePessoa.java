@@ -3,12 +3,12 @@ package control;
 import model.*;
 
 
-public class ControleCliente {
-	private Cliente[] cli;
+public class ControleClientePessoa {
+	private ClientePessoa[] cli;
 	private int qtdClientes;
 
-	public ControleCliente(ControleDados d) {
-		this.cli = d.getCliente();
+	public ControleClientePessoa(ControleDados d) {
+		this.cli = d.getClientesPes();
 		this.qtdClientes = d.getQtdClientes();
 	}
 
@@ -44,15 +44,6 @@ public class ControleCliente {
 	public String getTelefone(int i) {
 		String numTel = String.valueOf(cli[i].getTelefone());
 		return numTel;
-	}
-	
-	public double getTotalPago (int i) {
-		return cli[i].getTotal_pago();
-	}
-	
-	public String getTotalCompras (int i) {
-		String numCompras = String.valueOf(cli[i].getCompras_realizadas());
-		return numCompras;
 	}
 
 }

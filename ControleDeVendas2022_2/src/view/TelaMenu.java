@@ -1,10 +1,12 @@
 package view;
+import control.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.*;
 import javax.swing.*;
-import controle.*;
+import control.*;
+import java.awt.Font;
 
 /**
  * Tela de Menu inicial do software que inicia um novo Controle de Dados.
@@ -17,11 +19,20 @@ public class TelaMenu implements ActionListener {
 	private static JButton vendedor = new JButton("Vendedor");
 	private static JButton cliente = new JButton("Cliente");
 	private static JButton produto = new JButton("Produto");
+	private static JButton fornecedor = new JButton("Fornecedor");
+	private static JButton fluxo = new JButton("fluxo");
+	private static ImageIcon iconCliente = new ImageIcon("D:\\desktop\\icons\\cliente1.png");
+	private static ImageIcon iconFluxo = new ImageIcon("D:\\\\\\\\desktop\\\\\\\\icons\\\\\\\\fluxo1.png");
+	private static ImageIcon iconFornecedor = new ImageIcon("D:\\\\desktop\\\\icons\\\\fornecedor7.png");
+	private static ImageIcon iconProduto = new ImageIcon("D:\\\\desktop\\\\icons\\\\produto1.png");
+	private static ImageIcon iconVendedor = new ImageIcon("D:\\\\desktop\\\\icons\\\\vendedor1.png");
 	public static ControleDados dados = new ControleDados();
+	ImageIcon icon = new ImageIcon("fluxo.png");
 	
 	/**
 	 * Customizacao da janela e de seus botoes
 	 */
+	
 	public TelaMenu() {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(120, 10, 150, 30);
@@ -57,7 +68,7 @@ public class TelaMenu implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		
+		/*
 		if(src == vendedor)
 			new TelaLista().mostrarDados(dados, 1);
 		
@@ -66,6 +77,6 @@ public class TelaMenu implements ActionListener {
 
 		if(src == cliente)
 			new TelaLista().mostrarDados(dados, 3);
-		
+		*/
 	}
 }

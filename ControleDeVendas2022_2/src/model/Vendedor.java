@@ -5,7 +5,7 @@ public class Vendedor extends PessoaFisica {
 	private int quantidade_vendas;
 	private float valor_vendas;
 	
-	public Vendedor(String n, int tel, String end, String cpf, int qtdVendas, float vVendas) {
+	public Vendedor(String n, int tel, String end, int cpf, int qtdVendas, float vVendas) {
 		super(n, tel, end, cpf);
 		this.setQuantidade_vendas(qtdVendas);
 		this.setValor_vendas(vVendas);
