@@ -5,7 +5,7 @@ public class FluxoDeCaixa {
 	private double saida_dinheiro;
 	private double entrada_dinheiro;
 	
-	public FluxoDeCaixa(int saldo_atual, int saida_dinheiro,int entrada_dinheiro) {
+	public FluxoDeCaixa(double saldo_atual, double saida_dinheiro, double entrada_dinheiro) {
 		this.saldo_atual = saldo_atual;
 		this.saida_dinheiro = saida_dinheiro;
 		this.entrada_dinheiro = entrada_dinheiro;

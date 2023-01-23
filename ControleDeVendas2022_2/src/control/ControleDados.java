@@ -17,6 +17,7 @@ public class ControleDados {
 	/**
 	 * Construtor que injeta dados no sistema usando o metodo da classe Dados
 	 */
+	
 	public ControleDados() {
 		d.fillWithSomeData();
 	}

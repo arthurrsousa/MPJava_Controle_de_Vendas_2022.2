@@ -1,7 +1,8 @@
 package model;
 
 public class Dados {
-	private  Vendedor[] vendedor = new Vendedor[50];
+	private FluxoDeCaixa fluxoDeCaixa = new FluxoDeCaixa(10000, 0, 0);
+	private Vendedor[] vendedor = new Vendedor[50];
 	private int qtdVendedor = 0;
 	private ClientePessoa[] clientesPes = new ClientePessoa[50];
 	private int qtdClientesPes = 0;
@@ -9,6 +10,8 @@ public class Dados {
 	private int qtdClientesEmp = 0;
 	private Produto[] produtos = new Produto[50];
 	private int qtdProdutos = 0;
+	//talves a lista de produtos em Fornecedor nao seja necessaria 
+	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 80000, produtos, 150);
 	
 
 	/**
@@ -17,17 +20,29 @@ public class Dados {
 	 */
 	public void fillWithSomeData() {
 		//Date d = Calendar.getInstance().getTime();
-		for(int i = 0; i <= 4; i++) {
+		for(int i = 0; i <= 6; i++) {
+			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233);
-			//clientesEmp[i] = new ClienteEmpresa("Empresa"+(i+1), "Endereco"+(i+1), (i+1)*123456, (i+1)*112233, 00, 00);
-			produtos[i] = new Produto("Produto"+(i+1), " MarcaX", " Geral", 5*(i+1), 10*(i+1), " Bom e Barato");
+			clientesEmp[i] = new ClienteEmpresa("Empresa"+(i+1), (i+1)*123456, "Endereco"+(i+1), (i+1)*112233, "Endereco"+(i+1), 00);
+			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", 5*(i+1), 10*(i+1), " Bom e Barato");
+
+			//talvez isso de problema (tirar do loop)
+			setQtdVendedor(getQtdVendedor() + 1);
+			setQtdClientesPes(getQtdClientesPes() + 1);
+			setQtdClientesEmp(getQtdClientesEmp() + 1);
+			setQtdProdutos(getQtdProdutos() + 1);
 		}
-		
-		setQtdClientesPes(getQtdClientesPes() + 1);
-		setQtdClientesEmp(getQtdClientesEmp() + 1);
-		setQtdProdutos(getQtdProdutos() + 1);
 	}
 
+	public void inserirEditarFluxoDeCaixa(FluxoDeCaixa caixa) {
+		this.fluxoDeCaixa = caixa;
+	}
+
+	
+	public void inserirEditarFornecedor(Fornecedor forn) {
+		this.fornecedor = forn;
+	}
+	
 	/**
 	 * Altera os atributos de um Vendedor ou adiciona um novo(@param vend)
 	 * 
@@ -121,6 +136,22 @@ public class Dados {
 
 	public void setQtdClientesEmp(int qtdClientesEmp) {
 		this.qtdClientesEmp = qtdClientesEmp;
+	}
+
+	public FluxoDeCaixa getFluxoDeCaixa() {
+		return fluxoDeCaixa;
+	}
+
+	public void setFluxoDeCaixa(FluxoDeCaixa fluxoDeCaixa) {
+		this.fluxoDeCaixa = fluxoDeCaixa;
+	}
+
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	
 	

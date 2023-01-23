@@ -5,14 +5,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import control.ControleDados;
+
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
 
 /**
  * Tela de Menu inicial do software que inicia um novo Controle de Dados.
  * @author Arthur Rodrigues Sousa
  *
  */
-public class TelaMenu implements ActionListener {
+public class TelaMenu extends AbstractBorder implements ActionListener  {
 	private static JFrame janela = new JFrame("Controle de Vendas");
 	private static JLabel titulo = new JLabel("Menu Principal");
 	private static JButton vendedor = new JButton("Vendedor");
@@ -20,11 +33,13 @@ public class TelaMenu implements ActionListener {
 	private static JButton produto = new JButton("Produto");
 	private static JButton fornecedor = new JButton("Fornecedor");
 	private static JButton fluxo = new JButton("fluxo");
-	private static ImageIcon iconCliente = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\cliente1.png");
-	private static ImageIcon iconFluxo = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\\\\\fluxo1.png");
-	private static ImageIcon iconFornecedor = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\fornecedor7.png");
-	private static ImageIcon iconProduto = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\produto1.png");
-	private static ImageIcon iconVendedor = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\vendedor1.png");
+
+	private static ImageIcon iconCliente = new ImageIcon("src//cliente1.png");
+	private static ImageIcon iconFluxo = new ImageIcon("src//fluxo1.png");
+	private static ImageIcon iconFornecedor = new ImageIcon("src//fornecedor7.png");
+	private static ImageIcon iconProduto = new ImageIcon("src//produto1.png");
+	private static ImageIcon iconVendedor = new ImageIcon("src//vendedor1.png");
+
 	public static ControleDados dados = new ControleDados();
 	ImageIcon icon = new ImageIcon("fluxo.png");
 	
@@ -33,7 +48,7 @@ public class TelaMenu implements ActionListener {
 	 */
 	
 	public TelaMenu() {
-		titulo.setFont(new Font("Cochin", Font.CENTER_BASELINE, 50));
+		titulo.setFont(new Font("MV Boli", Font.PLAIN, 50));
 		titulo.setBounds(450, 10, 400, 100);
 		titulo.setIcon(icon);
 		
@@ -71,6 +86,18 @@ public class TelaMenu implements ActionListener {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 		
+		Color minhaCor = new Color(163, 59, 57);
+		janela.getContentPane().setBackground(minhaCor);
+		
+		Color minhaCor2 = new Color(100, 100, 100);
+		
+		fluxo.setBackground(minhaCor2);
+		fornecedor.setBackground(minhaCor2);
+		cliente.setBackground(minhaCor2);
+		produto.setBackground(minhaCor2);
+		vendedor.setBackground(minhaCor2);
+		
+		
 	}
 	
 	/**
@@ -90,12 +117,13 @@ public class TelaMenu implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
+
 		/*
 		if(src == vendedor)
 			new TelaLista().mostrarDados(dados, 1);
 		
 		if(src == produto)
-			new TelaLista().mostrarDados(dados, 2);
+			//new TelaLista().mostrarDados(dados, 2);
 
 		if(src == cliente)
 			new TelaLista().mostrarDados(dados, 3);
