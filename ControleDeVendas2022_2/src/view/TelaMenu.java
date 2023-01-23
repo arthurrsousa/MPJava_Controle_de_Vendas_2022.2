@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.*;
 import javax.swing.*;
-import control.*;
 import java.awt.Font;
 
 /**
@@ -21,11 +20,11 @@ public class TelaMenu implements ActionListener {
 	private static JButton produto = new JButton("Produto");
 	private static JButton fornecedor = new JButton("Fornecedor");
 	private static JButton fluxo = new JButton("fluxo");
-	private static ImageIcon iconCliente = new ImageIcon("D:\\desktop\\icons\\cliente1.png");
-	private static ImageIcon iconFluxo = new ImageIcon("D:\\\\\\\\desktop\\\\\\\\icons\\\\\\\\fluxo1.png");
-	private static ImageIcon iconFornecedor = new ImageIcon("D:\\\\desktop\\\\icons\\\\fornecedor7.png");
-	private static ImageIcon iconProduto = new ImageIcon("D:\\\\desktop\\\\icons\\\\produto1.png");
-	private static ImageIcon iconVendedor = new ImageIcon("D:\\\\desktop\\\\icons\\\\vendedor1.png");
+	private static ImageIcon iconCliente = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\cliente1.png");
+	private static ImageIcon iconFluxo = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\\\\\fluxo1.png");
+	private static ImageIcon iconFornecedor = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\fornecedor7.png");
+	private static ImageIcon iconProduto = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\produto1.png");
+	private static ImageIcon iconVendedor = new ImageIcon("C:\\Users\\heron\\OneDrive\\햞ea de Trabalho\\Nova pasta\\\\vendedor1.png");
 	public static ControleDados dados = new ControleDados();
 	ImageIcon icon = new ImageIcon("fluxo.png");
 	
@@ -34,11 +33,30 @@ public class TelaMenu implements ActionListener {
 	 */
 	
 	public TelaMenu() {
-		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setBounds(120, 10, 150, 30);
-		vendedor.setBounds(140, 50, 100, 30);
-		produto.setBounds(140, 100, 100, 30);
-		cliente.setBounds(140, 150, 100, 30);
+		titulo.setFont(new Font("Cochin", Font.CENTER_BASELINE, 50));
+		titulo.setBounds(450, 10, 400, 100);
+		titulo.setIcon(icon);
+		
+		vendedor.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
+		vendedor.setBounds(80, 170, 500, 100);
+		vendedor.setIcon(iconVendedor); 
+		
+		produto.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
+		produto.setBounds(80, 300, 500, 100);
+		produto.setIcon(iconProduto);
+		
+		
+		cliente.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
+		cliente.setBounds(650, 170, 500, 100);
+		cliente.setIcon(iconCliente);
+		
+		fornecedor.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
+		fornecedor.setBounds(650, 300, 500, 100);
+		fornecedor.setIcon(iconFornecedor);
+		
+		fluxo.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
+		fluxo.setBounds(350, 450, 500, 100);
+		fluxo.setIcon(iconFluxo);
 		
 		janela.setLayout(null);
 		
@@ -46,21 +64,25 @@ public class TelaMenu implements ActionListener {
 		janela.add(vendedor);
 		janela.add(produto);
 		janela.add(cliente);
+		janela.add(fornecedor);
+		janela.add(fluxo);
 		
-		janela.setSize(400, 250);
+		janela.setSize(1366, 768);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
+		
 	}
 	
 	/**
 	 * Adicao de ActionListener aos botoes para fazerem algo ao serem pressionados
 	 */
 	public static void main(String[] args) {
-		TelaMenu menu = new TelaMenu();
-		
+		TelaMenu menu = new TelaMenu();		
 		vendedor.addActionListener(menu);
 		produto.addActionListener(menu);
 		cliente.addActionListener(menu);
+		fornecedor.addActionListener(menu);
+		fluxo.addActionListener(menu);
 	}
 	
 	/**
@@ -78,5 +100,6 @@ public class TelaMenu implements ActionListener {
 		if(src == cliente)
 			new TelaLista().mostrarDados(dados, 3);
 		*/
+
 	}
 }
