@@ -7,9 +7,11 @@ public class Vendedor extends PessoaFisica {
 	
 	public Vendedor(String n, int tel, String end, int cpf, int qtdVendas, float vVendas) {
 		super(n, tel, end, cpf);
+		this.setNome(n);
 		this.setQuantidade_vendas(qtdVendas);
 		this.setValor_vendas(vVendas);
 	}
+	
 	
 	public int getQuantidade_vendas() {
 		return quantidade_vendas;
