@@ -4,7 +4,8 @@ import java.util.Random;
 import java.util.Calendar;
 import java.util.Date;
 
-import model.*;	
+import model.*;
+import modelo.Vendedor;	
 
 /**
  * Classe ControleDados faz o gerenciamento dos dados das classes do sistema.
@@ -51,13 +52,16 @@ public class ControleDados {
 		return this.d.getQtdClientesEmp();
 	}
 	
-	
 	public Produto[] getProduto() {
 		return this.d.getProduto();
 	}
 
 	public int getQtdProdutos() {
 		return this.d.getQtdProdutos();
+	}
+	
+	public Fornecedor getFornecedor() {							
+		return this.d.getFornecedor();
 	}
 
 	public Recibo[] getRecibo(int cliIndex) {
