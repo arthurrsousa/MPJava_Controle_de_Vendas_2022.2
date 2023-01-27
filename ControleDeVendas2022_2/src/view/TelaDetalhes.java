@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import control.*;
+import model.Produto;
 
 /**
  * Tela de detalhes das instancias das classes do software
@@ -100,14 +101,16 @@ public class TelaDetalhes implements ActionListener {
 		janela = new JFrame(s);
 		
 		//Preenche dados com dados do Fornecedor
+		//String n, int tel, String end, int cnpj, String ie, int ra, float entrega
 		if (op == 10) {
 			valorNome = new JTextField(dados.getFornecedor().getNome(), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getFornecedor().getTelefone()), 200);		
 			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
-			valorCPF = new JTextField(String.valueOf(dados.getVendedor().getCpf()), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getVendedor().getTelefone()), 200);		
+			valorCnpj = new JTextField(dados.getFornecedor().getCnpj(), 200);
+			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
 
-			valorSaldo = new JTextField(String.valueOf(dados.getVendedor().getSaldo()), 200);
-			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor().getQtd_vendas()), 200);
+			valorRA = new JTextField(dados.getFornecedor().getRa(), 200);
+			valorEntrega = new JTextField(dados.getFornecedor().getValorEntrega(), 200);
 
 		} 
 
