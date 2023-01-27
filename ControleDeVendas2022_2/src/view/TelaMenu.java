@@ -25,7 +25,7 @@ import javax.swing.border.Border;
  * @author Arthur Rodrigues Sousa
  *
  */
-public class TelaMenu extends AbstractBorder implements ActionListener  {
+public class TelaMenu implements ActionListener  {
 	private static JFrame janela = new JFrame("Controle de Vendas");
 	private static JLabel titulo = new JLabel("Menu Principal");
 	private static JButton vendedor = new JButton("Vendedor");
@@ -46,7 +46,6 @@ public class TelaMenu extends AbstractBorder implements ActionListener  {
 	/**
 	 * Customizacao da janela e de seus botoes
 	 */
-	
 	public TelaMenu() {
 		titulo.setFont(new Font("MV Boli", Font.PLAIN, 50));
 		titulo.setBounds(450, 10, 400, 100);
@@ -59,7 +58,6 @@ public class TelaMenu extends AbstractBorder implements ActionListener  {
 		produto.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
 		produto.setBounds(80, 300, 500, 100);
 		produto.setIcon(iconProduto);
-		
 		
 		cliente.setFont(new Font("Comic Sans", Font.ROMAN_BASELINE,25));
 		cliente.setBounds(650, 170, 500, 100);
@@ -74,7 +72,6 @@ public class TelaMenu extends AbstractBorder implements ActionListener  {
 		fluxo.setIcon(iconFluxo);
 		
 		janela.setLayout(null);
-		
 		janela.add(titulo);
 		janela.add(vendedor);
 		janela.add(produto);
@@ -90,7 +87,6 @@ public class TelaMenu extends AbstractBorder implements ActionListener  {
 		janela.getContentPane().setBackground(minhaCor);
 		
 		Color minhaCor2 = new Color(100, 100, 100);
-		
 		fluxo.setBackground(minhaCor2);
 		fornecedor.setBackground(minhaCor2);
 		cliente.setBackground(minhaCor2);
@@ -118,16 +114,16 @@ public class TelaMenu extends AbstractBorder implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
-		/*
+		
 		if(src == vendedor)
 			new TelaLista().mostrarDados(dados, 1);
 		
 		if(src == produto)
-			//new TelaLista().mostrarDados(dados, 2);
+			new TelaLista().mostrarDados(dados, 2);
 
 		if(src == cliente)
 			new TelaLista().mostrarDados(dados, 3);
-		*/
+		
 
 	}
 }

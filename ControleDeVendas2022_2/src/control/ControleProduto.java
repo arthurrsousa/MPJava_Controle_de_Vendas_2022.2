@@ -1,6 +1,6 @@
-package controle;
+package control;
 
-import modelo.*;
+import model.*;
 
 /**
  * Classe ControleProduto faz o gerenciamento dos dados da classe Produto.
