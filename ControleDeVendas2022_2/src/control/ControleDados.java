@@ -64,6 +64,10 @@ public class ControleDados {
 		return this.d.getFornecedor();
 	}
 
+	public int getQtdVendedor() {
+		return this.d.getQtdVendedor();
+	}
+	
 	public Recibo[] getRecibo(int cliIndex) {
 		return this.d.getClientePes()[cliIndex].getRecibo();
 	}

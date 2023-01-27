@@ -15,6 +15,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private JLabel titulo;
 	private JButton cadastroProd;
 	private JButton refreshProd;
+	private JButton cadastroVendedor;
+	private JButton refreshVendedor;
 	private JButton cadastroCliente;
 	private JButton refreshCliente;
 	//private JButton cadastroRecibo;
@@ -22,6 +24,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private static ControleDados dados;
 	//private JTextField VendedorCadastrado;
 	private JList<String> listaProdsCadastrados;
+	private JList<String> listaVendedoresCadastrados;
 	private JList<String> listaClientesCadastrados;
 	private JList<String> listaRecibosCadastrados;
 	//private String nomeVend;
@@ -40,7 +43,36 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		switch (op) {
 		case 1:// Mostrar detalhes do Vendedor
 			
-			//new TelaDetalhes().inserirEditar(1, dados, 0);
+			listaNomes = new ControleVendedor(dados).getNomeVendedor();
+			listaVendedoresCadastrados = new JList<String>(listaNomes);
+			janela = new JFrame("Vendedor");
+			titulo = new JLabel("Vendedores Cadastrados");
+			cadastroVendedor = new JButton("Cadastrar");
+			refreshVendedor = new JButton("Refresh");
+
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaVendedoresCadastrados.setBounds(20, 50, 350, 120);
+			listaVendedoresCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			listaVendedoresCadastrados.setVisibleRowCount(10);
+
+
+			cadastroVendedor.setBounds(70, 177, 100, 30);
+			refreshVendedor.setBounds(200, 177, 100, 30);
+
+			janela.setLayout(null);
+
+			janela.add(titulo);
+			janela.add(listaVendedoresCadastrados);
+			janela.add(cadastroVendedor);
+			janela.add(refreshVendedor);
+
+			janela.setSize(400, 250);
+			janela.setVisible(true);
+
+			cadastroVendedor.addActionListener(this);
+			refreshVendedor.addActionListener(this);
+			listaVendedoresCadastrados.addListSelectionListener(this);
 			break;
 
 		case 2:// Mostrar dados de Produtos cadastrados (JList)
