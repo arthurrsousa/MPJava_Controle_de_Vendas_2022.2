@@ -39,7 +39,6 @@ public class TelaDetalhes implements ActionListener {
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
 	
-	
 	//Cliente
 	private JLabel labelTotalPago = new JLabel("Total Pago: ");
 	private JTextField valorTotalPago;
@@ -49,7 +48,6 @@ public class TelaDetalhes implements ActionListener {
 	private JButton botaoComprar = new JButton("Comprar");
 	private JButton botaoRecibos = new JButton("Recibos");
 
-	
 	//Produto
 	private JLabel labelMarca = new JLabel("Marca: ");
 	private JTextField valorMarca;
@@ -57,8 +55,12 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorCateg;
 	private JLabel labelValor = new JLabel("Valor: ");
 	private JTextField valorValor;
-	private JLabel labelDesc = new JLabel("Descri��o: ");
+	private JLabel labelDesc = new JLabel("Descricao: ");
 	private JTextField valorDesc;
+	
+	//Fornecedor
+	private JLabel labelEntrega = new JLabel("Valor da Entrega: ");
+	private JTextField valorEntrega;
 	
 	//Recibo
 	private JLabel valorCodigo;
@@ -108,8 +110,6 @@ public class TelaDetalhes implements ActionListener {
 			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
 			valorCnpj = new JTextField(dados.getFornecedor().getCnpj(), 200);
 			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
-
-			valorRA = new JTextField(dados.getFornecedor().getRa(), 200);
 			valorEntrega = new JTextField(dados.getFornecedor().getValorEntrega(), 200);
 
 		} 
