@@ -36,11 +36,15 @@ public class ControleDados {
 		return this.d.getVendedor();
 	}
 	
-	public ClientePessoa[] getClientesPes() {							
+	public int getQtdVendedor() {
+		return this.d.getQtdVendedor();
+	}
+	
+	public ClientePessoa[] getClientePes() {							
 		return this.d.getClientePes();
 	}
 	
-	public int getQtdClientesPes() {
+	public int getQtdClientePes() {
 		return this.d.getQtdClientesPes();
 	}
 	
@@ -62,10 +66,6 @@ public class ControleDados {
 	
 	public Fornecedor getFornecedor() {							
 		return this.d.getFornecedor();
-	}
-
-	public int getQtdVendedor() {
-		return this.d.getQtdVendedor();
 	}
 	
 	public Recibo[] getRecibo(int cliIndex) {
