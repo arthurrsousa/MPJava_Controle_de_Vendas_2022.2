@@ -11,7 +11,7 @@ public class Dados {
 	private Produto[] produtos = new Produto[50];
 	private int qtdProdutos = 0;
 	//talves a lista de produtos em Fornecedor nao seja necessaria 
-	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 80000, produtos, 150);
+	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 80000, 150);
 	
 
 	/**
@@ -20,7 +20,7 @@ public class Dados {
 	 */
 	public void fillWithSomeData() {
 		//Date d = Calendar.getInstance().getTime();
-		for(int i = 0; i <= 6; i++) {
+		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233);
 			clientesEmp[i] = new ClienteEmpresa("Empresa"+(i+1), (i+1)*123456, "Endereco"+(i+1), (i+1)*112233, "Endereco"+(i+1), 00);
