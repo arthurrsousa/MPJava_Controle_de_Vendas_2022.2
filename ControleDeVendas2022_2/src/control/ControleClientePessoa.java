@@ -8,7 +8,7 @@ public class ControleClientePessoa {
 	private int qtdClientes;
 
 	public ControleClientePessoa(ControleDados d) {
-		this.cli = d.getClientesPes();
+		this.cli = d.getClientePes();
 		this.qtdClientes = d.getQtdClientes();
 	}
 
