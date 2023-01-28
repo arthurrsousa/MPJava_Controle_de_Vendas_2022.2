@@ -32,17 +32,16 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorCPF;
 	private JLabel labelTelefone = new JLabel("Telefone");
 	private JTextField valorTelefone;
-	private JLabel labelcnpj = new JLabel("cnpj: ");
-	private JTextField valorcnpj;
-	private JLabel labelInsEstadual = new JLabel("Inscrição Estadual: "); 
-	private JTextField valorInsEstadual;
+	private JLabel labelCnpj = new JLabel("CNPJ: ");
+	private JTextField valorCnpj;
+	private JLabel labelIE = new JLabel("Inscrição Estadual: "); 
+	private JTextField valorIE;
 	
 	//Vendedor
-	private JLabel labelSaldo = new JLabel("Saldo Atual (R$): ");
-	private JTextField valorSaldo;
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
-	
+	private JLabel labelValorVendas = new JLabel("Valor de Vendas: ");
+	private JTextField valorVendas;
 	
 	//Cliente
 	private JLabel labelTotalPago = new JLabel("Total Pago: ");
@@ -53,16 +52,21 @@ public class TelaDetalhes implements ActionListener {
 	private JButton botaoComprar = new JButton("Comprar");
 	private JButton botaoRecibos = new JButton("Recibos");
 
-	
 	//Produto
 	private JLabel labelMarca = new JLabel("Marca: ");
 	private JTextField valorMarca;
 	private JLabel labelCateg = new JLabel("Categoria: ");
 	private JTextField valorCateg;
-	private JLabel labelValor = new JLabel("Valor: ");
-	private JTextField valorValor;
-	private JLabel labelDesc = new JLabel("Descri��o: ");
+	private JLabel labelValorVenda = new JLabel("Valor de venda: ");
+	private JTextField valorVenda;
+	private JLabel labelValorCompra = new JLabel("Valor de compra: ");
+	private JTextField valorCompra;
+	private JLabel labelDesc = new JLabel("Descrição: ");
 	private JTextField valorDesc;
+	
+	//Fornecedor
+	private JLabel labelEntrega = new JLabel("Valor da Entrega: ");
+	private JTextField valorEntrega;
 	
 	//Recibo
 	private JLabel valorCodigo;
@@ -105,28 +109,25 @@ public class TelaDetalhes implements ActionListener {
 		janela = new JFrame(s);
 		
 		//Preenche dados com dados do Fornecedor
-		//String n, int tel, String end, int cnpj, String ie, int ra, float entrega
 		if (op == 10) {
 			valorNome = new JTextField(dados.getFornecedor().getNome(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getFornecedor().getTelefone()), 200);		
 			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
-			valorCnpj = new JTextField(dados.getFornecedor().getCnpj(), 200);
+			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
 			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
-
-			valorRA = new JTextField(dados.getFornecedor().getRa(), 200);
-			valorEntrega = new JTextField(dados.getFornecedor().getValorEntrega(), 200);
+			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
 
 		} 
 
 		//Preenche dados com dados do Vendedor
 		if (op == 1) {
-			valorNome = new JTextField(dados.getVendedor().getNome(), 200);
-			valorEnd = new JTextField(dados.getVendedor().getEndereco(), 200);
-			valorCPF = new JTextField(String.valueOf(dados.getVendedor().getCpf()), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getVendedor().getTelefone()), 200);		
+			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
+			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
+			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getVendedor()[pos].getTelefone()), 200);		
 
-			valorSaldo = new JTextField(String.valueOf(dados.getVendedor().getSaldo()), 200);
-			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor().getQtd_vendas()), 200);
+			valorVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
+			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getQuantidade_vendas()), 200);
 
 		} 
 		
@@ -136,39 +137,68 @@ public class TelaDetalhes implements ActionListener {
 			valorMarca = new JTextField(String.valueOf(dados.getProduto()[pos].getMarca()),200);
 			valorCateg = new JTextField(String.valueOf(dados.getProduto()[pos].getCategoria()), 200);
 			valorDesc = new JTextField(String.valueOf(dados.getProduto()[pos].getDescricao()), 200);
-			valorValor = new JTextField(String.valueOf(dados.getProduto()[pos].getValor()), 200);
+			valorVenda = new JTextField(String.valueOf(dados.getProduto()[pos].getValorVenda()), 200);
+			valorCompra = new JTextField(String.valueOf(dados.getProduto()[pos].getValorCompra()), 200);
 
 		}
 		
-		//Preenche dados com dados do Cliente clicado
-		else if (op == 5) {
-			valorNome = new JTextField(dados.getCliente()[pos].getNome(), 200);
-			valorEnd = new JTextField(dados.getCliente()[pos].getEndereco(), 200);
-			valorCPF = new JTextField(String.valueOf(dados.getCliente()[pos].getCpf()), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getCliente()[pos].getTelefone()), 200);		
-
-			valorTotalPago = new JTextField(String.valueOf(dados.getCliente()[pos].getTotal_pago()), 200);
-			valorTotalCompras = new JTextField(String.valueOf(dados.getCliente()[pos].getCompras_realizadas()), 200);
+		//Preenche dados com dados do ClienteFis clicado
+		else if (op == 20) {
+			valorNome = new JTextField(dados.getClientePes()[pos].getNome(), 200);
+			valorEnd = new JTextField(dados.getClientePes()[pos].getEndereco(), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getClientePes()[pos].getTelefone()), 200);		
+			valorCPF = new JTextField(String.valueOf(dados.getClientePes()[pos].getCpf()), 200);
 		} 
 		
-		else { //N�o preenche com dados
+		//Preenche dados com dados do ClienteEmp clicado
+		else if (op == 30) {
+			valorNome = new JTextField(dados.getClienteEmp()[pos].getNome(), 200);
+			valorEnd = new JTextField(dados.getClienteEmp()[pos].getEndereco(), 200);
+			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getClienteEmp()[pos].getTelefone()), 200);	
+			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
+		} 
+		
+		else { //Não preenche com dados
 			valorNome = new JTextField(200);
 			valorEnd = new JTextField(200);
 			valorCPF = new JTextField(200);
 			valorTelefone = new JTextField(200);
-			valorSaldo = new JTextField(200);
+			valorCnpj = new JTextField(200);
 			valorQtdVendas = new JTextField(200);
 			valorTotalPago = new JTextField(200);
 			valorTotalCompras = new JTextField(200);
 			valorMarca = new JTextField(200);
 			valorCateg = new JTextField(200);
 			valorDesc = new JTextField(200);
-			valorValor = new JTextField(200);
+			valorCompra = new JTextField(200);
 
 			botaoSalvar.setBounds(245, 205, 115, 30);
 			this.janela.add(botaoSalvar);
 		}
 		
+		//================FORNCEDOR================
+			if (op == 10) {
+				labelNome.setBounds(30, 20, 150, 25);
+				valorNome.setBounds(180, 20, 180, 25);
+				
+				labelEnd.setBounds(30, 50, 150, 25);
+				valorEnd.setBounds(180, 50, 180, 25);
+				
+				labelCnpj.setBounds(30, 80, 150, 25);
+				valorCnpj.setBounds(180, 80, 180, 25);
+				
+				labelTelefone.setBounds(30, 110, 150, 25);
+				valorTelefone.setBounds(180, 110, 180, 25);
+				
+				labelIE.setBounds(30, 140, 150, 25);
+				valorIE.setBounds(180, 140, 180, 25);
+				
+				labelEntrega.setBounds(30, 170, 150, 25);
+				valorEntrega.setBounds(180, 170, 70, 25);
+
+			}
+				
 			//================Vendedor================
 		if (op == 1) {
 			labelNome.setBounds(30, 20, 150, 25);
@@ -183,8 +213,8 @@ public class TelaDetalhes implements ActionListener {
 			labelTelefone.setBounds(30, 110, 150, 25);
 			valorTelefone.setBounds(180, 110, 180, 25);
 			
-			labelSaldo.setBounds(30, 140, 150, 25);
-			valorSaldo.setBounds(180, 140, 180, 25);
+			labelValorVendas.setBounds(30, 140, 150, 25);
+			valorVendas.setBounds(180, 140, 180, 25);
 			
 			labelQtdVendas.setBounds(30, 170, 150, 25);
 			valorQtdVendas.setBounds(180, 170, 70, 25);
@@ -223,31 +253,30 @@ public class TelaDetalhes implements ActionListener {
 			labelCateg.setBounds(30, 80, 150, 25);
 			valorCateg.setBounds(180, 80, 180, 25);
 			
-			labelValor.setBounds(30, 110, 150, 25);
-			valorValor.setBounds(180, 110, 180, 25);
+			labelValorVenda.setBounds(30, 110, 150, 25);
+			valorVenda.setBounds(180, 110, 180, 25);
 	
 			labelDesc.setBounds(30, 140, 150, 25);
 			valorDesc.setBounds(180, 140, 180, 25);
 		}
 
 		//Coloca os campos relacionados a Pessoa
-		if (op == 1 || op == 3 || op == 5) {
+		if (op == 1 || op == 3 || op == 5 || op == 10) {
 			
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
 			this.janela.add(valorEnd);
-			this.janela.add(labelCPF);
-			this.janela.add(valorCPF);
 			this.janela.add(labelTelefone);
 			this.janela.add(valorTelefone);
 		}
 
 		//Coloca campos relacionados a Vendedor
 		if (op == 1) {
-
-			this.janela.add(labelSaldo);
-			this.janela.add(valorSaldo);
+			this.janela.add(labelCPF);
+			this.janela.add(valorCPF);
+			this.janela.add(labelValorVenda);
+			this.janela.add(valorVenda);
 			this.janela.add(labelQtdVendas);
 			this.janela.add(valorQtdVendas);
 		}
@@ -271,10 +300,15 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorMarca);
 			this.janela.add(labelCateg);
 			this.janela.add(valorCateg);
-			this.janela.add(labelValor);
-			this.janela.add(valorValor);
+			this.janela.add(labelValorVenda);
+			this.janela.add(valorVenda);
 			this.janela.add(labelDesc);
 			this.janela.add(valorDesc);
+		}
+		
+		if (op == 10) {
+			this.janela.add(labelEntrega);
+			this.janela.add(valorEntrega);
 		}
 
 		//Coloca botoes
