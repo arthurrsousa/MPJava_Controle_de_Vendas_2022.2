@@ -45,20 +45,21 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			
 			listaNomes = new ControleVendedor(dados).getNomeVendedor();
 			listaVendedoresCadastrados = new JList<String>(listaNomes);
+			JScrollPane scroll = new JScrollPane(listaVendedoresCadastrados);
 			janela = new JFrame("Vendedor");
 			titulo = new JLabel("Vendedores Cadastrados");
 			cadastroVendedor = new JButton("Cadastrar");
 			refreshVendedor = new JButton("Refresh");
 
-			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(90, 10, 250, 30);
-			listaVendedoresCadastrados.setBounds(20, 50, 350, 120);
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(220, 10, 2000, 110);
+			listaVendedoresCadastrados.setBounds(150, 120, 500, 250);
 			listaVendedoresCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaVendedoresCadastrados.setVisibleRowCount(10);
 
 
-			cadastroVendedor.setBounds(70, 177, 100, 30);
-			refreshVendedor.setBounds(200, 177, 100, 30);
+			cadastroVendedor.setBounds(175, 400, 200, 50);
+			refreshVendedor.setBounds(400, 400, 200, 50);
 
 			janela.setLayout(null);
 
@@ -66,8 +67,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			janela.add(listaVendedoresCadastrados);
 			janela.add(cadastroVendedor);
 			janela.add(refreshVendedor);
-
-			janela.setSize(400, 250);
+			janela.add(scroll);
+			janela.setSize(800, 600);
 			janela.setVisible(true);
 
 			cadastroVendedor.addActionListener(this);
@@ -123,7 +124,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaClientesCadastrados.setVisibleRowCount(10);
 
 
-			cadastroCliente.setBounds(70, 177, 100, 30);
+			cadastroCliente.setBounds(2, 177, 100, 30);
 			refreshCliente.setBounds(200, 177, 100, 30);
 
 			janela.setLayout(null);
@@ -132,7 +133,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			janela.add(listaClientesCadastrados);
 			janela.add(cadastroCliente);
 			janela.add(refreshCliente);
-
+			
 			janela.setSize(400, 250);
 			janela.setVisible(true);
 
