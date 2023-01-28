@@ -50,6 +50,7 @@ public class TelaDetalhes implements ActionListener {
 	private JButton botaoComprar = new JButton("Comprar");
 	private JButton botaoRecibos = new JButton("Recibos");
 
+	//abc
 	
 	//Produto
 	private JLabel labelMarca = new JLabel("Marca: ");
