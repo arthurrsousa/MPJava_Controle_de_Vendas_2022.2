@@ -7,7 +7,7 @@ import control.*;
 
 /**
  * Tela de listagem das instancias das classes do software
- * @author Arthur Rodrigues Sousa
+ * @auth
  *
  */
 public class TelaLista implements ActionListener, ListSelectionListener {		
