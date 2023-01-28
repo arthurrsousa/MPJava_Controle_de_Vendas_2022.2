@@ -23,7 +23,7 @@ public class TelaDetalhes implements ActionListener {
 
 	private JFrame janela;
 	
-	//Pessoa
+	//Pessoa Juridica e Fisica
 	private JLabel labelNome = new JLabel("Nome: ");
 	private JTextField valorNome;
 	private JLabel labelEnd = new JLabel("Endereco: ");
@@ -32,6 +32,10 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorCPF;
 	private JLabel labelTelefone = new JLabel("Telefone");
 	private JTextField valorTelefone;
+	private JLabel labelcnpj = new JLabel("cnpj: ");
+	private JTextField valorcnpj;
+	private JLabel labelInsEstadual = new JLabel("Inscrição Estadual: "); 
+	private JTextField valorInsEstadual;
 	
 	//Vendedor
 	private JLabel labelSaldo = new JLabel("Saldo Atual (R$): ");
