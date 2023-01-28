@@ -11,7 +11,7 @@ public class Dados {
 	private Produto[] produtos = new Produto[50];
 	private int qtdProdutos = 0;
 	//talves a lista de produtos em Fornecedor nao seja necessaria 
-	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 80000, produtos, 150);
+	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 80000, 150);
 	
 
 	/**

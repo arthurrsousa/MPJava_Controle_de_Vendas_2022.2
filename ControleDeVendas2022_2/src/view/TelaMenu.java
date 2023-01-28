@@ -83,15 +83,15 @@ public class TelaMenu implements ActionListener  {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 		
-		Color minhaCor = new Color(163, 59, 57);
-		janela.getContentPane().setBackground(minhaCor);
+		/*Color minhaCor = new Color(23, 108, 222);
+		janela.getContentPane().setBackground(minhaCor);*/
 		
-		Color minhaCor2 = new Color(100, 100, 100);
+		/*Color minhaCor2 = new Color(228, 228, 228);
 		fluxo.setBackground(minhaCor2);
 		fornecedor.setBackground(minhaCor2);
 		cliente.setBackground(minhaCor2);
 		produto.setBackground(minhaCor2);
-		vendedor.setBackground(minhaCor2);
+		vendedor.setBackground(minhaCor2);*/
 		
 		
 	}

@@ -38,7 +38,8 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorSaldo;
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
-	
+	private JLabel labelvalorVendas = new JLabel("Valor de Vendas: ");
+	private JTextField valorVendas;
 	
 	//Cliente
 	private JLabel labelTotalPago = new JLabel("Total Pago: ");
@@ -55,9 +56,11 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorMarca;
 	private JLabel labelCateg = new JLabel("Categoria: ");
 	private JTextField valorCateg;
-	private JLabel labelValor = new JLabel("Valor: ");
-	private JTextField valorValor;
-	private JLabel labelDesc = new JLabel("Descri��o: ");
+	private JLabel labelValorVenda = new JLabel("Valor de venda: ");
+	private JTextField valorVenda;
+	private JLabel labelValorCompra = new JLabel("Valor de compra: ");
+	private JTextField valorCompra;
+	private JLabel labelDesc = new JLabel("Descrição: ");
 	private JTextField valorDesc;
 	
 	//Recibo
@@ -116,13 +119,13 @@ public class TelaDetalhes implements ActionListener {
 
 		//Preenche dados com dados do Vendedor
 		if (op == 1) {
-			valorNome = new JTextField(dados.getVendedor().getNome(), 200);
-			valorEnd = new JTextField(dados.getVendedor().getEndereco(), 200);
-			valorCPF = new JTextField(String.valueOf(dados.getVendedor().getCpf()), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getVendedor().getTelefone()), 200);		
+			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
+			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
+			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getVendedor()[pos].getTelefone()), 200);		
 
-			valorSaldo = new JTextField(String.valueOf(dados.getVendedor().getSaldo()), 200);
-			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor().getQtd_vendas()), 200);
+			valorVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
+			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getQuantidade_vendas()), 200);
 
 		} 
 		
@@ -132,7 +135,8 @@ public class TelaDetalhes implements ActionListener {
 			valorMarca = new JTextField(String.valueOf(dados.getProduto()[pos].getMarca()),200);
 			valorCateg = new JTextField(String.valueOf(dados.getProduto()[pos].getCategoria()), 200);
 			valorDesc = new JTextField(String.valueOf(dados.getProduto()[pos].getDescricao()), 200);
-			valorValor = new JTextField(String.valueOf(dados.getProduto()[pos].getValor()), 200);
+			valorVenda = new JTextField(String.valueOf(dados.getProduto()[pos].getValorVenda()), 200);
+			valorCompra = new JTextField(String.valueOf(dados.getProduto()[pos].getValorCompra()), 200);
 
 		}
 		
@@ -147,7 +151,8 @@ public class TelaDetalhes implements ActionListener {
 			valorTotalCompras = new JTextField(String.valueOf(dados.getCliente()[pos].getCompras_realizadas()), 200);
 		} 
 		
-		else { //N�o preenche com dados
+		
+		else { //Não preenche com dados
 			valorNome = new JTextField(200);
 			valorEnd = new JTextField(200);
 			valorCPF = new JTextField(200);
