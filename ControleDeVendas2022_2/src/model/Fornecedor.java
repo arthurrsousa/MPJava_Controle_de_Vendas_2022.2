@@ -4,7 +4,7 @@ public class Fornecedor extends PessoaJuridica{
 
 	private float valorEntrega;
 
-	public Fornecedor(String n, int tel, String end, int cnpj, String ie, int ra, float entrega) {
+	public Fornecedor(String n, int tel, String end, int cnpj, String ie, float entrega) {
 		super(n, tel, end, cnpj, ie);
 		this.setValorEntrega(entrega);
 	}

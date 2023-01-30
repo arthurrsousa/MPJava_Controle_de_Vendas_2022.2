@@ -119,7 +119,7 @@ public class TelaDetalhes implements ActionListener {
 		} 
 
 		//Preenche dados com dados do Vendedor
-		if (op == 1) {
+		else if (op == 1) {
 			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
@@ -132,12 +132,11 @@ public class TelaDetalhes implements ActionListener {
 		//Preenche dados com dados do Produto clicado
 		else if (op == 4) {  
 			valorNome = new JTextField(dados.getProduto()[pos].getNome(), 200);
-			valorMarca = new JTextField(String.valueOf(dados.getProduto()[pos].getMarca()),200);
+			valorMarca = new JTextField(dados.getProduto()[pos].getMarca(),200);
 			valorCateg = new JTextField(String.valueOf(dados.getProduto()[pos].getCategoria()), 200);
 			valorDesc = new JTextField(String.valueOf(dados.getProduto()[pos].getDescricao()), 200);
 			valorVenda = new JTextField(String.valueOf(dados.getProduto()[pos].getValorVenda()), 200);
 			valorCompra = new JTextField(String.valueOf(dados.getProduto()[pos].getValorCompra()), 200);
-
 		}
 		
 		//Preenche dados com dados do ClienteFis clicado
@@ -146,15 +145,6 @@ public class TelaDetalhes implements ActionListener {
 			valorEnd = new JTextField(dados.getClientePes()[pos].getEndereco(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getClientePes()[pos].getTelefone()), 200);		
 			valorCPF = new JTextField(String.valueOf(dados.getClientePes()[pos].getCpf()), 200);
-		} 
-		
-		//Preenche dados com dados do ClienteEmp clicado
-		else if (op == 30) {
-			valorNome = new JTextField(dados.getClienteEmp()[pos].getNome(), 200);
-			valorEnd = new JTextField(dados.getClienteEmp()[pos].getEndereco(), 200);
-			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getClienteEmp()[pos].getTelefone()), 200);	
-			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
 		} 
 		
 		else { //Não preenche com dados
@@ -194,7 +184,6 @@ public class TelaDetalhes implements ActionListener {
 				
 				labelEntrega.setBounds(30, 170, 150, 25);
 				valorEntrega.setBounds(180, 170, 70, 25);
-
 			}
 				
 			//================Vendedor================
@@ -260,7 +249,6 @@ public class TelaDetalhes implements ActionListener {
 
 		//Coloca os campos relacionados a Pessoa
 		if (op == 1 || op == 3 || op == 5 || op == 10) {
-			
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
@@ -282,17 +270,17 @@ public class TelaDetalhes implements ActionListener {
 		//Coloca campos relacionados a ClientePessoa
 		if (op == 3 || op == 5) {
 			this.janela.add(labelCPF);
-			this.janela.add(valorCPF);
-			
+			this.janela.add(valorCPF);	
 		}
 			
-		//Coloca campos relacionados a ClienteEmpresa
+		//Coloca campos relacionados a Fornecedor
 		if (op == 10) {
 			this.janela.add(labelCnpj); 
 			this.janela.add(valorCnpj);
 			this.janela.add(labelIE); 
 			this.janela.add(valorIE);
-			
+			this.janela.add(labelEntrega);
+			this.janela.add(valorEntrega);
 		}
 		//Coloca campos relacionados a Produto
 		if (op == 2 || op == 4) {
@@ -307,11 +295,6 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorVenda);
 			this.janela.add(labelDesc);
 			this.janela.add(valorDesc);
-		}
-		
-		if (op == 10) {
-			this.janela.add(labelEntrega);
-			this.janela.add(valorEntrega);
 		}
 
 		//Coloca botoes

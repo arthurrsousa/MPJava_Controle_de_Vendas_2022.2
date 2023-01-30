@@ -54,7 +54,7 @@ public class ControleProduto {
 	}
 
 	public double getValor(int i) {
-		return p[i].getValor();
+		return p[i].getValorCompra();
 	}
 	
 	public String getDesc (int i) {

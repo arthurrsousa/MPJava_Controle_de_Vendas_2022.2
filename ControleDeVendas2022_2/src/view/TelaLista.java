@@ -29,6 +29,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private JList<String> listaRecibosCadastrados;
 	//private String nomeVend;
 	private String[] listaNomes = new String[50];
+	private String[] listaNomesEmpresa = new String[50];
 	private int cliIndex;
 
 	/**
