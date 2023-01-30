@@ -116,7 +116,6 @@ public class TelaDetalhes implements ActionListener {
 			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
 			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
 			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
-
 		} 
 
 		//Preenche dados com dados do Vendedor
@@ -128,7 +127,6 @@ public class TelaDetalhes implements ActionListener {
 
 			valorVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
 			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getQuantidade_vendas()), 200);
-
 		} 
 		
 		//Preenche dados com dados do Produto clicado
@@ -267,12 +265,6 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
 			this.janela.add(valorEnd);
-			this.janela.add(labelCPF); 
-			this.janela.add(valorCPF);
-			this.janela.add(labelCnpj); 
-			this.janela.add(valorCnpj);
-			this.janela.add(labelIE); 
-			this.janela.add(valorIE);
 			this.janela.add(labelTelefone); 
 			this.janela.add(valorTelefone);
 		}
@@ -287,16 +279,21 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorQtdVendas);
 		}
 		
-		//Coloca campos relacionados a Cliente
+		//Coloca campos relacionados a ClientePessoa
 		if (op == 3 || op == 5) {
-
-			this.janela.add(labelTotalPago);
-			this.janela.add(valorTotalPago);
-			this.janela.add(labelTotalCompras);
-			this.janela.add(valorTotalCompras);
+			this.janela.add(labelCPF);
+			this.janela.add(valorCPF);
 			
 		}
 			
+		//Coloca campos relacionados a ClienteEmpresa
+		if (op == 10) {
+			this.janela.add(labelCnpj); 
+			this.janela.add(valorCnpj);
+			this.janela.add(labelIE); 
+			this.janela.add(valorIE);
+			
+		}
 		//Coloca campos relacionados a Produto
 		if (op == 2 || op == 4) {
 
@@ -394,7 +391,7 @@ public class TelaDetalhes implements ActionListener {
 			while (i < 10) {  //Lista os produtos comprados, a quantidade e o preco de cada um 
 				if (listaItens[i] != null) {
 					
-					//listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValor()), SwingConstants.CENTER);
+					listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValorVenda()), SwingConstants.CENTER);
 					listaRecibo[i].setBounds(35, (120+20*(i+1)), 300, 25);
 					listaRecibo[i].setBackground(Color.lightGray);
 					

@@ -235,12 +235,11 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 					listaProdsCadastrados.getSelectedIndex());
 		}
 		
-		
 		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
 			new TelaDetalhes().inserirEditar(5, dados,
 					listaClientesCadastrados.getSelectedIndex());
 		}
-		
+
 		if(e.getValueIsAdjusting() && src == listaRecibosCadastrados) {
 			new TelaDetalhes().inserirEditar(7, dados,
 					listaRecibosCadastrados.getSelectedIndex(), cliIndex);

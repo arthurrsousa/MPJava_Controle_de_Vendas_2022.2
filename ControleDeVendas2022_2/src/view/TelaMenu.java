@@ -92,8 +92,6 @@ public class TelaMenu implements ActionListener  {
 		cliente.setBackground(minhaCor2);
 		produto.setBackground(minhaCor2);
 		vendedor.setBackground(minhaCor2);*/
-		
-		
 	}
 	
 	/**
@@ -113,7 +111,6 @@ public class TelaMenu implements ActionListener  {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-
 		
 		if(src == vendedor)
 			new TelaLista().mostrarDados(dados, 1);
@@ -127,6 +124,8 @@ public class TelaMenu implements ActionListener  {
 		if(src == fornecedor)
 			new TelaDetalhes().inserirEditar(10, dados, 0);
 		
+		if(src == fluxo)
+			new TelaDetalhes().inserirEditar(20, dados, 0);
 
 	}
 }
