@@ -230,7 +230,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 
-		/*if(e.getValueIsAdjusting() && src == listaProdsCadastrados) {
+		if(e.getValueIsAdjusting() && src == listaProdsCadastrados) {
 			new TelaDetalhes().inserirEditar(4, dados, 
 					listaProdsCadastrados.getSelectedIndex());
 		}
@@ -244,7 +244,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		if(e.getValueIsAdjusting() && src == listaRecibosCadastrados) {
 			new TelaDetalhes().inserirEditar(7, dados,
 					listaRecibosCadastrados.getSelectedIndex(), cliIndex);
-		}*/
+		}
 	}
 
 }

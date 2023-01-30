@@ -177,7 +177,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(botaoSalvar);
 		}
 		
-		//================FORNCEDOR================
+		//================Fornecedor================
 			if (op == 10) {
 				labelNome.setBounds(30, 20, 150, 25);
 				valorNome.setBounds(180, 20, 180, 25);
@@ -267,7 +267,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
 			this.janela.add(valorEnd);
-			this.janela.add(labelTelefone);
+			this.janela.add(labelTelefone); w
 			this.janela.add(valorTelefone);
 		}
 
