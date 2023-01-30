@@ -22,7 +22,7 @@ public class Dados {
 		//Date d = Calendar.getInstance().getTime();
 		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
-			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233);
+			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			//clientesEmp[i] = new ClienteEmpresa("Empresa"+(i+1), (i+1)*123456, "Endereco"+(i+1), (i+1)*112233, "Endereco"+(i+1));
 			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", 5*(i+1), 10*(i+1), " Bom e Barato");
 

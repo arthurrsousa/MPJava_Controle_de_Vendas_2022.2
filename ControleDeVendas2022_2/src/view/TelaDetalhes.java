@@ -28,10 +28,10 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorNome;
 	private JLabel labelEnd = new JLabel("Endereco: ");
 	private JTextField valorEnd;
-	private JLabel labelCPF = new JLabel("CPF: ");
-	private JTextField valorCPF;
 	private JLabel labelTelefone = new JLabel("Telefone");
 	private JTextField valorTelefone;
+	private JLabel labelCPF = new JLabel("CPF: ");
+	private JTextField valorCPF;
 	private JLabel labelCnpj = new JLabel("CNPJ: ");
 	private JTextField valorCnpj;
 	private JLabel labelIE = new JLabel("Inscrição Estadual: "); 
@@ -140,11 +140,14 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//Preenche dados com dados do ClienteFis clicado
-		else if (op == 20) {
+		else if (op == 5) {
 			valorNome = new JTextField(dados.getClientePes()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getClientePes()[pos].getEndereco(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getClientePes()[pos].getTelefone()), 200);		
 			valorCPF = new JTextField(String.valueOf(dados.getClientePes()[pos].getCpf()), 200);
+			
+			valorTotalPago = new JTextField(String.valueOf(dados.getClientePes()[pos].getTotal_pago()), 200);
+			valorTotalCompras = new JTextField(String.valueOf(dados.getClientePes()[pos].getCompras_realizadas()), 200);
 		} 
 		
 		else { //Não preenche com dados
@@ -271,6 +274,10 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 3 || op == 5) {
 			this.janela.add(labelCPF);
 			this.janela.add(valorCPF);	
+			this.janela.add(labelTotalPago);
+			this.janela.add(valorTotalPago);	
+			this.janela.add(labelTotalCompras);
+			this.janela.add(valorTotalCompras);	
 		}
 			
 		//Coloca campos relacionados a Fornecedor

@@ -45,5 +45,14 @@ public class ControleClientePessoa {
 		String numTel = String.valueOf(cli[i].getTelefone());
 		return numTel;
 	}
+	
+	public double getTotalPago (int i) {
+		return cli[i].getTotal_pago();
+	}
+	
+	public String getTotalCompras (int i) {
+		String numCompras = String.valueOf(cli[i].getCompras_realizadas());
+		return numCompras;
+	}
 
 }
