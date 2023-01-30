@@ -267,7 +267,13 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
 			this.janela.add(valorEnd);
-			this.janela.add(labelTelefone); w
+			this.janela.add(labelCPF); 
+			this.janela.add(valorCPF);
+			this.janela.add(labelCnpj); 
+			this.janela.add(valorCnpj);
+			this.janela.add(labelIE); 
+			this.janela.add(valorIE);
+			this.janela.add(labelTelefone); 
 			this.janela.add(valorTelefone);
 		}
 
@@ -363,7 +369,7 @@ public class TelaDetalhes implements ActionListener {
 			
 			//Preenche dados com dados do Recibo
 			valorCodigo = new JLabel("Codigo da Nota:  " + dados.getRecibo(index)[pos].getCodigo(), SwingConstants.LEFT);
-			valorComprador = new JLabel("CPF do Cliente:  " + dados.getRecibo(index)[pos].getComprador().getCpf(), SwingConstants.LEFT);
+			//valorComprador = new JLabel("CPF do Cliente:  " + dados.getRecibo(index)[pos].getComprador().getCpf(), SwingConstants.LEFT);
 			valorData = new JLabel(String.valueOf("Compra feita em:  " + dados.getRecibo(index)[pos].getData()), SwingConstants.LEFT);
 			valorValorTotal = new JLabel(String.valueOf("Valor Total:  R$" + dados.getRecibo(index)[pos].getValor_total()), SwingConstants.LEFT);	
 			
@@ -388,7 +394,7 @@ public class TelaDetalhes implements ActionListener {
 			while (i < 10) {  //Lista os produtos comprados, a quantidade e o preco de cada um 
 				if (listaItens[i] != null) {
 					
-					listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValor()), SwingConstants.CENTER);
+					//listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValor()), SwingConstants.CENTER);
 					listaRecibo[i].setBounds(35, (120+20*(i+1)), 300, 25);
 					listaRecibo[i].setBackground(Color.lightGray);
 					
@@ -428,7 +434,7 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[2] =  valorEnd.getText();
 					novoDado[3] =  valorCPF.getText();
 					novoDado[4] =  valorTelefone.getText();
-					novoDado[5] =  valorSaldo.getText();
+					//novoDado[5] =  valorSaldo.getText();
 					novoDado[6] =  valorQtdVendas.getText();
 					res = dados.inserirEditarVendedor(novoDado);
 				
@@ -436,7 +442,7 @@ public class TelaDetalhes implements ActionListener {
 				} else if (opcao == 2 || opcao == 4) {  
 					novoDado[2] =  valorMarca.getText();
 					novoDado[3] =  valorCateg.getText();
-					novoDado[4] =  valorValor.getText();
+					//novoDado[4] =  valorValor.getText();
 					novoDado[5] =  valorDesc.getText();
 					res = dados.inserirEditarProduto(novoDado);	
 					
@@ -490,7 +496,7 @@ public class TelaDetalhes implements ActionListener {
 		
 		//=============Abre selecao de Produto
 		if(src == botaoComprar) {
-			new TelaCarrinho().mostrarCarrinho(dados, posicao);
+			//new TelaCarrinho().mostrarCarrinho(dados, posicao);
 		}	
 		
 		

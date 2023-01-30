@@ -4,13 +4,11 @@ public abstract class PessoaJuridica extends Pessoa{
 
 	private int cnpj;
 	private String insEstadual;
-	private int ra;
 	
-	public PessoaJuridica(String n, int tel, String end, int cnpj, String ie, int ra) {
+	public PessoaJuridica(String n, int tel, String end, int cnpj, String ie) {
 		super(n, tel, end);
 		this.setCnpj(cnpj);
 		this.setInsEstadual(ie);
-		this.setRa(ra);
 	}
 
 	public int getCnpj() {
@@ -27,14 +25,6 @@ public abstract class PessoaJuridica extends Pessoa{
 
 	public void setInsEstadual(String insEstadual) {
 		this.insEstadual = insEstadual;
-	}
-
-	public int getRa() {
-		return ra;
-	}
-
-	public void setRa(int ra) {
-		this.ra = ra;
 	}
 
 }
