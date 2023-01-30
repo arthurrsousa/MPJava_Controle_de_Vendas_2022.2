@@ -84,15 +84,15 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			cadastroProd = new JButton("Cadastrar");
 			refreshProd = new JButton("Refresh");
 
-			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(90, 10, 250, 30);
-			listaProdsCadastrados.setBounds(20, 50, 350, 120);
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(220, 10, 2000, 110);
+			listaProdsCadastrados.setBounds(150, 120, 500, 250);
 			listaProdsCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaProdsCadastrados.setVisibleRowCount(10);
 
 
-			cadastroProd.setBounds(70, 177, 100, 30);
-			refreshProd.setBounds(200, 177, 100, 30);
+			cadastroProd.setBounds(175, 400, 200, 50);
+			refreshProd.setBounds(400, 400, 200, 50);
 
 			janela.setLayout(null);
 
@@ -101,7 +101,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			janela.add(cadastroProd);
 			janela.add(refreshProd);
 
-			janela.setSize(400, 250);
+			janela.setSize(800, 600);
 			janela.setVisible(true);
 
 			cadastroProd.addActionListener(this);
@@ -117,15 +117,15 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			cadastroCliente = new JButton("Cadastrar");
 			refreshCliente = new JButton("Refresh");
 
-			titulo.setFont(new Font("Arial", Font.BOLD, 20));
-			titulo.setBounds(90, 10, 250, 30);
-			listaClientesCadastrados.setBounds(20, 50, 350, 120);
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(250, 10, 2000, 110);
+			listaClientesCadastrados.setBounds(150, 120, 500, 250);
 			listaClientesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaClientesCadastrados.setVisibleRowCount(10);
 
 
-			cadastroCliente.setBounds(2, 177, 100, 30);
-			refreshCliente.setBounds(200, 177, 100, 30);
+			cadastroCliente.setBounds(175, 400, 200, 50);
+			refreshCliente.setBounds(400, 400, 200, 50);
 
 			janela.setLayout(null);
 
@@ -134,7 +134,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			janela.add(cadastroCliente);
 			janela.add(refreshCliente);
 			
-			janela.setSize(400, 250);
+			janela.setSize(800, 600);
 			janela.setVisible(true);
 
 			cadastroCliente.addActionListener(this);
@@ -194,9 +194,9 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 		
 		//Cadastro de novo Produto
-		/*if(src == cadastroProd) {
+		if(src == cadastroProd) {
 			System.out.println("Cadastro Prod");
-			new TelaDetalhes().inserirEditar(2, dados, 0);
+			new TelaDetalhes().inserirEditar(4, dados, 0);
 		}
 		
 		//Cadastro de novo Cliente
@@ -213,14 +213,14 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		
 		// Atualiza a lista de nomes de Clientes mostrada no JList
 		if(src == refreshCliente) {
-			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeCliente());			
+			listaClientesCadastrados.setListData(new ControleClientePessoa(dados).getNomeCliente());			
 			listaClientesCadastrados.updateUI();
 		}
 
 		if(src == refreshRecibo) {
 			listaRecibosCadastrados.setListData(new ControleRecibo(dados, cliIndex).getCodigoRec());			
 			listaRecibosCadastrados.updateUI();
-		}*/
+		}
 	}
 
 	/**
