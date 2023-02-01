@@ -78,6 +78,14 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorEntrega;
 	private JButton botaoRenovarEstoque = new JButton("Renovar Estoque de Produto");
 	
+	//Fluxo
+	private JLabel labelsaldo_atual = new JLabel("Saldo atual: ");
+	private JTextField valorsaldo_atual;
+	private JLabel labelsaida_dinheiro = new JLabel("Saida dinheiro: ");
+	private JTextField valorsaida_dinheiro;
+	private JLabel labelentrada_dinheiro = new JLabel("Entrada dinheiro: ");
+	private JTextField valorentrada_dinheiro;
+	
 	//Recibo
 	private JLabel valorCodigo;
 	private JLabel valorComprador = new JLabel();
@@ -115,6 +123,7 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 5) s = "Detalhe de Cliente";
 		if (op == 10) s = "Detalhe de Fornecedor";
 		if (op == 69) s = "Estoque";
+		if (op == 20) s = "Salvar do Fluxo";
 
 		janela = new JFrame(s);
 		
@@ -127,7 +136,12 @@ public class TelaDetalhes implements ActionListener {
 			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
 			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
 		} 
-
+		//Prenche dados com dados do FluxoDeCaixa clicado
+		else if (op == 20) {
+			valorsaldo_atual = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaldo_atual()), 200);
+			valorsaida_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaida_dinheiro()), 200);
+			valorentrada_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getEntrada_dinheiro()), 200);
+		}
 		//Preenche dados com dados do Vendedor
 		else if (op == 1) {
 			System.out.println("OP = 1");
@@ -161,6 +175,7 @@ public class TelaDetalhes implements ActionListener {
 			valorTotalCompras = new JTextField(String.valueOf(dados.getClientePes()[pos].getCompras_realizadas()), 200);
 		} 
 		
+
 		// Preenche dados com dados do Estoque
 		else if (op == 69) {
 			valorProduto = new JTextField(dados.getEstoques()[pos].getProduto().getNome(), 200);
@@ -169,6 +184,7 @@ public class TelaDetalhes implements ActionListener {
 			valorQtdComprada = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdCompras()), 200);
 			
 		} 
+
 		
 		else { //Não preenche com dados
 			valorNome = new JTextField(200);
@@ -189,6 +205,28 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//================Fornecedor================
+			if (op == 10) {
+				labelNome.setBounds(30, 20, 150, 25);
+				valorNome.setBounds(180, 20, 180, 25);
+				
+				labelEnd.setBounds(30, 50, 150, 25);
+				valorEnd.setBounds(180, 50, 180, 25);
+				
+				labelCnpj.setBounds(30, 80, 150, 25);
+				valorCnpj.setBounds(180, 80, 180, 25);
+				
+				labelTelefone.setBounds(30, 110, 150, 25);
+				valorTelefone.setBounds(180, 110, 180, 25);
+				
+				labelIE.setBounds(30, 140, 150, 25);
+				valorIE.setBounds(180, 140, 180, 25);
+				
+				labelEntrega.setBounds(30, 170, 150, 25);
+				valorEntrega.setBounds(180, 170, 70, 25);
+			}
+			
+		//================FLUXO================	
+
 		if (op == 10) {
 			labelNome.setBounds(30, 20, 150, 25);
 			valorNome.setBounds(180, 20, 180, 25);
@@ -208,7 +246,18 @@ public class TelaDetalhes implements ActionListener {
 			labelEntrega.setBounds(30, 170, 150, 25);
 			valorEntrega.setBounds(180, 170, 70, 25);
 		}
+
+		if (op == 20 ) {
+			labelsaldo_atual.setBounds(30, 20, 150, 25);
+			valorsaldo_atual.setBounds(180, 20, 180, 25);
+					
+			labelsaida_dinheiro.setBounds(30, 50, 150, 25);
+			valorsaida_dinheiro.setBounds(180, 50, 180, 25);
+			
+			labelentrada_dinheiro.setBounds(30, 80, 150, 25);
+			valorentrada_dinheiro.setBounds(180, 80, 180, 25);
 				
+		}
 			//================Vendedor================
 		if (op == 1) {
 			labelNome.setBounds(30, 20, 150, 25);
@@ -322,6 +371,15 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorIE);
 			this.janela.add(labelEntrega);
 			this.janela.add(valorEntrega);
+		}
+		//Coloca campos relacionados a Fluxo
+		if (op == 20 ) {
+			this.janela.add(labelentrada_dinheiro); 
+			this.janela.add(valorentrada_dinheiro);
+			this.janela.add(labelsaida_dinheiro); 
+			this.janela.add(valorsaida_dinheiro);
+			this.janela.add(labelsaldo_atual);
+			this.janela.add(valorsaldo_atual);
 		}
 		//Coloca campos relacionados a Produto
 		if (op == 2 || op == 4) {

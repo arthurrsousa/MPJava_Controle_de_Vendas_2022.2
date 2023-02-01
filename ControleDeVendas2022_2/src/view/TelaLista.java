@@ -32,8 +32,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private JTextField qtdRenovar = new JTextField(String.valueOf(1), 200);
 	private JButton botaoRenovar = new JButton("Renovar");
 
-	//private String nomeVend;
 	private String[] listaNomes = new String[50];
+	private String[] listaNomesEmpresa = new String[50];
 	private int cliIndex;
 
 	/**
@@ -146,7 +146,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			refreshCliente.addActionListener(this);
 			listaClientesCadastrados.addListSelectionListener(this);
 			break;
-			
+		
+		//Tela de renovacao de estoque
 		case 10:
 			listaNomes = new ControleProduto(dados).getNomeProd();
 			listaProdsRenovar = new JList<String>(listaNomes);
@@ -159,9 +160,9 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaProdsRenovar.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaProdsRenovar.setVisibleRowCount(10);
 			
-			labelQtdRenovar.setBounds(30, 180, 150, 25);
-			qtdRenovar.setBounds(105, 180, 30, 25);
-			botaoRenovar.setBounds(200, 180, 100, 30);
+			labelQtdRenovar.setBounds(30, 400, 150, 25);
+			qtdRenovar.setBounds(105, 400, 30, 25);
+			botaoRenovar.setBounds(200, 400, 100, 30);
 
 			janela.setLayout(null);
 			janela.add(titulo);
@@ -175,7 +176,6 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 
 			listaProdsRenovar.addListSelectionListener(this);
 			break;
-			
 			
 		default:
 			JOptionPane.showMessageDialog(null,"Op��o n�o encontrada!", null, 
@@ -255,6 +255,10 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaRecibosCadastrados.setListData(new ControleRecibo(dados, cliIndex).getCodigoRec());			
 			listaRecibosCadastrados.updateUI();
 		}
+		
+		if(src == botaoRenovar) {
+			//dados.renovarEstoque(posicao, );
+		}
 	}
 
 	/**
@@ -263,8 +267,9 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
+
 		if(e.getValueIsAdjusting() && src == listaVendedoresCadastrados) {
-			new TelaDetalhes().inserirEditar(1, dados,
+			new TelaDetalhes().inserirEditar(1, dados, 
 					listaVendedoresCadastrados.getSelectedIndex());
 		}
 		
@@ -285,3 +290,4 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	}
 
 }
+

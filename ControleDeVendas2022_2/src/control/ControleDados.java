@@ -30,7 +30,6 @@ public class ControleDados {
 	public void setDados(Dados d) {
 		this.d = d;
 	}
-
 	
 	public Vendedor[] getVendedor() {							
 		return this.d.getVendedor();
@@ -79,6 +78,11 @@ public class ControleDados {
 		return this.d.getClientePes()[cliIndex].getQtdRecibos();
 	}
 	
+	public FluxoDeCaixa getFluxoDeCaixa() {							
+		return this.d.getFluxoDeCaixa();
+	}
+	
+	
 	
 	/**
 	 * Confere se os dados do Vendedor que devem ser do tipo INTEIRO estao corretos
@@ -123,6 +127,18 @@ public class ControleDados {
 				d.inserirEditarClientePessoa(c, Integer.parseInt(dadosCliente[0]));
 				return true;
 		}
+	}
+	
+	/**
+	 * Altera ou adiciona uma nova instancia do fluxo no array de dados.
+	 * dadosCliente[0] representa o index do array de fluxo que deve ser alterado.
+	 * 
+	 * @return boolean
+	 */
+	public boolean inserirEditarFluxoDeCaixa(String[] dadosFluxo) {
+		FluxoDeCaixa caixa = new FluxoDeCaixa((Double.parseDouble(dadosFluxo[1])), (Double.parseDouble(dadosFluxo[2])), (Double.parseDouble(dadosFluxo[3])));
+		d.inserirEditarFluxoDeCaixa(caixa);
+		return true;
 	}
 	
 	/**
@@ -224,4 +240,12 @@ public class ControleDados {
 		return true;
 		
 	}
+
+	public boolean renovarEstoque(int pos, int qtd) {
+		Estoque estoque = d.getEstoques()[pos];
+		estoque.setQtdAtual(estoque.getQtdAtual() + qtd);
+		return true;
+	}
 }
+
+

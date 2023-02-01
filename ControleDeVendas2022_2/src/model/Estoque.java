@@ -8,10 +8,10 @@ public class Estoque {
 
 
 	public Estoque(Produto produto, int atual, int min, int compras) {
-		this.setProduto(produto);
-		this.setQtdAtual(atual);
-		this.setQtdMinima(min);
-		this.setQtdCompras(compras);
+	this.setProduto(produto);
+	this.setQtdAtual(atual);
+	this.setQtdMinima(min);
+	this.setQtdCompras(compras);
 	}
 
 
