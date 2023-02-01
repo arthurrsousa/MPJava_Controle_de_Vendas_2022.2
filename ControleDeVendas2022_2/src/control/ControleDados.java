@@ -115,9 +115,9 @@ public class ControleDados {
 		if(!dadosCliente[3].matches("[0-9]+") || !dadosCliente[4].matches("[0-9]+") || !dadosCliente[6].matches("[0-9]+")) {
 			return false;
 		} else {
-			Cliente c = new Cliente(dadosCliente[1], dadosCliente[2], (Integer.parseInt(dadosCliente[3])), 
+			ClientePessoa c = new ClientePessoa(dadosCliente[1], (Integer.parseInt(dadosCliente[3])), dadosCliente[2], 
 						(Integer.parseInt(dadosCliente[4])), (Double.parseDouble(dadosCliente[5])), (Integer.parseInt(dadosCliente[6])));
-				d.inserirEditarCliente(c, Integer.parseInt(dadosCliente[0]));
+				d.inserirEditarClientePessoa(c, Integer.parseInt(dadosCliente[0]));
 				return true;
 		}
 	}
@@ -162,24 +162,24 @@ public class ControleDados {
 	 * @return boolean
 	 */
 	public boolean removerCliente(int i) {
-		String clienteRemovido = d.getCliente()[i].getNome();
+		String clienteRemovido = d.getClientePes()[i].getNome();
 		
-		if(i == (d.getQtdClientes() - 1)) { // O Cliente a ser removido está no final do array
-			d.setQtdClientes(d.getQtdClientes() - 1);
-			d.getCliente()[d.getQtdClientes()] = null;
+		if(i == (d.getQtdClientesPes() - 1)) { // O Cliente a ser removido está no final do array
+			d.setQtdClientesPes(d.getQtdClientesPes() - 1);
+			d.getClientePes()[d.getQtdClientesPes()] = null;
 			return true;
 		} else { // o Cliente a ser removido está no meio do array
 			int cont = 0;
-			while(d.getCliente()[cont].getNome().compareTo(clienteRemovido) != 0) {
+			while(d.getClientePes()[cont].getNome().compareTo(clienteRemovido) != 0) {
 				cont++;
 			}
 			//Rotina swap
-			for(int j = cont; j < d.getQtdClientes() - 1; j++) {
-				d.getCliente()[j] = null;
-				d.getCliente()[j] = d.getCliente()[j+1];
+			for(int j = cont; j < d.getQtdClientesPes() - 1; j++) {
+				d.getClientePes()[j] = null;
+				d.getClientePes()[j] = d.getClientePes()[j+1];
 			}
-			d.getCliente()[d.getQtdClientes()] = null;
-			d.setQtdClientes(d.getQtdClientes() - 1);
+			d.getClientePes()[d.getQtdClientesPes()] = null;
+			d.setQtdClientesPes(d.getQtdClientesPes() - 1);
 			return true;
 		}
 	}
@@ -197,7 +197,7 @@ public class ControleDados {
 	 */
 	public boolean finalizarCompra(int pos, Produto[] listaProd, int[] listaQtd) {
 		Random rand = new Random();
-		Cliente comprador = d.getCliente()[pos];
+		Cliente comprador = d.getClientePes()[pos];
 		Vendedor vendedor = d.getVendedor();
 		double valorTotal = 0;
 		Date date = Calendar.getInstance().getTime();
