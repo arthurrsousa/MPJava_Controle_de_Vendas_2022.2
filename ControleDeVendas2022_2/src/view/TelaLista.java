@@ -27,9 +27,13 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private JList<String> listaVendedoresCadastrados;
 	private JList<String> listaClientesCadastrados;
 	private JList<String> listaRecibosCadastrados;
+	private JList<String> listaProdsRenovar;
+	private JLabel labelQtdRenovar = new JLabel("Renovar: ");
+	private JTextField qtdRenovar = new JTextField(String.valueOf(1), 200);
+	private JButton botaoRenovar = new JButton("Renovar");
+
 	//private String nomeVend;
 	private String[] listaNomes = new String[50];
-	private String[] listaNomesEmpresa = new String[50];
 	private int cliIndex;
 
 	/**
@@ -143,6 +147,35 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaClientesCadastrados.addListSelectionListener(this);
 			break;
 			
+		case 10:
+			listaNomes = new ControleProduto(dados).getNomeProd();
+			listaProdsRenovar = new JList<String>(listaNomes);
+			janela = new JFrame("Renovar Produtos");
+			titulo = new JLabel("Selecione o Produto a ser Renovado");
+
+			titulo.setFont(new Font("Arial", Font.BOLD, 30));
+			titulo.setBounds(220, 10, 2000, 110);
+			listaProdsRenovar.setBounds(150, 120, 500, 250);
+			listaProdsRenovar.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			listaProdsRenovar.setVisibleRowCount(10);
+			
+			labelQtdRenovar.setBounds(30, 180, 150, 25);
+			qtdRenovar.setBounds(105, 180, 30, 25);
+			botaoRenovar.setBounds(200, 180, 100, 30);
+
+			janela.setLayout(null);
+			janela.add(titulo);
+			janela.add(listaProdsRenovar);
+			janela.add(labelQtdRenovar);
+			janela.add(qtdRenovar);
+			janela.add(botaoRenovar);
+
+			janela.setSize(800, 600);
+			janela.setVisible(true);
+
+			listaProdsRenovar.addListSelectionListener(this);
+			break;
+			
 			
 		default:
 			JOptionPane.showMessageDialog(null,"Op��o n�o encontrada!", null, 
@@ -230,9 +263,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
-
 		if(e.getValueIsAdjusting() && src == listaVendedoresCadastrados) {
-			new TelaDetalhes().inserirEditar(1, dados, 
+			new TelaDetalhes().inserirEditar(1, dados,
 					listaVendedoresCadastrados.getSelectedIndex());
 		}
 		
@@ -253,4 +285,3 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	}
 
 }
-

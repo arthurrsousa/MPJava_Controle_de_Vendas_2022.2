@@ -7,10 +7,11 @@ public class Estoque {
 	private int qtdCompras;
 
 
-	public Estoque(int atual, int min, int compras) {
-	this.setQtdAtual(atual);
-	this.setQtdMinima(min);
-	this.setQtdCompras(compras);
+	public Estoque(Produto produto, int atual, int min, int compras) {
+		this.setProduto(produto);
+		this.setQtdAtual(atual);
+		this.setQtdMinima(min);
+		this.setQtdCompras(compras);
 	}
 
 

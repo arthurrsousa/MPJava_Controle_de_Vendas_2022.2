@@ -10,12 +10,12 @@ public class Dados {
 	private int qtdClientesEmp = 0;
 	private Produto[] produtos = new Produto[50];
 	private int qtdProdutos = 0;
-	//talves a lista de produtos em Fornecedor nao seja necessaria 
+	private Estoque[] estoques = new Estoque[50];
+	private Carrinho carrinho = new Carrinho(null);
 	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 150);
 	
-
 	/**
-	 * Cria instancias da classe Cliente e Produto para auxiliar na apresentacao do software.
+	 * Cria instancias de diversas classes do Modelo para auxiliar na apresentacao do software.
 	 * 
 	 */
 	public void fillWithSomeData() {
@@ -23,8 +23,8 @@ public class Dados {
 		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
-			//clientesEmp[i] = new ClienteEmpresa("Empresa"+(i+1), (i+1)*123456, "Endereco"+(i+1), (i+1)*112233, "Endereco"+(i+1));
 			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", 5*(i+1), 10*(i+1), " Bom e Barato");
+			estoques[i] = new Estoque(produtos[i], 0, 15, 0);
 
 			//talvez isso de problema (tirar do loop)
 			setQtdVendedor(getQtdVendedor() + 1);
@@ -38,7 +38,6 @@ public class Dados {
 		this.fluxoDeCaixa = caixa;
 	}
 
-	
 	public void inserirEditarFornecedor(Fornecedor forn) {
 		this.fornecedor = forn;
 	}
@@ -70,6 +69,7 @@ public class Dados {
 	 */
 	public void inserirEditarProduto(Produto p, int pos) {
 		this.produtos[pos] = p;
+		this.estoques[pos].setProduto(p);
 		if(pos == qtdProdutos) qtdProdutos++;
 	}
 	
@@ -80,7 +80,6 @@ public class Dados {
 	public void setProduto(Produto[] prods) {
 		this.produtos = prods;
 	}
-	
 	
 	public int getQtdProdutos() {
 		return qtdProdutos;
@@ -154,9 +153,21 @@ public class Dados {
 		this.fornecedor = fornecedor;
 	}
 	
-	
-	
-	
+	public Estoque[] getEstoques() {
+		return estoques;
+	}
 
+	public void setEstoques(Estoque[] estoques) {
+		this.estoques = estoques;
+	}
 
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	
 }
