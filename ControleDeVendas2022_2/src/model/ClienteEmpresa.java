@@ -12,6 +12,7 @@ public class ClienteEmpresa extends PessoaJuridica{
 		this.setTotal_pago(totalPago);
 		this.setCompras_realizadas(totalCompras);
 		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public void comprar() {

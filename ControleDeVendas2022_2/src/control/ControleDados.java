@@ -30,7 +30,6 @@ public class ControleDados {
 	public void setDados(Dados d) {
 		this.d = d;
 	}
-
 	
 	public Vendedor[] getVendedor() {							
 		return this.d.getVendedor();
@@ -221,4 +220,12 @@ public class ControleDados {
 		return true;
 		
 	}
+
+	public boolean renovarEstoque(int pos, int qtd) {
+		Estoque estoque = d.getEstoques()[pos];
+		estoque.setQtdAtual(estoque.getQtdAtual() + qtd);
+		return true;
+	}
 }
+
+

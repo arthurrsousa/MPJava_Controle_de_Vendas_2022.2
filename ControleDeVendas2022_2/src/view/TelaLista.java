@@ -146,7 +146,8 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			refreshCliente.addActionListener(this);
 			listaClientesCadastrados.addListSelectionListener(this);
 			break;
-			
+		
+		//Tela de renovacao de estoque
 		case 10:
 			listaNomes = new ControleProduto(dados).getNomeProd();
 			listaProdsRenovar = new JList<String>(listaNomes);
@@ -159,9 +160,9 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaProdsRenovar.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaProdsRenovar.setVisibleRowCount(10);
 			
-			labelQtdRenovar.setBounds(30, 180, 150, 25);
-			qtdRenovar.setBounds(105, 180, 30, 25);
-			botaoRenovar.setBounds(200, 180, 100, 30);
+			labelQtdRenovar.setBounds(30, 400, 150, 25);
+			qtdRenovar.setBounds(105, 400, 30, 25);
+			botaoRenovar.setBounds(200, 400, 100, 30);
 
 			janela.setLayout(null);
 			janela.add(titulo);
@@ -254,6 +255,10 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		if(src == refreshRecibo) {
 			listaRecibosCadastrados.setListData(new ControleRecibo(dados, cliIndex).getCodigoRec());			
 			listaRecibosCadastrados.updateUI();
+		}
+		
+		if(src == botaoRenovar) {
+			//dados.renovarEstoque(posicao, );
 		}
 	}
 
