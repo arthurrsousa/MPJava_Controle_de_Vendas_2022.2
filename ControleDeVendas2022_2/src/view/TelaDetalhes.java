@@ -40,8 +40,8 @@ public class TelaDetalhes implements ActionListener {
 	//Vendedor
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
-	private JLabel labelValorVendas = new JLabel("Valor de Vendas: ");
-	private JTextField valorVendas;
+	private JLabel labelvVendas = new JLabel("Valor de Vendas: ");
+	private JTextField valorvVendas;
 	
 	//Cliente
 	private JLabel labelTotalPago = new JLabel("Total Pago: ");
@@ -59,7 +59,7 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorCateg;
 	private JLabel labelValorVenda = new JLabel("Valor de venda: ");
 	private JTextField valorVenda;
-	private JLabel labelValorCompra = new JLabel("Valor de compra: ");
+	private JLabel labelCompra = new JLabel("Valor de compra: ");
 	private JTextField valorCompra;
 	private JLabel labelDesc = new JLabel("Descrição: ");
 	private JTextField valorDesc;
@@ -125,7 +125,7 @@ public class TelaDetalhes implements ActionListener {
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getVendedor()[pos].getTelefone()), 200);		
 
-			valorVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
+			valorvVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
 			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getQuantidade_vendas()), 200);
 		} 
 		
@@ -203,8 +203,8 @@ public class TelaDetalhes implements ActionListener {
 			labelTelefone.setBounds(30, 110, 150, 25);
 			valorTelefone.setBounds(180, 110, 180, 25);
 			
-			labelValorVendas.setBounds(30, 140, 150, 25);
-			valorVendas.setBounds(180, 140, 180, 25);
+			labelvVendas.setBounds(30, 140, 150, 25);
+			valorvVendas.setBounds(180, 140, 180, 25);
 			
 			labelQtdVendas.setBounds(30, 170, 150, 25);
 			valorQtdVendas.setBounds(180, 170, 70, 25);
@@ -264,8 +264,8 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 1) {
 			this.janela.add(labelCPF);
 			this.janela.add(valorCPF);
-			this.janela.add(labelValorVenda);
-			this.janela.add(valorVenda);
+			this.janela.add(labelvVendas);
+			this.janela.add(valorvVendas);
 			this.janela.add(labelQtdVendas);
 			this.janela.add(valorQtdVendas);
 		}
@@ -418,11 +418,11 @@ public class TelaDetalhes implements ActionListener {
 				
 					//Vendedor
 				if (opcao == 1) {  
-					novoDado[2] =  valorEnd.getText();
-					novoDado[3] =  valorCPF.getText();
-					novoDado[4] =  valorTelefone.getText();
-					//novoDado[5] =  valorSaldo.getText();
-					novoDado[6] =  valorQtdVendas.getText();
+					novoDado[2] =  valorTelefone.getText();
+					novoDado[3] =  valorEnd.getText();
+					novoDado[4] =  valorCPF.getText();
+					novoDado[5] =  valorQtdVendas.getText();
+					novoDado[6] =  valorvVendas.getText();
 					res = dados.inserirEditarVendedor(novoDado);
 				
 					//Produto

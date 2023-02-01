@@ -87,9 +87,9 @@ public class ControleDados {
 		if(!dadosVendedor[3].matches("[0-9]+") || !dadosVendedor[4].matches("[0-9]+") || !dadosVendedor[6].matches("[0-9]+")) {
 			return false;
 		} else {
-		Vendedor vend = new Vendedor(dadosVendedor[1], dadosVendedor[2], (Integer.parseInt(dadosVendedor[3])), 
-				(Integer.parseInt(dadosVendedor[4])), (Double.parseDouble(dadosVendedor[5])), (Integer.parseInt(dadosVendedor[6])));
-		d.inserirEditarVendedor(vend);
+		Vendedor vend = new Vendedor(dadosVendedor[1], (Integer.parseInt(dadosVendedor[2])), dadosVendedor[3], 
+				(Integer.parseInt(dadosVendedor[4])), (Integer.parseInt(dadosVendedor[5])), (Float.parseFloat(dadosVendedor[6])));
+		d.inserirEditarVendedor(vend, Integer.parseInt(dadosVendedor[0]));
 		return true;
 		}
 	}
