@@ -59,6 +59,9 @@ public class ControleDados {
 	public Produto[] getProduto() {
 		return this.d.getProduto();
 	}
+	public Estoque[] getEstoques() {
+		return this.d.getEstoques();
+	}
 
 	public int getQtdProdutos() {
 		return this.d.getQtdProdutos();

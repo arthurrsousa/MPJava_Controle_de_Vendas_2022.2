@@ -63,6 +63,16 @@ public class TelaDetalhes implements ActionListener {
 	private JLabel labelDesc = new JLabel("Descrição: ");
 	private JTextField valorDesc;
 	
+	//Estoque
+	private JLabel labelProduto = new JLabel("Produto: ");
+	private JTextField valorProduto;
+	private JLabel labelQtdAtual = new JLabel("Quantidade Atual: ");
+	private JTextField valorQtdAtual;
+	private JLabel labelQtdMinima = new JLabel("Quantidade Minima: ");
+	private JTextField valorQtdMinima;
+	private JLabel labelQtdComprada = new JLabel("Quantidade Comprada: ");
+	private JTextField valorQtdComprada;
+	
 	//Fornecedor
 	private JLabel labelEntrega = new JLabel("Valor da Entrega: ");
 	private JTextField valorEntrega;
@@ -81,12 +91,13 @@ public class TelaDetalhes implements ActionListener {
 			
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
+	private JButton botaoEstoque = new JButton("Estoque");
 	private String[] novoDado = new String[9];
 	private static ControleDados dados;
 	private int posicao;
 	private int opcao;
 	private String s;
-
+	
 	/**
 	 * Altera os dados que serao apresentados dependendo do botao (opcao) selecionado.
 	 * @param op - opcao selecionada.
@@ -103,6 +114,7 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 4) s = "Detalhe de Produto";
 		if (op == 5) s = "Detalhe de Cliente";
 		if (op == 10) s = "Detalhe de Fornecedor";
+		if (op == 69) s = "Estoque";
 
 		janela = new JFrame(s);
 		
@@ -147,6 +159,15 @@ public class TelaDetalhes implements ActionListener {
 			
 			valorTotalPago = new JTextField(String.valueOf(dados.getClientePes()[pos].getTotal_pago()), 200);
 			valorTotalCompras = new JTextField(String.valueOf(dados.getClientePes()[pos].getCompras_realizadas()), 200);
+		} 
+		
+		// Preenche dados com dados do Estoque
+		else if (op == 69) {
+			valorProduto = new JTextField(dados.getEstoques()[pos].getProduto().getNome(), 200);
+			valorQtdAtual = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdAtual()), 200);
+			valorQtdMinima = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdMinima()), 200);		
+			valorQtdComprada = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdCompras()), 200);
+			
 		} 
 		
 		else { //Não preenche com dados
@@ -247,6 +268,21 @@ public class TelaDetalhes implements ActionListener {
 			labelDesc.setBounds(30, 140, 150, 25);
 			valorDesc.setBounds(180, 140, 180, 25);
 		}
+		//================Estoque================
+		if (op == 69) {
+			labelProduto.setBounds(30, 20, 150, 25);
+			valorProduto.setBounds(180, 20, 180, 25);
+			
+			labelQtdAtual.setBounds(30, 50, 150, 25);
+			valorQtdAtual.setBounds(180, 50, 180, 25);
+			
+			labelQtdMinima.setBounds(30, 80, 150, 25);
+			valorQtdMinima.setBounds(180, 80, 180, 25);
+			
+			labelQtdComprada.setBounds(30, 110, 150, 25);
+			valorQtdComprada.setBounds(180, 110, 180, 25);
+			
+		}
 
 		//Coloca os campos relacionados a Pessoa
 		if (op == 1 || op == 3 || op == 5 || op == 10) {
@@ -301,6 +337,19 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(labelDesc);
 			this.janela.add(valorDesc);
 		}
+		//Coloca campos relacionados a Estoque
+		if (op == 69) {
+			
+			this.janela.add(labelProduto);
+			this.janela.add(valorProduto);
+			this.janela.add(labelQtdAtual);
+			this.janela.add(valorQtdAtual);
+			this.janela.add(labelQtdMinima);
+			this.janela.add(valorQtdMinima);
+			this.janela.add(labelQtdComprada);
+			this.janela.add(valorQtdComprada);
+			
+		}
 
 		//Coloca botoes
 		if (op == 10) {
@@ -320,8 +369,15 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 4) {
 			botaoSalvar.setBounds(180, 175, 115, 30);
 			botaoExcluir.setBounds(50, 175, 115, 30);
+			botaoEstoque.setBounds(115, 210, 115, 30);
 			this.janela.add(botaoSalvar);
 			this.janela.add(botaoExcluir);
+			this.janela.add(botaoEstoque);
+		}
+		if (op == 69) {
+			botaoSalvar.setBounds(170, 175, 115, 30);
+			this.janela.add(botaoSalvar);
+			
 		}
 		
 		if (op == 5) {
@@ -348,6 +404,7 @@ public class TelaDetalhes implements ActionListener {
 		botaoRefresh.addActionListener(this);
 		botaoComprar.addActionListener(this);		
 		botaoRecibos.addActionListener(this);
+		botaoEstoque.addActionListener(this);
 		botaoRenovarEstoque.addActionListener(this);
 	}
 
@@ -497,6 +554,10 @@ public class TelaDetalhes implements ActionListener {
 		
 		if(src == botaoRecibos) {
 			new TelaLista().mostrarDados(dados, 4, posicao);
+		}
+		
+		if(src == botaoEstoque) {
+			new TelaDetalhes().inserirEditar(69, dados, posicao);
 		}	
 		
 		if(src == botaoRenovarEstoque) {
