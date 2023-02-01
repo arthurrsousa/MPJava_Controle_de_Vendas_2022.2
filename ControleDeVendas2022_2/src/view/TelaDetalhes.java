@@ -429,8 +429,10 @@ public class TelaDetalhes implements ActionListener {
 				} else if (opcao == 2 || opcao == 4) {  
 					novoDado[2] =  valorMarca.getText();
 					novoDado[3] =  valorCateg.getText();
-					//novoDado[4] =  valorValor.getText();
-					novoDado[5] =  valorDesc.getText();
+					novoDado[4] =  valorVenda.getText();
+					novoDado[5] =  valorCompra.getText();
+					novoDado[6] =  valorDesc.getText();
+					
 					res = dados.inserirEditarProduto(novoDado);	
 					
 					//Cliente

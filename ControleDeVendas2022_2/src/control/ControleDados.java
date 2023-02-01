@@ -100,7 +100,7 @@ public class ControleDados {
 	 * @return boolean
 	 */
 	public boolean inserirEditarProduto(String[] dadosProd) {
-		Produto p = new Produto(dadosProd[1], dadosProd[2], dadosProd[3], Double.parseDouble(dadosProd[4]), dadosProd[5]);
+		Produto p = new Produto(dadosProd[1], dadosProd[2], dadosProd[3], Double.parseDouble(dadosProd[4]), Double.parseDouble(dadosProd[5]), dadosProd[6] );
 		d.inserirEditarProduto(p, Integer.parseInt(dadosProd[0]));
 		return true;
 	}
