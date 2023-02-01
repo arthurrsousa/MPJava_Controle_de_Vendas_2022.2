@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import control.*;
-import model.Produto;
 
 /**
  * Tela de detalhes das instancias das classes do software
@@ -57,16 +56,17 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorMarca;
 	private JLabel labelCateg = new JLabel("Categoria: ");
 	private JTextField valorCateg;
+	private JLabel labelValorCompra = new JLabel("Valor de compra: ");
+	private JTextField valorCompra;
 	private JLabel labelValorVenda = new JLabel("Valor de venda: ");
 	private JTextField valorVenda;
-	private JLabel labelCompra = new JLabel("Valor de compra: ");
-	private JTextField valorCompra;
 	private JLabel labelDesc = new JLabel("Descrição: ");
 	private JTextField valorDesc;
 	
 	//Fornecedor
 	private JLabel labelEntrega = new JLabel("Valor da Entrega: ");
 	private JTextField valorEntrega;
+	private JButton botaoRenovarEstoque = new JButton("Renovar Estoque de Produto");
 	
 	//Fluxo
 	private JLabel labelsaldo_atual = new JLabel("Saldo atual: ");
@@ -84,9 +84,8 @@ public class TelaDetalhes implements ActionListener {
 	private JLabel valorQtd = new JLabel();
 	private JLabel valorProd = new JLabel();
 	private JLabel[] listaRecibo = new JLabel[10];
-	private Produto[] listaItens;
+	//private Produto[] listaItens;
 	private int[] listaQtds;
-			
 			
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
@@ -95,7 +94,6 @@ public class TelaDetalhes implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-	
 
 	/**
 	 * Altera os dados que serao apresentados dependendo do botao (opcao) selecionado.
@@ -134,6 +132,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		//Preenche dados com dados do Vendedor
 		else if (op == 1) {
+			System.out.println("OP = 1");
 			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
@@ -184,6 +183,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//================Fornecedor================
+<<<<<<< HEAD
 			if (op == 10) {
 				labelNome.setBounds(30, 20, 150, 25);
 				valorNome.setBounds(180, 20, 180, 25);
@@ -208,6 +208,27 @@ public class TelaDetalhes implements ActionListener {
 			if (op == 20 ) {
 				labelsaldo_atual.setBounds(30, 20, 150, 25);
 				valorsaldo_atual.setBounds(180, 20, 180, 25);
+=======
+		if (op == 10) {
+			labelNome.setBounds(30, 20, 150, 25);
+			valorNome.setBounds(180, 20, 180, 25);
+			
+			labelEnd.setBounds(30, 50, 150, 25);
+			valorEnd.setBounds(180, 50, 180, 25);
+			
+			labelCnpj.setBounds(30, 80, 150, 25);
+			valorCnpj.setBounds(180, 80, 180, 25);
+			
+			labelTelefone.setBounds(30, 110, 150, 25);
+			valorTelefone.setBounds(180, 110, 180, 25);
+			
+			labelIE.setBounds(30, 140, 150, 25);
+			valorIE.setBounds(180, 140, 180, 25);
+			
+			labelEntrega.setBounds(30, 170, 150, 25);
+			valorEntrega.setBounds(180, 170, 70, 25);
+		}
+>>>>>>> branch 'main' of https://github.com/arthurrsousa/MPJava_Controle_de_Vendas_2022.2.git
 				
 				labelsaida_dinheiro.setBounds(30, 50, 150, 25);
 				valorsaida_dinheiro.setBounds(180, 50, 180, 25);
@@ -235,7 +256,6 @@ public class TelaDetalhes implements ActionListener {
 			
 			labelQtdVendas.setBounds(30, 170, 150, 25);
 			valorQtdVendas.setBounds(180, 170, 70, 25);
-
 		}
 		
 		//================Cliente================
@@ -257,8 +277,8 @@ public class TelaDetalhes implements ActionListener {
 			
 			labelTotalCompras.setBounds(30, 170, 150, 25);
 			valorTotalCompras.setBounds(180, 170, 210, 25);
-
 		}
+		
 		//================Produto================
 		if (op == 4 || op == 2) {
 			labelNome.setBounds(30, 20, 150, 25);
@@ -306,7 +326,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(labelTotalCompras);
 			this.janela.add(valorTotalCompras);	
 		}
-			
+
 		//Coloca campos relacionados a Fornecedor
 		if (op == 10) {
 			this.janela.add(labelCnpj); 
@@ -341,9 +361,18 @@ public class TelaDetalhes implements ActionListener {
 		}
 
 		//Coloca botoes
+		if (op == 10) {
+			botaoSalvar.setBounds(120, 215, 115, 30);
+			botaoRenovarEstoque.setBounds(280, 260, 90, 30);
+			this.janela.add(botaoSalvar);
+			this.janela.add(botaoRenovarEstoque);
+		}
+		
 		if (op == 1) {
 			botaoSalvar.setBounds(120, 215, 115, 30);
+			botaoExcluir.setBounds(280, 205, 75, 30);
 			this.janela.add(botaoSalvar);
+			this.janela.add(botaoExcluir);
 		}
 		
 		if (op == 4) {
@@ -377,6 +406,7 @@ public class TelaDetalhes implements ActionListener {
 		botaoRefresh.addActionListener(this);
 		botaoComprar.addActionListener(this);		
 		botaoRecibos.addActionListener(this);
+		botaoRenovarEstoque.addActionListener(this);
 	}
 
 	/**
@@ -385,7 +415,7 @@ public class TelaDetalhes implements ActionListener {
 	 * @param index - posicao do Cliente no array
 	 */
 	public void inserirEditar(int op, ControleDados d, int pos, int index) {
-
+/*
 		if (op == 7) {
 			s = "Detalhe do Recibo";
 			janela = new JFrame(s);
@@ -429,7 +459,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.setLayout(null);
 			this.janela.setSize(450, 390);
 			this.janela.setVisible(true);
-		}
+		}*/
 	}
 
 	/**
@@ -492,7 +522,6 @@ public class TelaDetalhes implements ActionListener {
 				mensagemErroCadastro();
 			}
 		}
-		
 
 		if(src == botaoExcluir) {
 			boolean res = false;
@@ -522,13 +551,15 @@ public class TelaDetalhes implements ActionListener {
 		//=============Abre selecao de Produto
 		if(src == botaoComprar) {
 			//new TelaCarrinho().mostrarCarrinho(dados, posicao);
-		}	
-		
+		}		
 		
 		if(src == botaoRecibos) {
 			new TelaLista().mostrarDados(dados, 4, posicao);
 		}	
 		
+		if(src == botaoRenovarEstoque) {
+			new TelaLista().mostrarDados(dados, 10);
+		}	
 	}
 
 	/**
@@ -538,6 +569,14 @@ public class TelaDetalhes implements ActionListener {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
+	}
+	
+	/**
+	 * Mostra mensagem caso exclusao seja mal sucedida.
+	 */
+	public void mensagemErroExclusao() {
+		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n ", null, 
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 	/**
@@ -550,18 +589,10 @@ public class TelaDetalhes implements ActionListener {
 	}
 
 	/**
-	 * Mostra mensagem caso cadastro seja mau sucedido.
+	 * Mostra mensagem caso cadastro seja mal sucedido.
 	 */
 	public void mensagemErroCadastro() {
-		JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n ", null, 
-				JOptionPane.ERROR_MESSAGE);
-	}
-
-	/**
-	 * Mostra mensagem caso exclusao seja mal sucedida.
-	 */
-	public void mensagemErroExclusao() {
-		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao excluir o dado.\n ", null, 
+		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao salvar os dados!\n ", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 
