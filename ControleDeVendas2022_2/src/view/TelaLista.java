@@ -19,21 +19,15 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	private JButton refreshVendedor;
 	private JButton cadastroCliente;
 	private JButton refreshCliente;
-	//private JButton cadastroRecibo;
 	private JButton refreshRecibo;
-	private static ControleDados dados;
-	//private JTextField VendedorCadastrado;
+
 	private JList<String> listaProdsCadastrados;
 	private JList<String> listaVendedoresCadastrados;
 	private JList<String> listaClientesCadastrados;
 	private JList<String> listaRecibosCadastrados;
-	private JList<String> listaProdsRenovar;
-	private JLabel labelQtdRenovar = new JLabel("Renovar: ");
-	private JTextField qtdRenovar = new JTextField(String.valueOf(1), 200);
-	private JButton botaoRenovar = new JButton("Renovar");
-
 	private String[] listaNomes = new String[50];
-	private String[] listaNomesEmpresa = new String[50];
+	
+	private static ControleDados dados;
 	private int cliIndex;
 
 	/**
@@ -147,35 +141,6 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaClientesCadastrados.addListSelectionListener(this);
 			break;
 		
-		//Tela de renovacao de estoque
-		case 10:
-			listaNomes = new ControleProduto(dados).getNomeProd();
-			listaProdsRenovar = new JList<String>(listaNomes);
-			janela = new JFrame("Renovar Produtos");
-			titulo = new JLabel("Selecione o Produto a ser Renovado");
-
-			titulo.setFont(new Font("Arial", Font.BOLD, 30));
-			titulo.setBounds(220, 10, 2000, 110);
-			listaProdsRenovar.setBounds(150, 120, 500, 250);
-			listaProdsRenovar.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-			listaProdsRenovar.setVisibleRowCount(10);
-			
-			labelQtdRenovar.setBounds(30, 400, 150, 25);
-			qtdRenovar.setBounds(105, 400, 30, 25);
-			botaoRenovar.setBounds(200, 400, 100, 30);
-
-			janela.setLayout(null);
-			janela.add(titulo);
-			janela.add(listaProdsRenovar);
-			janela.add(labelQtdRenovar);
-			janela.add(qtdRenovar);
-			janela.add(botaoRenovar);
-
-			janela.setSize(800, 600);
-			janela.setVisible(true);
-
-			listaProdsRenovar.addListSelectionListener(this);
-			break;
 			
 		default:
 			JOptionPane.showMessageDialog(null,"Op��o n�o encontrada!", null, 
@@ -255,10 +220,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaRecibosCadastrados.setListData(new ControleRecibo(dados, cliIndex).getCodigoRec());			
 			listaRecibosCadastrados.updateUI();
 		}
-		
-		if(src == botaoRenovar) {
-			//dados.renovarEstoque(posicao, );
-		}
+
 	}
 
 	/**

@@ -619,7 +619,7 @@ public class TelaDetalhes implements ActionListener {
 		}	
 		
 		if(src == botaoRenovarEstoque) {
-			new TelaLista().mostrarDados(dados, 10);
+			new TelaRenovarEstoque().mostrarProdutos(dados);
 		}	
 	}
 
