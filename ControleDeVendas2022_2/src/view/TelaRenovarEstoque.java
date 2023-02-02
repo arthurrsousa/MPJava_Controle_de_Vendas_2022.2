@@ -8,12 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import control.*;
+import model.Estoque;
 import model.Produto;
 
 public class TelaRenovarEstoque implements ActionListener, ListSelectionListener{
@@ -23,7 +25,6 @@ public class TelaRenovarEstoque implements ActionListener, ListSelectionListener
 	
 	private String[] listaNomes = new String[50];
 	private JList<String> listaProdsRenovar;
-	private Produto prodSelec;
 	
 	private JLabel labelQtdRenovar = new JLabel("Renovar: ");
 	private JTextField qtdRenovar = new JTextField(String.valueOf(1), 200);
@@ -68,13 +69,12 @@ public class TelaRenovarEstoque implements ActionListener, ListSelectionListener
 		boolean valid = false;
 
 		if(e.getValueIsAdjusting() && src == listaProdsRenovar) {
-			prodSelec = dados.getProduto()[listaProdsRenovar.getSelectedIndex()];	
 			valid = true;
 			
 		}
 			
 		if (valid) {
-				botaoRenovar.addActionListener(this); //Botao Adicionar so fara algo depois que um produto for selecionado				
+				botaoRenovar.addActionListener(this); //Botao Renovar so fara algo depois que um produto for selecionado				
 		}
 		
 	}
@@ -82,10 +82,35 @@ public class TelaRenovarEstoque implements ActionListener, ListSelectionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		
+		boolean res;
 		if (src == botaoRenovar) {
-			//System.out.println("Renovar Estoque");
+
+			Estoque estoqueSelec = dados.getEstoques()[listaProdsRenovar.getSelectedIndex()];
+			res = dados.getFornecedor().renovar_estoque(estoqueSelec, Integer.parseInt(qtdRenovar.getText()), dados.getFluxoDeCaixa());
+			
+			if (res) {
+				mensagemSucessoRenovacao();
+			}else {
+				System.out.println("chamando mensagem de erro");
+				mensagemErroRenovacao();	
+				botaoRenovar.removeActionListener(this);
+			}
 		}
 		
 	}
+	
+	public void mensagemSucessoRenovacao() {
+		JOptionPane.showMessageDialog(null, "Estoque renovado com sucesso!", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemErroRenovacao() {
+		System.out.println("mensagem de erro");
+		JOptionPane.showMessageDialog(null,"Ocorreu um erro ao renovar o estoque!\n"
+				+ "Tenha certeza de que possui saldo suficiente em caixa", null, 
+				JOptionPane.ERROR_MESSAGE);
+		//janela.dispose();
+	}
+	
 }

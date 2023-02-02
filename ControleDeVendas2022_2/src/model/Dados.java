@@ -14,17 +14,23 @@ public class Dados {
 	private Carrinho carrinho = new Carrinho(null);
 	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 150);
 	
+	private Recibo[] recibosTeste = new Recibo[50];
+	
 	/**
 	 * Cria instancias de diversas classes do Modelo para auxiliar na apresentacao do software.
 	 * 
 	 */
 	public void fillWithSomeData() {
 		//Date d = Calendar.getInstance().getTime();
+		recibosTeste[0] = new Recibo(qtdClientesEmp, null, null, qtdClientesEmp, null, produtos);
+		
 		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
+			clientesPes[i].setRecibo(recibosTeste);
 			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", 5*(i+1), 10*(i+1), " Bom e Barato");
-			estoques[i] = new Estoque(produtos[i], 0, 15, 0);
+			estoques[i] = new Estoque(produtos[i], 50, 15, 0);
+	
 
 			//talvez isso de problema (tirar do loop)
 			setQtdVendedor(getQtdVendedor() + 1);
@@ -32,6 +38,7 @@ public class Dados {
 			setQtdClientesEmp(getQtdClientesEmp() + 1);
 			setQtdProdutos(getQtdProdutos() + 1);
 		}
+		
 	}
 
 	public void inserirEditarFluxoDeCaixa(FluxoDeCaixa caixa) {

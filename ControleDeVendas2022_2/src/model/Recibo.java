@@ -21,14 +21,14 @@ public class Recibo {
 		this.setProdutos(prods);
 	}
 	
-	public Recibo(int cod, ClienteEmpresa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
+	/*public Recibo(int cod, ClienteEmpresa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
 		this.setCodigo(cod);
 		this.setCompradorJur(cli);
 		this.setData(dt);
 		this.setValor_total(vt);
 		this.setQtd(qtd);
 		this.setProdutos(prods);
-	}
+	}*/
 	
 	
 	public String getCodigo() {

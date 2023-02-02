@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import model.*;
-import modelo.Vendedor;	
 
 /**
  * Classe ControleDados faz o gerenciamento dos dados das classes do sistema.

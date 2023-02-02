@@ -9,13 +9,23 @@ public class Fornecedor extends PessoaJuridica{
 		this.setValorEntrega(entrega);
 	}
 	
-	public void renovar_estoque(Estoque estoqueProd, int qtd, FluxoDeCaixa caixa) {
-		estoqueProd.setQtdAtual(estoqueProd.getQtdAtual() + qtd);
+	public boolean renovar_estoque(Estoque estoqueProd, int qtd, FluxoDeCaixa caixa) {
+		double valorRenovacao = (estoqueProd.getProduto().getValorCompra()) * qtd + valorEntrega;
+		try {
+			if (valorRenovacao > caixa.getSaldo_atual()) {
+				return false;
+			}
+			estoqueProd.setQtdAtual(estoqueProd.getQtdAtual() + qtd);
+			
+			caixa.setSaldo_atual(caixa.getSaldo_atual() - valorRenovacao - valorEntrega);
+			caixa.setSaida_dinheiro(caixa.getSaida_dinheiro() - valorRenovacao - valorEntrega);
+			
+			System.out.println("Estoque Renovado");
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 		
-		double valorRenovacao = (estoqueProd.getProduto().getValorCompra()) * qtd;
-		
-		caixa.setSaldo_atual(caixa.getSaldo_atual() - valorRenovacao - valorEntrega);
-		caixa.setSaida_dinheiro(caixa.getSaida_dinheiro() - valorRenovacao - valorEntrega);
 	}
 
 	public float getValorEntrega() {
