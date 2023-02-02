@@ -29,6 +29,12 @@ public class Vendedor extends PessoaFisica {
 		this.valor_vendas = valor_vendas;
 	}
 
+
+	public String getNomevendedor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

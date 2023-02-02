@@ -91,7 +91,7 @@ public class ControleDados {
 	 * @return boolean
 	 */
 	public boolean inserirEditarVendedor(String[] dadosVendedor) {
-		if(!dadosVendedor[3].matches("[0-9]+") || !dadosVendedor[4].matches("[0-9]+") || !dadosVendedor[6].matches("[0-9]+")) {
+		if(!dadosVendedor[2].matches("[0-9]+") || !dadosVendedor[4].matches("[0-9]+") || !dadosVendedor[5].matches("[0-9]+")) {
 			return false;
 		} else {
 		Vendedor vend = new Vendedor(dadosVendedor[1], (Integer.parseInt(dadosVendedor[2])), dadosVendedor[3], 
@@ -199,6 +199,35 @@ public class ControleDados {
 			}
 			d.getClientePes()[d.getQtdClientesPes()] = null;
 			d.setQtdClientesPes(d.getQtdClientesPes() - 1);
+			return true;
+		}
+	}
+	/**
+	 * Exclui um Vendedor do array de Dados e 
+	 * diminui a quantidade de vendedores no sistema
+	 * (@param i) e o index do Vendedor a ser removido.
+	 * retorna TRUE ao concluir a exclusao
+	 * @return boolean
+	 */
+	public boolean removerVendedor(int i) {
+		String vendedorRemovido = d.getVendedor()[i].getNome();
+		
+		if(i == (d.getQtdVendedor() - 1)) { // O Cliente a ser removido está no final do array
+			d.setQtdVendedor(d.getQtdVendedor() - 1);
+			d.getVendedor()[d.getQtdVendedor()] = null;
+			return true;
+		} else { // o Cliente a ser removido está no meio do array
+			int cont = 0;
+			while(d.getVendedor()[cont].getNome().compareTo(vendedorRemovido) != 0) {
+				cont++;
+			}
+			//Rotina swap
+			for(int j = cont; j < d.getQtdVendedor() - 1; j++) {
+				d.getVendedor()[j] = null;
+				d.getVendedor()[j] = d.getVendedor()[j+1];
+			}
+			d.getVendedor()[d.getQtdVendedor()] = null;
+			d.setQtdVendedor(d.getQtdVendedor() - 1);
 			return true;
 		}
 	}

@@ -534,6 +534,9 @@ public class TelaDetalhes implements ActionListener {
 				else if (opcao == 3) // cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
 				
+				else if (opcao == 1) // cadastro de novo Vendedor
+					novoDado[0] = Integer.toString(dados.getQtdVendedor());
+				
 				else // edicao de dado existente
 					novoDado[0] = Integer.toString(posicao);
 
@@ -555,7 +558,6 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[4] =  valorVenda.getText();
 					novoDado[5] =  valorCompra.getText();
 					novoDado[6] =  valorDesc.getText();
-					
 					res = dados.inserirEditarProduto(novoDado);	
 					
 					//Cliente
@@ -574,9 +576,9 @@ public class TelaDetalhes implements ActionListener {
 				else mensagemErroCadastro();
 
 			} catch (NullPointerException exc1) {
-				mensagemErroCadastro();
+				//mensagemErroCadastro();
 			} catch (NumberFormatException exc2) {
-				mensagemErroCadastro();
+				//mensagemErroCadastro();
 			}
 		}
 
@@ -585,6 +587,12 @@ public class TelaDetalhes implements ActionListener {
 
 			if (opcao == 4) {//exclui Produto
 				res = dados.removerProduto(posicao);
+				if (res) mensagemSucessoExclusao(); 
+				else mensagemErroExclusao(); 
+			}
+			
+			if (opcao == 1) {//exclui Vendedor
+				res = dados.removerVendedor(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
 			}

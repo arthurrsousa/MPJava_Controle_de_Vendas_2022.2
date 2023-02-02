@@ -203,11 +203,22 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			System.out.println("Cadastro Cliente");
 			new TelaDetalhes().inserirEditar(3, dados, 0);
 		}
+		//Cadastro de novo Vendedor
+		if(src == cadastroVendedor) {
+			System.out.println("Cadastro Vendedor");
+			new TelaDetalhes().inserirEditar(1, dados, 0);
+		}
 		
 		// Atualiza a lista de nomes de Produtos mostrada no JList
 		if(src == refreshProd) {
 			listaProdsCadastrados.setListData(new ControleProduto(dados).getNomeProd());
 			listaProdsCadastrados.updateUI();
+		}
+		
+		// Atualiza a lista de nomes de Vendedores mostrada no JList
+		if(src == refreshVendedor) {
+			listaVendedoresCadastrados.setListData(new ControleVendedor(dados).getNomeVendedor());
+			listaVendedoresCadastrados.updateUI();
 		}
 		
 		// Atualiza a lista de nomes de Clientes mostrada no JList
