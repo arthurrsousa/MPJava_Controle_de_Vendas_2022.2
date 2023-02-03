@@ -36,6 +36,7 @@ public class TelaDetalhes implements ActionListener {
 	private JLabel labelIE = new JLabel("Inscrição Estadual: "); 
 	private JTextField valorIE;
 	
+	
 	//Vendedor
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
