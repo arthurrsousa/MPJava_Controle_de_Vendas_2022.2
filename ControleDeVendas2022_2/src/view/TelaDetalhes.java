@@ -88,15 +88,19 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorentrada_dinheiro;
 	
 	//Recibo
-	private JLabel valorCodigo;
-	private JLabel valorComprador = new JLabel();
-	private JLabel valorData = new JLabel();
-	private JLabel valorValorTotal = new JLabel();					
-	private JLabel valorQtd = new JLabel();
-	private JLabel valorProd = new JLabel();
-	private JLabel[] listaRecibo = new JLabel[10];
-	//private Produto[] listaItens;
-	private int[] listaQtds;
+	private JLabel labelcodigo = new JLabel("Codigo do recibo: ");
+	private JTextField valorcodigo;
+	private JLabel labelcompradorFis = new JLabel("Comprador: ");
+	private JTextField valorcompradorFis;
+	private JLabel labeldata = new JLabel("Data: ");
+	private JTextField valordata;
+	private JLabel labelvalor_total = new JLabel("Valor Final: ");
+	private JTextField vvalor_total;
+	private JLabel labelqtd = new JLabel("Quantidade comprada: ");
+	private JTextField valorqtd;
+	private JLabel labeComprador = new JLabel("Quantidade comprada: ");
+	private JTextField valorComprador;
+	
 			
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
@@ -126,6 +130,7 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 70) s = "Detalhe de Fornecedor";
 		if (op == 69) s = "Estoque";
 		if (op == 80) s = "Salvar do Fluxo";
+		if (op == 90) s= "Detalhe do Recibo";
 
 		janela = new JFrame(s);
 		
@@ -454,30 +459,30 @@ public class TelaDetalhes implements ActionListener {
 	 * @param index - posicao do Cliente no array
 	 */
 	public void inserirEditar(int op, ControleDados d, int pos, int index) {
-/*
-		if (op == 7) {
+
+		if (op == 90) {
 			s = "Detalhe do Recibo";
 			janela = new JFrame(s);
 			
 			//Preenche dados com dados do Recibo
-			valorCodigo = new JLabel("Codigo da Nota:  " + dados.getRecibo(index)[pos].getCodigo(), SwingConstants.LEFT);
+			labelcodigo = new JLabel("Codigo da Nota:  " + dados.getRecibo(index)[pos].getCodigo(), SwingConstants.LEFT);
 			//valorComprador = new JLabel("CPF do Cliente:  " + dados.getRecibo(index)[pos].getComprador().getCpf(), SwingConstants.LEFT);
-			valorData = new JLabel(String.valueOf("Compra feita em:  " + dados.getRecibo(index)[pos].getData()), SwingConstants.LEFT);
-			valorValorTotal = new JLabel(String.valueOf("Valor Total:  R$" + dados.getRecibo(index)[pos].getValor_total()), SwingConstants.LEFT);	
+			labeldata = new JLabel(String.valueOf("Compra feita em:  " + dados.getRecibo(index)[pos].getData()), SwingConstants.LEFT);
+			labelvalor_total = new JLabel(String.valueOf("Valor Total:  R$" + dados.getRecibo(index)[pos].getValor_total()), SwingConstants.LEFT);	
 			
 
-			valorCodigo.setBounds(30, 20, 300, 25);
+			valorcodigo.setBounds(30, 20, 300, 25);
 			valorComprador.setBounds(30, 50, 300, 25);
-			valorData.setBounds(30, 80, 300, 25);
-			valorValorTotal.setBounds(30, 110, 300, 25);
+			valordata.setBounds(30, 80, 300, 25);
+			vvalor_total.setBounds(30, 110, 300, 25);
 	
 			
-			this.janela.add(valorCodigo);
+			this.janela.add(valorcodigo);
 			this.janela.add(valorComprador);
-			this.janela.add(valorData);
-			this.janela.add(valorValorTotal);
-			this.janela.add(valorQtd);
-			this.janela.add(valorProd);
+			this.janela.add(valordata);
+			this.janela.add(vvalor_total);
+			this.janela.add(valorqtd);
+			this.janela.add(valorVenda);
 			
 			listaItens = dados.getRecibo(index)[pos].getProdutos();
 			listaQtds = dados.getRecibo(index)[pos].getQtd();
@@ -498,7 +503,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.setLayout(null);
 			this.janela.setSize(450, 390);
 			this.janela.setVisible(true);
-		}*/
+		}
 	}
 
 	/**
