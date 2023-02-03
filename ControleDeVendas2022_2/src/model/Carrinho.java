@@ -8,8 +8,15 @@ public class Carrinho {
 
 	private Produto[] produtos;
 	private int[] quantidades;
-	//private double total;
+	private int qtdItens;
 	
+	public Carrinho(Produto[] listaProds, int[] listaQtd, int i) {
+		this.setProdutos(listaProds);
+		this.setQuantidades(listaQtd);
+		this.setQtdItens(i);
+	}
+	
+
 	public double calcular_total(Imposto imposto) {
 		
 		double total = 0;
@@ -75,6 +82,14 @@ public class Carrinho {
 		this.quantidades = quantidades;
 	}
 
+	public int getQtdItens() {
+		return qtdItens;
+	}
+	
+	public void setQtdItens(int qtdItens) {
+		this.qtdItens = qtdItens;
+	}
+	
 	/*public double getTotal() {
 		return total;
 	}

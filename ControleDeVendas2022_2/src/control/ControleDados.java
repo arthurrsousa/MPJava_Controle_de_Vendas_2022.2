@@ -70,6 +70,7 @@ public class ControleDados {
 	}
 	
 	public Recibo[] getRecibo(int cliIndex) {
+		System.out.println(this.d.getClientePes()[cliIndex].getRecibo()[0].getCodigo());
 		return this.d.getClientePes()[cliIndex].getRecibo();
 	}
 	
@@ -81,6 +82,9 @@ public class ControleDados {
 		return this.d.getFluxoDeCaixa();
 	}
 	
+	public Carrinho getCarrinho() {
+		return this.d.getCarrinho();
+	}
 	
 	
 	/**
@@ -96,6 +100,7 @@ public class ControleDados {
 		Vendedor vend = new Vendedor(dadosVendedor[1], (Integer.parseInt(dadosVendedor[2])), dadosVendedor[3], 
 				(Integer.parseInt(dadosVendedor[4])), (Integer.parseInt(dadosVendedor[5])), (Float.parseFloat(dadosVendedor[6])));
 		d.inserirEditarVendedor(vend, Integer.parseInt(dadosVendedor[0]));
+		System.out.println(dadosVendedor[0]);
 		return true;
 		}
 	}
@@ -231,6 +236,11 @@ public class ControleDados {
 		}
 	}
 	
+	public void removerItem(int j) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	/**
 	 * Finaliza uma compra feita e altera os 
 	 * dados de Vendedor e Cliente relacionados a compra.
@@ -274,6 +284,8 @@ public class ControleDados {
 		estoque.setQtdAtual(estoque.getQtdAtual() + qtd);
 		return true;
 	}
+
+
 }
 
 

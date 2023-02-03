@@ -11,7 +11,7 @@ public class Dados {
 	private Produto[] produtos = new Produto[50];
 	private int qtdProdutos = 0;
 	private Estoque[] estoques = new Estoque[50];
-	private Carrinho carrinho = new Carrinho(null);
+	private Carrinho carrinho = new Carrinho(new Produto[20], new int[20], 0);
 	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 150);
 	
 	private Recibo[] recibosTeste = new Recibo[50];
@@ -22,7 +22,7 @@ public class Dados {
 	 */
 	public void fillWithSomeData() {
 		//Date d = Calendar.getInstance().getTime();
-		recibosTeste[0] = new Recibo(qtdClientesEmp, null, null, qtdClientesEmp, null, produtos);
+		recibosTeste[0] = new Recibo(992, null, null, qtdClientesEmp, null, produtos);
 		
 		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);

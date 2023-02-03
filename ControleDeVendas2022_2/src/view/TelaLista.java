@@ -111,6 +111,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		case 3:// Mostrar dados de clientes cadastrados (JList)
 			listaNomes = new ControleClientePessoa(dados).getNomeCliente();
 			listaClientesCadastrados = new JList<String>(listaNomes);
+			
 			janela = new JFrame("Clientes");
 			titulo = new JLabel("Clientes Cadastrados");
 			cadastroCliente = new JButton("Cadastrar");
@@ -157,7 +158,9 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		cliIndex = index;
 		dados = d;
 		if (op == 4) {// Mostrar dados de Recibos cadastrados (JList)
+			//System.out.println("index do cliente:  " + cliIndex);
 			listaNomes = new ControleRecibo(dados, cliIndex).getCodigoRec();
+			System.out.println(new ControleRecibo(dados, cliIndex).getCodigoRec()[0]);
 			listaRecibosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Recibos");
 			titulo = new JLabel("Recibos Cadastrados");

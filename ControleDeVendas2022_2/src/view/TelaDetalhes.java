@@ -227,26 +227,6 @@ public class TelaDetalhes implements ActionListener {
 			
 		//================FLUXO================	
 
-		if (op == 10) {
-			labelNome.setBounds(30, 20, 150, 25);
-			valorNome.setBounds(180, 20, 180, 25);
-			
-			labelEnd.setBounds(30, 50, 150, 25);
-			valorEnd.setBounds(180, 50, 180, 25);
-			
-			labelCnpj.setBounds(30, 80, 150, 25);
-			valorCnpj.setBounds(180, 80, 180, 25);
-			
-			labelTelefone.setBounds(30, 110, 150, 25);
-			valorTelefone.setBounds(180, 110, 180, 25);
-			
-			labelIE.setBounds(30, 140, 150, 25);
-			valorIE.setBounds(180, 140, 180, 25);
-			
-			labelEntrega.setBounds(30, 170, 150, 25);
-			valorEntrega.setBounds(180, 170, 70, 25);
-		}
-
 		if (op == 20 ) {
 			labelsaldo_atual.setBounds(30, 20, 150, 25);
 			valorsaldo_atual.setBounds(180, 20, 180, 25);
@@ -528,14 +508,14 @@ public class TelaDetalhes implements ActionListener {
 		if(src == botaoSalvar) {
 			try {
 				boolean res = false;
-				if(opcao == 2) //cadastro de novo Produto
+				if (opcao == 1) // cadastro de novo Vendedor
+					novoDado[0] = Integer.toString(dados.getQtdVendedor());
+				
+				else if(opcao == 2) //cadastro de novo Produto
 					novoDado[0] = Integer.toString(dados.getQtdProdutos());
 				
 				else if (opcao == 3) // cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
-				
-				else if (opcao == 1) // cadastro de novo Vendedor
-					novoDado[0] = Integer.toString(dados.getQtdVendedor());
 				
 				else // edicao de dado existente
 					novoDado[0] = Integer.toString(posicao);
@@ -615,7 +595,7 @@ public class TelaDetalhes implements ActionListener {
 		
 		//=============Abre selecao de Produto
 		if(src == botaoComprar) {
-			//new TelaCarrinho().mostrarCarrinho(dados, posicao);
+			new TelaCarrinho().mostrarCarrinho(dados, posicao);
 		}		
 		
 		if(src == botaoRecibos) {
