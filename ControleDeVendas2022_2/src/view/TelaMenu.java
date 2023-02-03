@@ -122,10 +122,10 @@ public class TelaMenu implements ActionListener  {
 			new TelaLista().mostrarDados(dados, 3);
 		
 		if(src == fornecedor)
-			new TelaDetalhes().inserirEditar(10, dados, 0);
+			new TelaDetalhes().inserirEditar(70, dados, 0);
 		
 		if(src == fluxo)
-			new TelaDetalhes().inserirEditar(20, dados, 0);
+			new TelaDetalhes().inserirEditar(80, dados, 0);
 
 	}
 }
