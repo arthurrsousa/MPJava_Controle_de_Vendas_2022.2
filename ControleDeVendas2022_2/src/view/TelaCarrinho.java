@@ -199,7 +199,7 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 					botaoAdicionar.removeActionListener(this);
 					botaoFinalizar.removeActionListener(this);
 					
-					removerItem(j);
+					dados.removerItem(j);
 					janela.dispose();
 					mostrarCarrinho(dados, posicao);
 					break;
