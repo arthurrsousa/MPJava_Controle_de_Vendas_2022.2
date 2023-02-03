@@ -36,12 +36,11 @@ public class TelaDetalhes implements ActionListener {
 	private JLabel labelIE = new JLabel("Inscrição Estadual: "); 
 	private JTextField valorIE;
 	
-	
 	//Vendedor
 	private JLabel labelQtdVendas = new JLabel("Quantidade de Vendas: ");
 	private JTextField valorQtdVendas;
-	private JLabel labelvVendas = new JLabel("Valor de Vendas: ");
-	private JTextField valorvVendas;
+	private JLabel labelVendas = new JLabel("Valor de Vendas: ");
+	private JTextField valorVendas;
 	
 	//Cliente
 	private JLabel labelTotalPago = new JLabel("Total Pago: ");
@@ -118,7 +117,6 @@ public class TelaDetalhes implements ActionListener {
 	 * @param pos - posicao no array da instancia a ser detalhada.
 	 */
 	public void inserirEditar(int op, ControleDados d, int pos) {
-		//System.out.println(op);
 		opcao = op;
 		dados = d;
 		posicao = pos;
@@ -145,7 +143,7 @@ public class TelaDetalhes implements ActionListener {
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getVendedor()[pos].getTelefone()), 200);		
 
-			valorvVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
+			valorVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getValor_vendas()), 200);
 			valorQtdVendas = new JTextField(String.valueOf(dados.getVendedor()[pos].getQuantidade_vendas()), 200);
 		} 
 		
@@ -169,7 +167,6 @@ public class TelaDetalhes implements ActionListener {
 			valorTotalPago = new JTextField(String.valueOf(dados.getClientePes()[pos].getTotal_pago()), 200);
 			valorTotalCompras = new JTextField(String.valueOf(dados.getClientePes()[pos].getCompras_realizadas()), 200);
 		} 
-		
 
 		// Preenche dados com dados do Estoque
 		else if (op == 69) {
@@ -177,7 +174,6 @@ public class TelaDetalhes implements ActionListener {
 			valorQtdAtual = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdAtual()), 200);
 			valorQtdMinima = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdMinima()), 200);		
 			valorQtdComprada = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdCompras()), 200);
-			
 		} 
 		
 		//Preenche dados com dados do Fornecedor
@@ -200,11 +196,16 @@ public class TelaDetalhes implements ActionListener {
 			valorNome = new JTextField(200);
 			valorEnd = new JTextField(200);
 			valorCPF = new JTextField(200);
-			valorTelefone = new JTextField(200);
 			valorCnpj = new JTextField(200);
+			valorTelefone = new JTextField(200);
+			
+			valorVendas = new JTextField(200);
 			valorQtdVendas = new JTextField(200);
+			
 			valorTotalPago = new JTextField(200);
 			valorTotalCompras = new JTextField(200);
+			
+			valorVenda = new JTextField(200);
 			valorMarca = new JTextField(200);
 			valorCateg = new JTextField(200);
 			valorDesc = new JTextField(200);
@@ -227,9 +228,9 @@ public class TelaDetalhes implements ActionListener {
 			
 			labelTelefone.setBounds(30, 110, 150, 25);
 			valorTelefone.setBounds(180, 110, 180, 25);
-			
-			labelvVendas.setBounds(30, 140, 150, 25);
-			valorvVendas.setBounds(180, 140, 180, 25);
+
+			labelVendas.setBounds(30, 140, 150, 25);
+			valorVendas.setBounds(180, 140, 180, 25);
 			
 			labelQtdVendas.setBounds(30, 170, 150, 25);
 			valorQtdVendas.setBounds(180, 170, 70, 25);
@@ -336,8 +337,8 @@ public class TelaDetalhes implements ActionListener {
 		if (op == 10|| op == 11) {
 			this.janela.add(labelCPF);
 			this.janela.add(valorCPF);
-			this.janela.add(labelvVendas);
-			this.janela.add(valorvVendas);
+			this.janela.add(labelVendas);
+			this.janela.add(valorVendas);
 			this.janela.add(labelQtdVendas);
 			this.janela.add(valorQtdVendas);
 		}
@@ -525,18 +526,16 @@ public class TelaDetalhes implements ActionListener {
 				
 				boolean res = false;
 				
-				if (opcao == 11) // cadastro de novo Vendedor
+				if (opcao == 11){// cadastro de novo Vendedor
 					novoDado[0] = Integer.toString(dados.getQtdVendedor());
-				
-				else if(opcao == 21) //cadastro de novo Produto
+				}else if(opcao == 21){//cadastro de novo Produto
+					System.out.println("cadastro de novo Produto");
 					novoDado[0] = Integer.toString(dados.getQtdProdutos());
-				
-				else if (opcao == 31) // cadastro de novo Cliente
+				}else if (opcao == 31) {// cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
-				
-				else // edicao de dado existente
+				}else {// edicao de dado existente
 					novoDado[0] = Integer.toString(posicao);
-
+				}
 				novoDado[1] =  valorNome.getText();
 				
 					//Vendedor
@@ -545,7 +544,7 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[3] =  valorEnd.getText();
 					novoDado[4] =  valorCPF.getText();
 					novoDado[5] =  valorQtdVendas.getText();
-					novoDado[6] =  valorvVendas.getText();
+					novoDado[6] =  valorVendas.getText();
 					res = dados.inserirEditarVendedor(novoDado);
 				
 					//Produto
@@ -555,6 +554,8 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[4] =  valorVenda.getText();
 					novoDado[5] =  valorCompra.getText();
 					novoDado[6] =  valorDesc.getText();
+					System.out.println("else if (opcao == 20 || opcao == 21)");
+					System.out.println(novoDado[6]);
 					res = dados.inserirEditarProduto(novoDado);	
 					
 					//Cliente
