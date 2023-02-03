@@ -116,19 +116,20 @@ public class TelaDetalhes implements ActionListener {
 		opcao = op;
 		dados = d;
 		posicao = pos;
-		if (op == 1) s = "Detalhe de Vendedor";
-		if (op == 2) s = "Cadastro de Produto";
-		if (op == 3) s = "Cadastro de Cliente";
-		if (op == 4) s = "Detalhe de Produto";
-		if (op == 5) s = "Detalhe de Cliente";
-		if (op == 10) s = "Detalhe de Fornecedor";
+		if (op == 10) s = "Detalhe de Vendedor";
+		if (op == 11) s = "cadastro de Vendedor";
+		if (op == 20) s = "Detalhe de Produto";
+		if (op == 21) s = "Cadastro de Produto";
+		if (op == 30) s = "Cadastro de Cliente";
+		if (op == 31) s = "Detalhe de Cliente";
+		if (op == 70) s = "Detalhe de Fornecedor";
 		if (op == 69) s = "Estoque";
-		if (op == 20) s = "Salvar do Fluxo";
+		if (op == 80) s = "Salvar do Fluxo";
 
 		janela = new JFrame(s);
 		
 		//Preenche dados com dados do Fornecedor
-		if (op == 10) {
+		if (op == 70) {
 			valorNome = new JTextField(dados.getFornecedor().getNome(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getFornecedor().getTelefone()), 200);		
 			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
@@ -137,14 +138,14 @@ public class TelaDetalhes implements ActionListener {
 			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
 		} 
 		//Prenche dados com dados do FluxoDeCaixa clicado
-		else if (op == 20) {
+		else if (op == 80) {
 			valorsaldo_atual = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaldo_atual()), 200);
 			valorsaida_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaida_dinheiro()), 200);
 			valorentrada_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getEntrada_dinheiro()), 200);
 		}
 		//Preenche dados com dados do Vendedor
-		else if (op == 1) {
-			System.out.println("OP = 1");
+		else if (op == 10 || op == 11) {
+			System.out.println("OP = 10");
 			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
@@ -155,7 +156,7 @@ public class TelaDetalhes implements ActionListener {
 		} 
 		
 		//Preenche dados com dados do Produto clicado
-		else if (op == 4) {  
+		else if (op == 20) {  
 			valorNome = new JTextField(dados.getProduto()[pos].getNome(), 200);
 			valorMarca = new JTextField(dados.getProduto()[pos].getMarca(),200);
 			valorCateg = new JTextField(String.valueOf(dados.getProduto()[pos].getCategoria()), 200);
@@ -165,7 +166,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//Preenche dados com dados do ClienteFis clicado
-		else if (op == 5) {
+		else if (op == 31) {
 			valorNome = new JTextField(dados.getClientePes()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getClientePes()[pos].getEndereco(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getClientePes()[pos].getTelefone()), 200);		
@@ -205,7 +206,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//================Fornecedor================
-			if (op == 10) {
+			if (op == 70) {
 				labelNome.setBounds(30, 20, 150, 25);
 				valorNome.setBounds(180, 20, 180, 25);
 				
@@ -226,28 +227,7 @@ public class TelaDetalhes implements ActionListener {
 			}
 			
 		//================FLUXO================	
-
-		if (op == 10) {
-			labelNome.setBounds(30, 20, 150, 25);
-			valorNome.setBounds(180, 20, 180, 25);
-			
-			labelEnd.setBounds(30, 50, 150, 25);
-			valorEnd.setBounds(180, 50, 180, 25);
-			
-			labelCnpj.setBounds(30, 80, 150, 25);
-			valorCnpj.setBounds(180, 80, 180, 25);
-			
-			labelTelefone.setBounds(30, 110, 150, 25);
-			valorTelefone.setBounds(180, 110, 180, 25);
-			
-			labelIE.setBounds(30, 140, 150, 25);
-			valorIE.setBounds(180, 140, 180, 25);
-			
-			labelEntrega.setBounds(30, 170, 150, 25);
-			valorEntrega.setBounds(180, 170, 70, 25);
-		}
-
-		if (op == 20 ) {
+		if (op == 80 ) {
 			labelsaldo_atual.setBounds(30, 20, 150, 25);
 			valorsaldo_atual.setBounds(180, 20, 180, 25);
 					
@@ -259,7 +239,7 @@ public class TelaDetalhes implements ActionListener {
 				
 		}
 			//================Vendedor================
-		if (op == 1) {
+		if (op == 10 || op == 11) {
 			labelNome.setBounds(30, 20, 150, 25);
 			valorNome.setBounds(180, 20, 180, 25);
 			
@@ -280,7 +260,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//================Cliente================
-		if (op == 5 || op == 3) {
+		if (op == 30 || op == 31) {
 			labelNome.setBounds(30, 20, 150, 25);
 			valorNome.setBounds(180, 20, 210, 25);
 			
@@ -301,7 +281,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//================Produto================
-		if (op == 4 || op == 2) {
+		if (op == 20 || op == 21) {
 			labelNome.setBounds(30, 20, 150, 25);
 			valorNome.setBounds(180, 20, 180, 25);
 			
@@ -334,7 +314,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 
 		//Coloca os campos relacionados a Pessoa
-		if (op == 1 || op == 3 || op == 5 || op == 10) {
+		if (op == 10 || op == 30 || op == 31 || op == 70) {
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
@@ -344,7 +324,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 
 		//Coloca campos relacionados a Vendedor
-		if (op == 1) {
+		if (op == 10|| op == 11) {
 			this.janela.add(labelCPF);
 			this.janela.add(valorCPF);
 			this.janela.add(labelvVendas);
@@ -354,7 +334,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//Coloca campos relacionados a ClientePessoa
-		if (op == 3 || op == 5) {
+		if (op == 30 || op == 31) {
 			this.janela.add(labelCPF);
 			this.janela.add(valorCPF);	
 			this.janela.add(labelTotalPago);
@@ -364,7 +344,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 
 		//Coloca campos relacionados a Fornecedor
-		if (op == 10) {
+		if (op == 70) {
 			this.janela.add(labelCnpj); 
 			this.janela.add(valorCnpj);
 			this.janela.add(labelIE); 
@@ -373,7 +353,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorEntrega);
 		}
 		//Coloca campos relacionados a Fluxo
-		if (op == 20 ) {
+		if (op == 80 ) {
 			this.janela.add(labelentrada_dinheiro); 
 			this.janela.add(valorentrada_dinheiro);
 			this.janela.add(labelsaida_dinheiro); 
@@ -382,7 +362,7 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorsaldo_atual);
 		}
 		//Coloca campos relacionados a Produto
-		if (op == 2 || op == 4) {
+		if (op == 21 || op == 20) {
 
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
@@ -410,21 +390,21 @@ public class TelaDetalhes implements ActionListener {
 		}
 
 		//Coloca botoes
-		if (op == 10) {
+		if (op == 70) {
 			botaoSalvar.setBounds(120, 215, 115, 30);
 			botaoRenovarEstoque.setBounds(280, 260, 90, 30);
 			this.janela.add(botaoSalvar);
 			this.janela.add(botaoRenovarEstoque);
 		}
 		
-		if (op == 1) {
+		if (op == 10) {
 			botaoSalvar.setBounds(120, 215, 115, 30);
 			botaoExcluir.setBounds(280, 205, 75, 30);
 			this.janela.add(botaoSalvar);
 			this.janela.add(botaoExcluir);
 		}
 		
-		if (op == 4) {
+		if (op == 20) {
 			botaoSalvar.setBounds(180, 175, 115, 30);
 			botaoExcluir.setBounds(50, 175, 115, 30);
 			botaoEstoque.setBounds(115, 210, 115, 30);
@@ -438,7 +418,7 @@ public class TelaDetalhes implements ActionListener {
 			
 		}
 		
-		if (op == 5) {
+		if (op == 31) {
 			botaoSalvar.setBounds(200, 205, 70, 30);
 			botaoExcluir.setBounds(280, 205, 75, 30);
 			botaoRefresh.setBounds(50, 260, 90, 30);
@@ -528,13 +508,13 @@ public class TelaDetalhes implements ActionListener {
 		if(src == botaoSalvar) {
 			try {
 				boolean res = false;
-				if(opcao == 2) //cadastro de novo Produto
+				if(opcao == 21) //cadastro de novo Produto
 					novoDado[0] = Integer.toString(dados.getQtdProdutos());
 				
-				else if (opcao == 3) // cadastro de novo Cliente
+				else if (opcao == 30) // cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
 				
-				else if (opcao == 1) // cadastro de novo Vendedor
+				else if (opcao == 11) // cadastro de novo Vendedor
 					novoDado[0] = Integer.toString(dados.getQtdVendedor());
 				
 				else // edicao de dado existente
@@ -543,7 +523,7 @@ public class TelaDetalhes implements ActionListener {
 				novoDado[1] =  valorNome.getText();
 				
 					//Vendedor
-				if (opcao == 1) {  
+				if (opcao == 10 || opcao == 11) {  
 					novoDado[2] =  valorTelefone.getText();
 					novoDado[3] =  valorEnd.getText();
 					novoDado[4] =  valorCPF.getText();
@@ -552,7 +532,7 @@ public class TelaDetalhes implements ActionListener {
 					res = dados.inserirEditarVendedor(novoDado);
 				
 					//Produto
-				} else if (opcao == 2 || opcao == 4) {  
+				} else if (opcao == 21 || opcao == 20) {  
 					novoDado[2] =  valorMarca.getText();
 					novoDado[3] =  valorCateg.getText();
 					novoDado[4] =  valorVenda.getText();
@@ -561,7 +541,7 @@ public class TelaDetalhes implements ActionListener {
 					res = dados.inserirEditarProduto(novoDado);	
 					
 					//Cliente
-				} else if (opcao == 3 || opcao == 5) {  
+				} else if (opcao == 30 || opcao == 31) {  
 					novoDado[2] =  valorEnd.getText();
 					novoDado[3] =  valorCPF.getText();
 					novoDado[4] =  valorTelefone.getText();
@@ -585,19 +565,19 @@ public class TelaDetalhes implements ActionListener {
 		if(src == botaoExcluir) {
 			boolean res = false;
 
-			if (opcao == 4) {//exclui Produto
+			if (opcao == 20) {//exclui Produto
 				res = dados.removerProduto(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
 			}
 			
-			if (opcao == 1) {//exclui Vendedor
+			if (opcao == 10 || opcao == 11) {//exclui Vendedor
 				res = dados.removerVendedor(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
 			}
 				
-			if (opcao == 5){ //exclui Cliente
+			if (opcao == 31){ //exclui Cliente
 				res = dados.removerCliente(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
@@ -610,7 +590,7 @@ public class TelaDetalhes implements ActionListener {
 			botaoRefresh.removeActionListener(this);
 			botaoComprar.removeActionListener(this);
 			botaoRecibos.removeActionListener(this);
-			new TelaDetalhes().inserirEditar(5, dados, posicao);
+			new TelaDetalhes().inserirEditar(31, dados, posicao);
 		}
 		
 		//=============Abre selecao de Produto
@@ -619,7 +599,7 @@ public class TelaDetalhes implements ActionListener {
 		}		
 		
 		if(src == botaoRecibos) {
-			new TelaLista().mostrarDados(dados, 4, posicao);
+			new TelaLista().mostrarDados(dados, 20, posicao);
 		}
 		
 		if(src == botaoEstoque) {

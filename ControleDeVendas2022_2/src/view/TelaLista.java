@@ -156,7 +156,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	public void mostrarDados(ControleDados d, int op, int index){
 		cliIndex = index;
 		dados = d;
-		if (op == 4) {// Mostrar dados de Recibos cadastrados (JList)
+		if (op == 20) {// Mostrar dados de Recibos cadastrados (JList)
 			listaNomes = new ControleRecibo(dados, cliIndex).getCodigoRec();
 			listaRecibosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Recibos");
@@ -195,18 +195,18 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		//Cadastro de novo Produto
 		if(src == cadastroProd) {
 			System.out.println("Cadastro Prod");
-			new TelaDetalhes().inserirEditar(4, dados, 0);
+			new TelaDetalhes().inserirEditar(20, dados, 0);
 		}
 		
 		//Cadastro de novo Cliente
 		if(src == cadastroCliente) {
 			System.out.println("Cadastro Cliente");
-			new TelaDetalhes().inserirEditar(3, dados, 0);
+			new TelaDetalhes().inserirEditar(30, dados, 0);
 		}
 		//Cadastro de novo Vendedor
 		if(src == cadastroVendedor) {
 			System.out.println("Cadastro Vendedor");
-			new TelaDetalhes().inserirEditar(1, dados, 0);
+			new TelaDetalhes().inserirEditar(10, dados, 0);
 		}
 		
 		// Atualiza a lista de nomes de Produtos mostrada no JList
@@ -242,17 +242,17 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 
 		if(e.getValueIsAdjusting() && src == listaVendedoresCadastrados) {
-			new TelaDetalhes().inserirEditar(1, dados, 
+			new TelaDetalhes().inserirEditar(10, dados, 
 					listaVendedoresCadastrados.getSelectedIndex());
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaProdsCadastrados) {
-			new TelaDetalhes().inserirEditar(4, dados, 
+			new TelaDetalhes().inserirEditar(20, dados, 
 					listaProdsCadastrados.getSelectedIndex());
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
-			new TelaDetalhes().inserirEditar(5, dados,
+			new TelaDetalhes().inserirEditar(31, dados,
 					listaClientesCadastrados.getSelectedIndex());
 		}
 
