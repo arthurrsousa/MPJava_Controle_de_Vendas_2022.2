@@ -176,9 +176,9 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 					if (carrinho.getProdutos()[i] == null) {
 	
 						//System.out.println("OK for botaoAdd && prodSelec");
-						carrinho.getProdutos()[i] = prodSelec;
+						carrinho.setProduto(prodSelec, i);
 						//System.out.println("OK carProd  " + listaCarrinhoProd[i]);
-						carrinho.getQuantidades()[i] =  Integer.parseInt(qtdItem.getText());
+						carrinho.setQuantidade(Integer.parseInt(qtdItem.getText()), i);
 						//System.out.println("OK carQtd  " + listaCarrinhoQtd[i]);
 						//qtdCarrinhoProd++;
 						break;
@@ -194,24 +194,26 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 			while(carrinho.getProdutos()[j] != null) {
 				if(src == botaoRemover[j]) {
 					
+					/*
 					botaoRemover[j].removeActionListener(this);
 					botaoProdutos.removeActionListener(this);
 					botaoAdicionar.removeActionListener(this);
 					botaoFinalizar.removeActionListener(this);
 					
-					dados.removerItem(j);
+					dados.removerDoCarrinho(j);
 					janela.dispose();
 					mostrarCarrinho(dados, posicao);
-					break;
+					break;*/
 				}
 				j++;
 				
 			}
 			
 			if (src == botaoFinalizar) {
+				System.out.println(labelCarrinho[0]);
 				if (labelCarrinho[0] != null) {
 					System.out.println("Finalizando Compra :D");
-					dados.finalizarCompra(posicao, listaCarrinhoProd, listaCarrinhoQtd);
+					dados.finalizarCompra(posicao, carrinho.getProdutos(), carrinho.getQuantidades());
 					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)-1]);	
 					janela.dispose();				
 				}

@@ -255,7 +255,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
-			new TelaDetalhes().inserirEditar(31, dados,
+			new TelaDetalhes().inserirEditar(30, dados,
 					listaClientesCadastrados.getSelectedIndex());
 		}
 

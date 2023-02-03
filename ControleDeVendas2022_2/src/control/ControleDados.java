@@ -216,7 +216,7 @@ public class ControleDados {
 	public boolean removerVendedor(int i) {
 		String vendedorRemovido = d.getVendedor()[i].getNome();
 		
-		if(i == (d.getQtdVendedor() - 1)) { // O Cliente a ser removido está no final do array
+		if(i == (d.getQtdVendedor() - 1)) { // O Vendedor a ser removido está no final do array
 			d.setQtdVendedor(d.getQtdVendedor() - 1);
 			d.getVendedor()[d.getQtdVendedor()] = null;
 			return true;
@@ -236,7 +236,7 @@ public class ControleDados {
 		}
 	}
 	
-	public void removerItem(int j) {
+	public void removerDoCarrinho(int j) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -277,12 +277,6 @@ public class ControleDados {
 		
 		return true;
 		
-	}
-
-	public boolean renovarEstoque(int pos, int qtd) {
-		Estoque estoque = d.getEstoques()[pos];
-		estoque.setQtdAtual(estoque.getQtdAtual() + qtd);
-		return true;
 	}
 
 

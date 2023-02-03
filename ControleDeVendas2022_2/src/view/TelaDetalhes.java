@@ -79,12 +79,12 @@ public class TelaDetalhes implements ActionListener {
 	private JButton botaoRenovarEstoque = new JButton("Renovar Estoque de Produto");
 	
 	//Fluxo
-	private JLabel labelsaldo_atual = new JLabel("Saldo atual: ");
-	private JTextField valorsaldo_atual;
-	private JLabel labelsaida_dinheiro = new JLabel("Saida dinheiro: ");
-	private JTextField valorsaida_dinheiro;
-	private JLabel labelentrada_dinheiro = new JLabel("Entrada dinheiro: ");
-	private JTextField valorentrada_dinheiro;
+	private JLabel labelSaldo = new JLabel("Saldo atual: ");
+	private JTextField valorSaldo;
+	private JLabel labelSaida = new JLabel("Saida dinheiro: ");
+	private JTextField valorSaida;
+	private JLabel labelEntrada = new JLabel("Entrada dinheiro: ");
+	private JTextField valorEntrada;
 	
 	//Recibo
 	private JLabel valorCodigo;
@@ -117,35 +117,19 @@ public class TelaDetalhes implements ActionListener {
 		dados = d;
 		posicao = pos;
 		if (op == 10) s = "Detalhe de Vendedor";
-		if (op == 11) s = "cadastro de Vendedor";
+		if (op == 11) s = "Cadastro de Vendedor";
 		if (op == 20) s = "Detalhe de Produto";
 		if (op == 21) s = "Cadastro de Produto";
-		if (op == 30) s = "Cadastro de Cliente";
-		if (op == 31) s = "Detalhe de Cliente";
+		if (op == 30) s = "Detalhe de Cliente";
+		if (op == 31) s = "Cadastro de Cliente";
 		if (op == 70) s = "Detalhe de Fornecedor";
-		if (op == 69) s = "Estoque";
-		if (op == 80) s = "Salvar do Fluxo";
+		if (op == 69) s = "Detalhe de Estoque";
+		if (op == 80) s = "Detalhe de Fluxo";
 
 		janela = new JFrame(s);
 		
-		//Preenche dados com dados do Fornecedor
-		if (op == 70) {
-			valorNome = new JTextField(dados.getFornecedor().getNome(), 200);
-			valorTelefone = new JTextField(String.valueOf(dados.getFornecedor().getTelefone()), 200);		
-			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
-			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
-			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
-			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
-		} 
-		//Prenche dados com dados do FluxoDeCaixa clicado
-		else if (op == 80) {
-			valorsaldo_atual = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaldo_atual()), 200);
-			valorsaida_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaida_dinheiro()), 200);
-			valorentrada_dinheiro = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getEntrada_dinheiro()), 200);
-		}
 		//Preenche dados com dados do Vendedor
-		else if (op == 10 || op == 11) {
-			System.out.println("OP = 10");
+		if (op == 10) {
 			valorNome = new JTextField(dados.getVendedor()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getVendedor()[pos].getEndereco(), 200);
 			valorCPF = new JTextField(String.valueOf(dados.getVendedor()[pos].getCpf()), 200);
@@ -166,7 +150,7 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		//Preenche dados com dados do ClienteFis clicado
-		else if (op == 31) {
+		else if (op == 30) {
 			valorNome = new JTextField(dados.getClientePes()[pos].getNome(), 200);
 			valorEnd = new JTextField(dados.getClientePes()[pos].getEndereco(), 200);
 			valorTelefone = new JTextField(String.valueOf(dados.getClientePes()[pos].getTelefone()), 200);		
@@ -185,8 +169,23 @@ public class TelaDetalhes implements ActionListener {
 			valorQtdComprada = new JTextField(String.valueOf(dados.getEstoques()[pos].getQtdCompras()), 200);
 			
 		} 
-
 		
+		//Preenche dados com dados do Fornecedor
+		else if (op == 70) {
+			valorNome = new JTextField(dados.getFornecedor().getNome(), 200);
+			valorTelefone = new JTextField(String.valueOf(dados.getFornecedor().getTelefone()), 200);		
+			valorEnd = new JTextField(dados.getFornecedor().getEndereco(), 200);
+			valorCnpj = new JTextField(String.valueOf(dados.getFornecedor().getCnpj()), 200);
+			valorIE = new JTextField(String.valueOf(dados.getFornecedor().getInsEstadual()), 200);
+			valorEntrega = new JTextField(String.valueOf(dados.getFornecedor().getValorEntrega()), 200);
+		} 
+		//Prenche dados com dados do FluxoDeCaixa
+		else if (op == 80) {
+			valorSaldo = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaldo_atual()), 200);
+			valorSaida = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getSaida_dinheiro()), 200);
+			valorEntrada = new JTextField(String.valueOf(dados.getFluxoDeCaixa().getEntrada_dinheiro()), 200);
+		}
+
 		else { //Não preenche com dados
 			valorNome = new JTextField(200);
 			valorEnd = new JTextField(200);
@@ -205,40 +204,6 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(botaoSalvar);
 		}
 		
-		//================Fornecedor================
-			if (op == 70) {
-				labelNome.setBounds(30, 20, 150, 25);
-				valorNome.setBounds(180, 20, 180, 25);
-				
-				labelEnd.setBounds(30, 50, 150, 25);
-				valorEnd.setBounds(180, 50, 180, 25);
-				
-				labelCnpj.setBounds(30, 80, 150, 25);
-				valorCnpj.setBounds(180, 80, 180, 25);
-				
-				labelTelefone.setBounds(30, 110, 150, 25);
-				valorTelefone.setBounds(180, 110, 180, 25);
-				
-				labelIE.setBounds(30, 140, 150, 25);
-				valorIE.setBounds(180, 140, 180, 25);
-				
-				labelEntrega.setBounds(30, 170, 150, 25);
-				valorEntrega.setBounds(180, 170, 70, 25);
-			}
-			
-		//================FLUXO================	
-
-		if (op == 80 ) {
-			labelsaldo_atual.setBounds(30, 20, 150, 25);
-			valorsaldo_atual.setBounds(180, 20, 180, 25);
-					
-			labelsaida_dinheiro.setBounds(30, 50, 150, 25);
-			valorsaida_dinheiro.setBounds(180, 50, 180, 25);
-			
-			labelentrada_dinheiro.setBounds(30, 80, 150, 25);
-			valorentrada_dinheiro.setBounds(180, 80, 180, 25);
-				
-		}
 			//================Vendedor================
 		if (op == 10 || op == 11) {
 			labelNome.setBounds(30, 20, 150, 25);
@@ -312,10 +277,44 @@ public class TelaDetalhes implements ActionListener {
 			labelQtdComprada.setBounds(30, 110, 150, 25);
 			valorQtdComprada.setBounds(180, 110, 180, 25);
 			
+			//================Fornecedor================
+			if (op == 70) {
+				labelNome.setBounds(30, 20, 150, 25);
+				valorNome.setBounds(180, 20, 180, 25);
+				
+				labelEnd.setBounds(30, 50, 150, 25);
+				valorEnd.setBounds(180, 50, 180, 25);
+				
+				labelCnpj.setBounds(30, 80, 150, 25);
+				valorCnpj.setBounds(180, 80, 180, 25);
+				
+				labelTelefone.setBounds(30, 110, 150, 25);
+				valorTelefone.setBounds(180, 110, 180, 25);
+				
+				labelIE.setBounds(30, 140, 150, 25);
+				valorIE.setBounds(180, 140, 180, 25);
+				
+				labelEntrega.setBounds(30, 170, 150, 25);
+				valorEntrega.setBounds(180, 170, 70, 25);
+			}
+			
+			//================Fluxo================	
+			
+			if (op == 80 ) {
+				labelSaldo.setBounds(30, 20, 150, 25);
+				valorSaldo.setBounds(180, 20, 180, 25);
+				
+				labelSaida.setBounds(30, 50, 150, 25);
+				valorSaida.setBounds(180, 50, 180, 25);
+				
+				labelEntrada.setBounds(30, 80, 150, 25);
+				valorEntrada.setBounds(180, 80, 180, 25);
+				
+			}
 		}
 
 		//Coloca os campos relacionados a Pessoa
-		if (op == 10 || op == 30 || op == 31 || op == 70) {
+		if (op == 10 || op == 11 || op == 30 || op == 31 || op == 70) {
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelEnd);
@@ -334,37 +333,9 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorQtdVendas);
 		}
 		
-		//Coloca campos relacionados a ClientePessoa
-		if (op == 30 || op == 31) {
-			this.janela.add(labelCPF);
-			this.janela.add(valorCPF);	
-			this.janela.add(labelTotalPago);
-			this.janela.add(valorTotalPago);	
-			this.janela.add(labelTotalCompras);
-			this.janela.add(valorTotalCompras);	
-		}
-
-		//Coloca campos relacionados a Fornecedor
-		if (op == 70) {
-			this.janela.add(labelCnpj); 
-			this.janela.add(valorCnpj);
-			this.janela.add(labelIE); 
-			this.janela.add(valorIE);
-			this.janela.add(labelEntrega);
-			this.janela.add(valorEntrega);
-		}
-		//Coloca campos relacionados a Fluxo
-		if (op == 80 ) {
-			this.janela.add(labelentrada_dinheiro); 
-			this.janela.add(valorentrada_dinheiro);
-			this.janela.add(labelsaida_dinheiro); 
-			this.janela.add(valorsaida_dinheiro);
-			this.janela.add(labelsaldo_atual);
-			this.janela.add(valorsaldo_atual);
-		}
 		//Coloca campos relacionados a Produto
 		if (op == 21 || op == 20) {
-
+			
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelMarca);
@@ -376,6 +347,17 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(labelDesc);
 			this.janela.add(valorDesc);
 		}
+		
+		//Coloca campos relacionados a ClientePessoa
+		if (op == 30 || op == 31) {
+			this.janela.add(labelCPF);
+			this.janela.add(valorCPF);	
+			this.janela.add(labelTotalPago);
+			this.janela.add(valorTotalPago);	
+			this.janela.add(labelTotalCompras);
+			this.janela.add(valorTotalCompras);	
+		}
+
 		//Coloca campos relacionados a Estoque
 		if (op == 69) {
 			
@@ -389,14 +371,28 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(valorQtdComprada);
 			
 		}
+		
+		//Coloca campos relacionados a Fornecedor
+		if (op == 70) {
+			this.janela.add(labelCnpj); 
+			this.janela.add(valorCnpj);
+			this.janela.add(labelIE); 
+			this.janela.add(valorIE);
+			this.janela.add(labelEntrega);
+			this.janela.add(valorEntrega);
+		}
+		
+		//Coloca campos relacionados a Fluxo
+		if (op == 80) {
+			this.janela.add(labelEntrada); 
+			this.janela.add(valorEntrada);
+			this.janela.add(labelSaida); 
+			this.janela.add(valorSaida);
+			this.janela.add(labelSaldo);
+			this.janela.add(valorSaldo);
+		}
 
 		//Coloca botoes
-		if (op == 70) {
-			botaoSalvar.setBounds(120, 215, 115, 30);
-			botaoRenovarEstoque.setBounds(280, 260, 90, 30);
-			this.janela.add(botaoSalvar);
-			this.janela.add(botaoRenovarEstoque);
-		}
 		
 		if (op == 10) {
 			botaoSalvar.setBounds(120, 215, 115, 30);
@@ -413,25 +409,34 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(botaoExcluir);
 			this.janela.add(botaoEstoque);
 		}
-		if (op == 69) {
-			botaoSalvar.setBounds(170, 175, 115, 30);
-			this.janela.add(botaoSalvar);
-			
-		}
 		
-		if (op == 31) {
+		if (op == 30) {
 			botaoSalvar.setBounds(200, 205, 70, 30);
 			botaoExcluir.setBounds(280, 205, 75, 30);
 			botaoRefresh.setBounds(50, 260, 90, 30);
 			botaoComprar.setBounds(165, 260, 90, 30);
 			botaoRecibos.setBounds(280, 260, 90, 30);
-	
+			
 			this.janela.add(botaoSalvar);
 			this.janela.add(botaoExcluir);
 			this.janela.add(botaoRefresh);
 			this.janela.add(botaoComprar);	
 			this.janela.add(botaoRecibos);	
 		}
+		
+		if (op == 69) {
+			botaoSalvar.setBounds(170, 175, 115, 30);
+			this.janela.add(botaoSalvar);
+			
+		}
+		
+		if (op == 70) {
+			botaoSalvar.setBounds(120, 215, 115, 30);
+			botaoRenovarEstoque.setBounds(280, 260, 90, 30);
+			this.janela.add(botaoSalvar);
+			this.janela.add(botaoRenovarEstoque);
+		}
+		
 
 		this.janela.setLayout(null);
 
@@ -508,15 +513,17 @@ public class TelaDetalhes implements ActionListener {
 		
 		if(src == botaoSalvar) {
 			try {
+				
 				boolean res = false;
-				if(opcao == 21) //cadastro de novo Produto
+				
+				if (opcao == 11) // cadastro de novo Vendedor
+					novoDado[0] = Integer.toString(dados.getQtdVendedor());
+				
+				else if(opcao == 21) //cadastro de novo Produto
 					novoDado[0] = Integer.toString(dados.getQtdProdutos());
 				
-				else if (opcao == 30) // cadastro de novo Cliente
+				else if (opcao == 31) // cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
-
-				else if (opcao == 11) // cadastro de novo Vendedor
-					novoDado[0] = Integer.toString(dados.getQtdVendedor());
 				
 				else // edicao de dado existente
 					novoDado[0] = Integer.toString(posicao);
@@ -533,7 +540,7 @@ public class TelaDetalhes implements ActionListener {
 					res = dados.inserirEditarVendedor(novoDado);
 				
 					//Produto
-				} else if (opcao == 21 || opcao == 20) {  
+				} else if (opcao == 20 || opcao == 21) {  
 					novoDado[2] =  valorMarca.getText();
 					novoDado[3] =  valorCateg.getText();
 					novoDado[4] =  valorVenda.getText();
@@ -566,19 +573,20 @@ public class TelaDetalhes implements ActionListener {
 		if(src == botaoExcluir) {
 			boolean res = false;
 
-			if (opcao == 20) {//exclui Produto
+			if (opcao == 10) {//exclui Vendedor
+				res = dados.removerVendedor(posicao);
+				if (res) mensagemSucessoExclusao(); 
+				else mensagemErroExclusao(); 
+			}
+			
+			else if (opcao == 20) {//exclui Produto
 				res = dados.removerProduto(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
 			}
 			
-			if (opcao == 10 || opcao == 11) {//exclui Vendedor
-				res = dados.removerVendedor(posicao);
-				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusao(); 
-			}
 				
-			if (opcao == 31){ //exclui Cliente
+			else if (opcao == 30){ //exclui Cliente
 				res = dados.removerCliente(posicao);
 				if (res) mensagemSucessoExclusao(); 
 				else mensagemErroExclusao(); 
@@ -586,12 +594,13 @@ public class TelaDetalhes implements ActionListener {
 		}
 		
 		if(src == botaoRefresh) {
-			janela.dispose();botaoSalvar.setBounds(200, 205, 70, 30);
+			janela.dispose();
+			botaoSalvar.setBounds(200, 205, 70, 30);
 			botaoExcluir.removeActionListener(this);
 			botaoRefresh.removeActionListener(this);
 			botaoComprar.removeActionListener(this);
 			botaoRecibos.removeActionListener(this);
-			new TelaDetalhes().inserirEditar(31, dados, posicao);
+			new TelaDetalhes().inserirEditar(opcao, dados, posicao);
 		}
 		
 		//=============Abre selecao de Produto

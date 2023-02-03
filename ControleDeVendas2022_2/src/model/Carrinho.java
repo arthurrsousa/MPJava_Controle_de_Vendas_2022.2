@@ -11,7 +11,7 @@ public class Carrinho {
 	private int qtdItens;
 	
 	public Carrinho(Produto[] listaProds, int[] listaQtd, int i) {
-		this.setProdutos(listaProds);
+		this.produtos = (listaProds);
 		this.setQuantidades(listaQtd);
 		this.setQtdItens(i);
 	}
@@ -66,12 +66,8 @@ public class Carrinho {
 		return produtos;
 	}
 
-	public void setProdutos(Produto[] produtos) {
-		this.produtos = produtos;
-	}
-	
-	public Carrinho(Produto[] produtos) {
-		this.setProdutos(produtos);
+	public void setProduto(Produto prod , int i) {
+		this.produtos[i] = prod;
 	}
 
 	public int[] getQuantidades() {
@@ -82,6 +78,10 @@ public class Carrinho {
 		this.quantidades = quantidades;
 	}
 
+	public void setQuantidade(int quantidade, int i) {
+		this.quantidades[i] = quantidade;
+	}
+	
 	public int getQtdItens() {
 		return qtdItens;
 	}
@@ -89,6 +89,8 @@ public class Carrinho {
 	public void setQtdItens(int qtdItens) {
 		this.qtdItens = qtdItens;
 	}
+
+
 	
 	/*public double getTotal() {
 		return total;

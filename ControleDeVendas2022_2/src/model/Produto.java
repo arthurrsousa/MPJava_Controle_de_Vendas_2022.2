@@ -9,7 +9,6 @@ public class Produto {
 	private double valorCompra;
 	private String descricao;
 	
-	//ok
 	public Produto(String nom, String mar, String cat, double vVenda, double vCompra, String des) {
 		this.setNome(nom);
 		this.setMarca(mar);
