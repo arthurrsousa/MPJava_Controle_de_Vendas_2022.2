@@ -160,7 +160,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 
 		if (op == 20) {// Mostrar dados de Recibos cadastrados (JList)
 			listaNomes = new ControleRecibo(dados, cliIndex).getCodigoRec();
-			System.out.println(new ControleRecibo(dados, cliIndex).getCodigoRec()[0]);
+			//System.out.println(new ControleRecibo(dados, cliIndex).getCodigoRec()[0]);
 			listaRecibosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Recibos");
 			titulo = new JLabel("Recibos Cadastrados");
@@ -195,21 +195,22 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
+		//Cadastro de novo Vendedor
+		if(src == cadastroVendedor) {
+			System.out.println("Cadastro Vendedor");
+			new TelaDetalhes().inserirEditar(11, dados, 0);
+		}
+		
 		//Cadastro de novo Produto
 		if(src == cadastroProd) {
 			System.out.println("Cadastro Prod");
-			new TelaDetalhes().inserirEditar(20, dados, 0);
+			new TelaDetalhes().inserirEditar(21, dados, 0);
 		}
 		
 		//Cadastro de novo Cliente
 		if(src == cadastroCliente) {
 			System.out.println("Cadastro Cliente");
-			new TelaDetalhes().inserirEditar(30, dados, 0);
-		}
-		//Cadastro de novo Vendedor
-		if(src == cadastroVendedor) {
-			System.out.println("Cadastro Vendedor");
-			new TelaDetalhes().inserirEditar(10, dados, 0);
+			new TelaDetalhes().inserirEditar(31, dados, 0);
 		}
 		
 		// Atualiza a lista de nomes de Produtos mostrada no JList
