@@ -98,6 +98,13 @@ public class Carrinho {
 			}
 			
 			produtos[qtdItens - 1] = null;
+			
+			//Zera o carrinho
+			produtos = new Produto[20];
+			quantidades = new int[20];
+			qtdItens = 0;
+			total = 0;
+			
 			return true;
 		}
 		

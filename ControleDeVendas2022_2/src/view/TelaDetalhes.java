@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import control.*;
 import model.*;
+import modelo.Produto;
 
 /**
  * Tela de detalhes das instancias das classes do software
@@ -88,18 +89,12 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorEntrada;
 	
 	//Recibo
-	private JLabel labelcodigo = new JLabel("Codigo do recibo: ");
-	private JTextField valorcodigo;
-	private JLabel labelcompradorFis = new JLabel("Comprador: ");
-	private JTextField valorcompradorFis;
-	private JLabel labeldata = new JLabel("Data: ");
-	private JTextField valordata;
-	private JLabel labelvalor_total = new JLabel("Valor Final: ");
-	private JTextField vvalor_total;
-	private JLabel labelqtd = new JLabel("Quantidade comprada: ");
-	private JTextField valorqtd;
-	private JLabel labelComprador = new JLabel("Quantidade comprada: ");
-	private JTextField valorComprador;
+	private JLabel valorCodigo;
+	private JLabel valorComprador = new JLabel();
+	private JLabel valorData = new JLabel();
+	private JLabel valorValorTotal = new JLabel();					
+	private JLabel valorQtd = new JLabel();
+	private JLabel valorProd = new JLabel();
 	private JLabel[] listaRecibo = new JLabel[10];
 	private Produto[] listaItens;
 	private int[] listaQtds;
@@ -483,24 +478,24 @@ public class TelaDetalhes implements ActionListener {
 			janela = new JFrame(s);
 			
 			//Preenche dados com dados do Recibo
-			labelcodigo = new JLabel("Codigo da Nota:  " + dados.getRecibo(index)[pos].getCodigo(), SwingConstants.LEFT);
-			//valorComprador = new JLabel("CPF do Cliente:  " + dados.getRecibo(index)[pos].getComprador().getCpf(), SwingConstants.LEFT);
-			labeldata = new JLabel(String.valueOf("Compra feita em:  " + dados.getRecibo(index)[pos].getData()), SwingConstants.LEFT);
-			labelvalor_total = new JLabel(String.valueOf("Valor Total:  R$" + dados.getRecibo(index)[pos].getValor_total()), SwingConstants.LEFT);	
+			valorCodigo = new JLabel("Codigo da Nota:  " + dados.getRecibo(index)[pos].getCodigo(), SwingConstants.LEFT);
+			valorComprador = new JLabel("CPF do Cliente:  " + dados.getRecibo(index)[pos].getCompradorFis().getCpf(), SwingConstants.LEFT);
+			valorData = new JLabel(String.valueOf("Compra feita em:  " + dados.getRecibo(index)[pos].getData()), SwingConstants.LEFT);
+			valorValorTotal = new JLabel(String.valueOf("Valor Total:  R$" + dados.getRecibo(index)[pos].getValor_total()), SwingConstants.LEFT);	
 			
 
-			valorcodigo.setBounds(30, 20, 300, 25);
+			valorCodigo.setBounds(30, 20, 300, 25);
 			valorComprador.setBounds(30, 50, 300, 25);
-			valordata.setBounds(30, 80, 300, 25);
-			vvalor_total.setBounds(30, 110, 300, 25);
+			valorData.setBounds(30, 80, 300, 25);
+			valorValorTotal.setBounds(30, 110, 300, 25);
 	
 			
-			this.janela.add(valorcodigo);
+			this.janela.add(valorCodigo);
 			this.janela.add(valorComprador);
-			this.janela.add(valordata);
-			this.janela.add(vvalor_total);
-			this.janela.add(valorqtd);
-			this.janela.add(valorVenda);
+			this.janela.add(valorData);
+			this.janela.add(valorValorTotal);
+			this.janela.add(valorQtd);
+			this.janela.add(valorProd);
 			
 			listaItens = dados.getRecibo(index)[pos].getProdutos();
 			listaQtds = dados.getRecibo(index)[pos].getQtd();
@@ -509,7 +504,7 @@ public class TelaDetalhes implements ActionListener {
 			while (i < 10) {  //Lista os produtos comprados, a quantidade e o preco de cada um 
 				if (listaItens[i] != null) {
 					
-					listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValorVenda()), SwingConstants.CENTER);
+					listaRecibo[i] = new JLabel(listaQtds[i] + "x         " + listaItens[i].getNome() + "         R$" + (listaItens[i].getValorCompra()), SwingConstants.CENTER);
 					listaRecibo[i].setBounds(35, (120+20*(i+1)), 300, 25);
 					listaRecibo[i].setBackground(Color.lightGray);
 					
@@ -537,9 +532,9 @@ public class TelaDetalhes implements ActionListener {
 				
 				if (opcao == 11){// cadastro de novo Vendedor
 					novoDado[0] = Integer.toString(dados.getQtdVendedor());
-				}else if(opcao == 21){//cadastro de novo Produto
+				/*}else if(opcao == 21){//cadastro de novo Produto
 					System.out.println("cadastro de novo Produto");
-					novoDado[0] = Integer.toString(dados.getQtdProdutos());
+					novoDado[0] = Integer.toString(dados.getQtdProdutos());*/
 				}else if (opcao == 31) {// cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
 				}else {// edicao de dado existente
