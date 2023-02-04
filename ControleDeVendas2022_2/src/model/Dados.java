@@ -13,6 +13,8 @@ public class Dados {
 	private Estoque[] estoques = new Estoque[50];
 	private Carrinho carrinho = new Carrinho(new Produto[20], new int[20], 0);
 	private Fornecedor fornecedor = new Fornecedor("Apple", 619122134, "China", 1221588, "inscricao estadual", 150);
+	private Imposto Imposto = new Imposto(0 , 0);
+	private Desconto Desconto = new Desconto(0);
 	
 	private Recibo[] recibosTeste = new Recibo[50];
 	
@@ -22,13 +24,15 @@ public class Dados {
 	 */
 	public void fillWithSomeData() {
 		//Date d = Calendar.getInstance().getTime();
-		recibosTeste[0] = new Recibo(992, null, null, qtdClientesEmp, null, produtos);
+		//recibosTeste[0] = new Recibo(992, null, null, qtdClientesEmp, null, produtos);
 		
 		for(int i = 0; i <= 10; i++) {
 			vendedor[i] = new Vendedor("Vendedor"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
 			clientesPes[i] = new ClientePessoa("Pessoa"+(i+1), (i+1)*123456, "Endereco"+(i+1),  (i+1)*112233, 0, 0);
-			clientesPes[i].setRecibo(recibosTeste);
-			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", 5*(i+1), 10*(i+1), " Bom e Barato");
+			//clientesPes[i].setRecibo(recibosTeste);
+			produtos[i] = new Produto("Produto"+(i+1), " Apple", " Eletronicos", (5*(i+1)), 10*(i+1), " Bom e Barato");
+			//System.out.println(produtos[i].getValorVenda());
+			//System.out.println(produtos[i].getValorCompra());
 			estoques[i] = new Estoque(produtos[i], 50, 15, 0);
 	
 
@@ -174,6 +178,22 @@ public class Dados {
 
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
+	}
+
+	public Imposto getImposto() {
+		return Imposto;
+	}
+
+	public void setImposto(Imposto imposto) {
+		Imposto = imposto;
+	}
+
+	public Desconto getDesconto() {
+		return Desconto;
+	}
+
+	public void setDesconto(Desconto desconto) {
+		Desconto = desconto;
 	}
 
 	

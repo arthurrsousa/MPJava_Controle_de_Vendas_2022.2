@@ -213,10 +213,17 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 			if (src == botaoFinalizar) {
 				System.out.println(labelCarrinho[0]);
 				System.out.println("Botao finalizar foi acionado");
+				/*int k = 0;
+				while(carrinho.getProdutos()[k] != null) {
+					System.out.println(carrinho.getProdutos()[k].getNome());
+					System.out.println("valor de k: " + k);
+					k++;
+				}*/
 				if (labelCarrinho[0] != null) {
 					System.out.println("Finalizando Compra :D");
-					dados.finalizarCompra(posicao, carrinho.getProdutos(), carrinho.getQuantidades());
-					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)-1]);	
+					dados.getCarrinho().finalizarCompra(posicao, dados);
+					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getCodigo());	
+					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getValor_total());	
 					janela.dispose();				
 				}
 			}
@@ -224,4 +231,4 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 		
 	}
 
-}
+

@@ -86,6 +86,13 @@ public class ControleDados {
 		return this.d.getCarrinho();
 	}
 	
+	public Imposto getImposto() {
+		return this.d.getImposto();
+	}
+	
+	public Desconto getDesconto() {
+		return this.d.getDesconto();
+	}
 	
 	/**
 	 * Confere se os dados do Vendedor que devem ser do tipo INTEIRO estao corretos

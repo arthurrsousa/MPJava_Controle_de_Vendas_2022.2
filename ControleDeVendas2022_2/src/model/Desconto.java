@@ -8,10 +8,7 @@ public class Desconto {
 		this.setDesconto(desconto);
 	}
 	
-	public void calcular_desconto_pj() {
 		
-	}
-	
 	public float getDesconto() {
 		return desconto;
 	}

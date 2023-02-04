@@ -4,11 +4,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import control.Cliente;
+import control.ControleDados;
+
 public class Carrinho {
 
 	private Produto[] produtos;
 	private int[] quantidades;
 	private int qtdItens;
+	private double total;
 	
 	public Carrinho(Produto[] listaProds, int[] listaQtd, int i) {
 		this.produtos = (listaProds);
@@ -17,49 +21,39 @@ public class Carrinho {
 	}
 	
 
-	public double calcular_total(Imposto imposto) {
-		
-		double total = 0;
-		for (int k = 0; k < produtos.length; k++) {
-			total += produtos[k].getValorVenda() * quantidades[k];
-		}
-		
-		total += (total * imposto.getValorImposto());
-		return total;
-	}
-	
-	public void finalizar_compra(FluxoDeCaixa caixa,Vendedor vendedor, Imposto imposto) {
-		caixa.setSaldo_atual( caixa.getSaldo_atual() - this.calcular_total(imposto));
-		caixa.setEntrada_dinheiro(caixa.getEntrada_dinheiro() + this.calcular_total(imposto));
-		vendedor.setQuantidade_vendas(vendedor.getQuantidade_vendas() + 1);
-		
-		/*Random rand = new Random();
-		
-		Cliente comprador = d.getCliente()[pos];
-		Vendedor vendedor = d.getVendedor();
-		double valorTotal = 0;
-		Date date = Calendar.getInstance().getTime();
-
-		Recibo r = new Recibo(rand.nextInt(9999999)+100000, comprador, date, valorTotal, listaQtd, listaProd);
-
-		
-		for (int i = 0; i < 10; i++) {
-			if (listaProd[i] != null) {
-				valorTotal += (listaProd[i].getValor() * listaQtd[i]);
+	public void calcularTotal(Imposto imposto) {
+		for (int i = 0; i < 20; i++) {
+			if (produtos[i] != null) {
+				total += (produtos[i].getValorCompra() * quantidades[i]);
+				//System.out.println(produtos[i].getValorVenda());
+				//System.out.println(produtos[i].getValorCompra());
+				System.out.println("valor total: " + total);
 			}
 		}
 		
+		this.setTotal(this.getTotal() + (total * imposto.getValorImposto()));
+	}
+	
+	public boolean finalizarCompra(int posicao, ControleDados d) {
+		Random rand = new Random();
+		ClientePessoa comprador = d.getClientePes()[posicao];
+		FluxoDeCaixa fluxo = d.getFluxoDeCaixa();
+		Date date = Calendar.getInstance().getTime();
+		
+		calcularTotal(d.getImposto());
+		
 		int recPosicao = comprador.getQtdRecibos();
-		Recibo r = new Recibo(rand.nextInt(9999999)+100000, comprador, date, valorTotal, listaQtd, listaProd);
+		Recibo r = new Recibo(rand.nextInt(9999999)+100000, comprador, date, total, quantidades, produtos);
+		System.out.println("valor do recibo: " + r.getValor_total());
 		
-		vendedor.setSaldo(vendedor.getSaldo() + valorTotal);
-		vendedor.setQuantidade_vendas(vendedor.getQuantidade_vendas() + 1);
+		fluxo.setSaldo_atual(fluxo.getSaldo_atual() + total);
 
-		comprador.setTotal_pago(comprador.getTotal_pago() + valorTotal);
+		comprador.setRecibo(comprador.getQtdRecibos(), r);
+		comprador.setTotal_pago(comprador.getTotal_pago() + total);
 		comprador.setCompras_realizadas(comprador.getCompras_realizadas() + 1);
-		comprador.comprar(r, recPosicao);
 		
-		return true;*/
+		return true;
+		
 	}
 	
 	public Produto[] getProdutos() {
@@ -89,15 +83,13 @@ public class Carrinho {
 	public void setQtdItens(int qtdItens) {
 		this.qtdItens = qtdItens;
 	}
-
-
 	
-	/*public double getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
 	public void setTotal(double total) {
 		this.total = total;
-	}*/
+	}
 	
 }

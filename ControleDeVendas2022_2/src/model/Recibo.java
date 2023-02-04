@@ -10,7 +10,7 @@ public class Recibo {
 	private double valor_total;
 	private int[] qtd;
 	private Produto[] produtos;
-	
+	private Imposto valorImposto;
 
 	public Recibo(int cod, ClientePessoa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
 		this.setCodigo(cod);
@@ -19,17 +19,7 @@ public class Recibo {
 		this.setValor_total(vt);
 		this.setQtd(qtd);
 		this.setProdutos(prods);
-	}
-	
-	/*public Recibo(int cod, ClienteEmpresa cli, Date dt, double vt, int[] qtd, Produto[] prods) {
-		this.setCodigo(cod);
-		this.setCompradorJur(cli);
-		this.setData(dt);
-		this.setValor_total(vt);
-		this.setQtd(qtd);
-		this.setProdutos(prods);
-	}*/
-	
+	}	
 	
 	public String getCodigo() {
 		return String.valueOf(codigo);
@@ -94,7 +84,13 @@ public class Recibo {
 		this.compradorJur = compradorJur;
 	}
 
-	
+	public Imposto getValorImposto() {
+		return valorImposto;
+	}
+
+	public void setValorImposto(Imposto valorImposto) {
+		this.valorImposto = valorImposto;
+	}
 	
 }
 
