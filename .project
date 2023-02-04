@@ -3,6 +3,7 @@
 	<name>MPJava_Controle_de_Vendas_2022.2</name>
 	<comment></comment>
 	<projects>
+		<project>ControleDeVendas2022_2</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
