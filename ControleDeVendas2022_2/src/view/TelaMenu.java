@@ -32,7 +32,7 @@ public class TelaMenu implements ActionListener  {
 	private static JButton cliente = new JButton("Cliente");
 	private static JButton produto = new JButton("Produto");
 	private static JButton fornecedor = new JButton("Fornecedor");
-	private static JButton fluxo = new JButton("fluxo");
+	private static JButton fluxo = new JButton("Fluxo de Caixa");
 
 	private static ImageIcon iconCliente = new ImageIcon("src//cliente1.png");
 	private static ImageIcon iconFluxo = new ImageIcon("src//fluxo1.png");

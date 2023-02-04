@@ -554,15 +554,13 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[4] =  valorVenda.getText();
 					novoDado[5] =  valorCompra.getText();
 					novoDado[6] =  valorDesc.getText();
-					System.out.println("else if (opcao == 20 || opcao == 21)");
-					System.out.println(novoDado[6]);
-					res = dados.inserirEditarProduto(novoDado);	
+					res = dados.inserirEditarProduto(novoDado);
 					
 					//Cliente
 				} else if (opcao == 30 || opcao == 31) {  
-					novoDado[2] =  valorEnd.getText();
-					novoDado[3] =  valorCPF.getText();
-					novoDado[4] =  valorTelefone.getText();
+					novoDado[2] =  valorTelefone.getText();
+					novoDado[3] =  valorEnd.getText();
+					novoDado[4] =  valorCPF.getText();
 					novoDado[5] =  valorTotalPago.getText();
 					novoDado[6] =  valorTotalCompras.getText();
 					res = dados.inserirEditarCliente(novoDado);

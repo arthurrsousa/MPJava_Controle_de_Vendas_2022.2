@@ -197,19 +197,19 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		
 		//Cadastro de novo Vendedor
 		if(src == cadastroVendedor) {
-			System.out.println("Cadastro Vendedor");
+			System.out.println("Botao Cadastro Vendedor");
 			new TelaDetalhes().inserirEditar(11, dados, 0);
 		}
 		
 		//Cadastro de novo Produto
 		if(src == cadastroProd) {
-			System.out.println("Cadastro Prod");
+			System.out.println("Botao Cadastro Prod");
 			new TelaDetalhes().inserirEditar(21, dados, 0);
 		}
 		
 		//Cadastro de novo Cliente
 		if(src == cadastroCliente) {
-			System.out.println("Cadastro Cliente");
+			System.out.println("Botao Cadastro Cliente");
 			new TelaDetalhes().inserirEditar(31, dados, 0);
 		}
 		

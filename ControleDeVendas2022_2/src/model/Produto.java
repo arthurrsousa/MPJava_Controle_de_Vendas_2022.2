@@ -5,11 +5,11 @@ public class Produto {
 	private String nome;
 	private String marca;
 	private String categoria;
-	private double valorVenda;
-	private double valorCompra;
+	private float valorVenda;
+	private float valorCompra;
 	private String descricao;
 	
-	public Produto(String nom, String mar, String cat, double vVenda, double vCompra, String des) {
+	public Produto(String nom, String mar, String cat, float vVenda, float vCompra, String des) {
 		this.setNome(nom);
 		this.setMarca(mar);
 		this.setCategoria(cat);
@@ -71,7 +71,7 @@ public class Produto {
 	}
 	
 	
-	public void setValorVenda(double vVenda) {
+	public void setValorVenda(float vVenda) {
 		this.valorCompra = vVenda;
 	}
 	
@@ -80,7 +80,7 @@ public class Produto {
 	}
 	
 	
-	public void setValorCompra(double vCompra) {
+	public void setValorCompra(float vCompra) {
 		this.valorCompra = vCompra;
 	}
 }

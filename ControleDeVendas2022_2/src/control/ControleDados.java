@@ -78,7 +78,7 @@ public class ControleDados {
 		return this.d.getClientePes()[cliIndex].getQtdRecibos();
 	}
 	
-	public FluxoDeCaixa getFluxoDeCaixa() {							
+	public FluxoDeCaixa getFluxoDeCaixa() {						
 		return this.d.getFluxoDeCaixa();
 	}
 	
@@ -111,7 +111,10 @@ public class ControleDados {
 	 * @return boolean
 	 */
 	public boolean inserirEditarProduto(String[] dadosProd) {
-		Produto p = new Produto(dadosProd[1], dadosProd[2], dadosProd[3], Double.parseDouble(dadosProd[4]), Double.parseDouble(dadosProd[5]), dadosProd[6] );
+		System.out.println("criando produto");
+		Produto p = new Produto(dadosProd[1], dadosProd[2], dadosProd[3], Float.parseFloat(dadosProd[4]), Float.parseFloat(dadosProd[5]), dadosProd[6] );
+		System.out.println(p.getNome());
+		System.out.println("produto criado");
 		d.inserirEditarProduto(p, Integer.parseInt(dadosProd[0]));
 		return true;
 	}
@@ -123,14 +126,11 @@ public class ControleDados {
 	 * @return boolean
 	 */
 	public boolean inserirEditarCliente(String[] dadosCliente) {
-		if(!dadosCliente[3].matches("[0-9]+") || !dadosCliente[4].matches("[0-9]+") || !dadosCliente[6].matches("[0-9]+")) {
-			return false;
-		} else {
-			ClientePessoa c = new ClientePessoa(dadosCliente[1], (Integer.parseInt(dadosCliente[3])), dadosCliente[2], 
+		ClientePessoa c = new ClientePessoa(dadosCliente[1], (Integer.parseInt(dadosCliente[3])), dadosCliente[2], 
 						(Integer.parseInt(dadosCliente[4])), (Double.parseDouble(dadosCliente[5])), (Integer.parseInt(dadosCliente[6])));
 				d.inserirEditarClientePessoa(c, Integer.parseInt(dadosCliente[0]));
 				return true;
-		}
+
 	}
 	
 	/**
@@ -276,7 +276,6 @@ public class ControleDados {
 		comprador.comprar(r, recPosicao);
 		
 		return true;
-		
 	}
 
 
