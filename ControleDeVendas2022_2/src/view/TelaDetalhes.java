@@ -532,9 +532,9 @@ public class TelaDetalhes implements ActionListener {
 				
 				if (opcao == 11){// cadastro de novo Vendedor
 					novoDado[0] = Integer.toString(dados.getQtdVendedor());
-				/*}else if(opcao == 21){//cadastro de novo Produto
+				}else if(opcao == 21){//cadastro de novo Produto
 					System.out.println("cadastro de novo Produto");
-					novoDado[0] = Integer.toString(dados.getQtdProdutos());*/
+					novoDado[0] = Integer.toString(dados.getQtdProdutos());
 				}else if (opcao == 31) {// cadastro de novo Cliente
 					novoDado[0] = Integer.toString(dados.getQtdClientes());
 				}else {// edicao de dado existente
@@ -552,7 +552,7 @@ public class TelaDetalhes implements ActionListener {
 					res = dados.inserirEditarVendedor(novoDado);
 				
 					//Produto
-				} else if (opcao == 20 || opcao == 21) {  
+			} else if (opcao == 20 || opcao == 21) {  
 					novoDado[2] =  valorMarca.getText();
 					novoDado[3] =  valorCateg.getText();
 					novoDado[4] =  valorVenda.getText();
