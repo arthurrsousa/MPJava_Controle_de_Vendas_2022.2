@@ -3,6 +3,8 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -34,6 +36,12 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 	private String[] listaNomes = new String[50];
 	private JButton[] botaoRemover = new JButton[10];
 	
+	private int opcaoPag;
+	private JCheckBox pix = new JCheckBox("Pix");
+	private JCheckBox cartao = new JCheckBox("Cartão");
+	private JCheckBox boleto = new JCheckBox("Boleto");
+	//private JCheckBox desconto = new JCheckBox("Desconto");
+	
 	private ControleDados dados;
 	private int posicao;
 	
@@ -47,6 +55,10 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(70, 10, 250, 30);
 		
+		pix.setBounds(15, 100, 80, 30);
+		cartao.setBounds(95, 100, 80, 30);
+		boleto.setBounds(185, 100, 80, 30);
+		
 		//Mostra os produtos no carrinho
 		if (carrinho.getProdutos() != null) {
 			//System.out.println("Primeiro Item  " + carrinhoProd[0]);
@@ -57,10 +69,10 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 					
 					labelCarrinho[i] = new JLabel(carrinho.getQuantidades()[i] + "x    " + carrinho.getProdutos()[i].getNome());
 					botaoRemover[i] = new JButton("X");
-					labelCarrinho[i].setBounds(35, (90+20*(i+1)), 180, 25);
+					labelCarrinho[i].setBounds(35, (130+20*(i+1)), 180, 25);
 					labelCarrinho[i].setBackground(Color.lightGray);
 					
-					botaoRemover[i].setBounds(320, (90+20*(i+1)), 15, 15);
+					botaoRemover[i].setBounds(320, (130+20*(i+1)), 15, 15);
 					botaoRemover[i].setBackground(Color.red);
 					botaoRemover[i].setOpaque(true);
 					botaoRemover[i].setBorder(null);
@@ -85,12 +97,40 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 		janela.add(titulo);
 		janela.add(botaoProdutos);
 		janela.add(botaoFinalizar);
+		janela.add(pix);
+		janela.add(cartao);
+		janela.add(boleto);
 		
 		botaoProdutos.addActionListener(this);
 		botaoFinalizar.addActionListener(this);
 		
+		pix.addItemListener(new ItemListener() {    
+             public void itemStateChanged(ItemEvent e) {                 
+            	 if(e.getStateChange() == ItemEvent.SELECTED) {
+            		 opcaoPag = 1;
+            		 System.out.println("PIX: op " + opcaoPag);
+            	 };
+             }    
+          });
+		cartao.addItemListener(new ItemListener() {    
+             public void itemStateChanged(ItemEvent e) {                 
+            	 if(e.getStateChange() == ItemEvent.SELECTED) {
+            		 opcaoPag = 2;
+            		 System.out.println("CARTAO: op " + opcaoPag);
+            	 };
+             }    
+          });
+		boleto.addItemListener(new ItemListener() {    
+             public void itemStateChanged(ItemEvent e) {                 
+            	 if(e.getStateChange() == ItemEvent.SELECTED) {
+            		 opcaoPag = 3;
+            		 System.out.println("BOLETO: op " + opcaoPag);
+            	 };
+             }    
+          });
 	}
 	
+
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
@@ -220,7 +260,7 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 				}*/
 				if (labelCarrinho[0] != null) {
 					System.out.println("Finalizando Compra :D");
-					carrinho.finalizarCompra(posicao, dados);
+					carrinho.finalizarCompra(posicao, dados, opcaoPag);
 					//System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getCodigo());	
 					//System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getValor_total());	
 					janela.dispose();				

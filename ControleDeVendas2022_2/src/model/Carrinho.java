@@ -23,7 +23,7 @@ public class Carrinho {
 	}
 	
 
-	public void calcularTotal(Imposto imposto) {
+	public void calcularTotal(Imposto imposto, int opcaoPag) {
 		for (int i = 0; i < 20; i++) {
 			if (produtos[i] != null) {
 				total += (produtos[i].getValorCompra() * quantidades[i]);
@@ -33,7 +33,23 @@ public class Carrinho {
 			}
 		}
 		
-		this.setTotal(this.getTotal() + (total * imposto.getValorImposto()));
+		float formaPagamento = 0;
+		
+		if (opcaoPag == 1) {
+			formaPagamento = (float) (total*0.05);
+			System.out.println("valor desconto: " + formaPagamento);
+		}
+		
+		if (opcaoPag == 2) {
+			formaPagamento = (float) (total*(-0.1));
+			System.out.println("valor desconto: " + formaPagamento);
+		}
+		
+		if (opcaoPag == 3) {
+			formaPagamento = (float) (total*(0.025));
+			System.out.println("valor desconto: " + formaPagamento);
+		}
+		this.setTotal(this.getTotal() + (total * imposto.getValorImposto()) - formaPagamento);
 	}
 	
 	/**
@@ -43,15 +59,16 @@ public class Carrinho {
 	 * Cria uma nova instancia de Recibo com as informacoes da venda realizada.
 	 * 
 	 * @param posicao - index do Cliente que fez a compra.
+	 * @param opcaoPag 
 	 * @return boolean
 	 */
-	public boolean finalizarCompra(int posicao, ControleDados d) {
+	public boolean finalizarCompra(int posicao, ControleDados d, int opcaoPag) {
 		Random rand = new Random();
 		ClientePessoa comprador = d.getClientePes()[posicao];
 		FluxoDeCaixa fluxo = d.getFluxoDeCaixa();
 		Date date = Calendar.getInstance().getTime();
 		
-		calcularTotal(d.getImposto());
+		calcularTotal(d.getImposto(), opcaoPag);
 		
 		int recPosicao = comprador.getQtdRecibos();
 		Recibo r = new Recibo(rand.nextInt(9999999)+100000, comprador, date, total, quantidades, produtos);
