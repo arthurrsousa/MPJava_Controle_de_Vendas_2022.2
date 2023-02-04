@@ -439,6 +439,11 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(botaoSalvar);
 			
 		}
+		if (op == 80) {
+			botaoSalvar.setBounds(170, 175, 115, 30);
+			this.janela.add(botaoSalvar);
+			
+		}
 		
 		if (op == 70) {
 			botaoSalvar.setBounds(120, 215, 115, 30);
@@ -564,7 +569,16 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[5] =  valorTotalPago.getText();
 					novoDado[6] =  valorTotalCompras.getText();
 					res = dados.inserirEditarCliente(novoDado);
-				} 
+
+					//Fluxo
+				}  else if (opcao == 80) {  
+					novoDado[1] =  valorSaldo.getText();
+					novoDado[2] =  valorSaida.getText();
+					novoDado[3] =  valorEntrada.getText();
+					res = dados.inserirEditarFluxoDeCaixa(novoDado);
+
+				
+				}
 
 				if(res) {
 					mensagemSucessoCadastro();
