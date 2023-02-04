@@ -150,11 +150,12 @@ public class ControleDados {
 	 * diminui a quantidade de produtos no sistema
 	 * (@param i) e o index do Produto a ser removido.
 	 * retorna TRUE ao concluir a exclusao
+	 * 
 	 * @return boolean
 	 */
 	public boolean removerProduto(int i) {
 		String prodRemovido = d.getProduto()[i].getNome();
-
+		
 		if(i == (d.getQtdProdutos() - 1)) { // O prof a ser removido está no final do array
 			d.setQtdProdutos(d.getQtdProdutos() - 1);
 			d.getProduto()[d.getQtdProdutos()] = null;
