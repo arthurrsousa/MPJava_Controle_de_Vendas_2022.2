@@ -159,8 +159,10 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		dados = d;
 
 		if (op == 20) {// Mostrar dados de Recibos cadastrados (JList)
+			
+			System.out.println(d.getClientePes()[cliIndex].getNome());
 			listaNomes = new ControleRecibo(dados, cliIndex).getCodigoRec();
-			//System.out.println(new ControleRecibo(dados, cliIndex).getCodigoRec()[0]);
+			//System.out.println(listaNomes[1]);
 			listaRecibosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Recibos");
 			titulo = new JLabel("Recibos Cadastrados");
@@ -261,7 +263,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 		}
 
 		if(e.getValueIsAdjusting() && src == listaRecibosCadastrados) {
-			new TelaDetalhes().inserirEditar(7, dados,
+			new TelaDetalhes().inserirEditar(90, dados,
 					listaRecibosCadastrados.getSelectedIndex(), cliIndex);
 		}
 	}

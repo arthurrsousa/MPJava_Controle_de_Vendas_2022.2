@@ -20,10 +20,9 @@ import control.ControleDados;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
 
-/**
+/*
  * Tela de Menu inicial do software que inicia um novo Controle de Dados.
  * @author Arthur Rodrigues Sousa
- *
  */
 public class TelaMenu implements ActionListener  {
 	private static JFrame janela = new JFrame("Controle de Vendas");
@@ -129,3 +128,4 @@ public class TelaMenu implements ActionListener  {
 
 	}
 }
+

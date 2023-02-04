@@ -195,16 +195,15 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 			while(carrinho.getProdutos()[j] != null) {
 				if(src == botaoRemover[j]) {
 					
-					/*
 					botaoRemover[j].removeActionListener(this);
 					botaoProdutos.removeActionListener(this);
 					botaoAdicionar.removeActionListener(this);
 					botaoFinalizar.removeActionListener(this);
 					
-					dados.removerDoCarrinho(j);
+					carrinho.removerDoCarrinho(j, botaoRemover);
 					janela.dispose();
 					mostrarCarrinho(dados, posicao);
-					break;*/
+					break;
 				}
 				j++;
 				
@@ -221,9 +220,9 @@ public class TelaCarrinho implements ActionListener, ListSelectionListener{
 				}*/
 				if (labelCarrinho[0] != null) {
 					System.out.println("Finalizando Compra :D");
-					dados.getCarrinho().finalizarCompra(posicao, dados);
-					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getCodigo());	
-					System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getValor_total());	
+					carrinho.finalizarCompra(posicao, dados);
+					//System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getCodigo());	
+					//System.out.println(dados.getRecibo(posicao)[dados.getQtdRecibos(posicao)].getValor_total());	
 					janela.dispose();				
 				}
 			}

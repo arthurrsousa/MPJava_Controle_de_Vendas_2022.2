@@ -17,7 +17,6 @@ public class ControleDados {
 	/**
 	 * Construtor que injeta dados no sistema usando o metodo da classe Dados
 	 */
-	
 	public ControleDados() {
 		d.fillWithSomeData();
 	}
@@ -70,7 +69,6 @@ public class ControleDados {
 	}
 	
 	public Recibo[] getRecibo(int cliIndex) {
-		System.out.println(this.d.getClientePes()[cliIndex].getRecibo()[0].getCodigo());
 		return this.d.getClientePes()[cliIndex].getRecibo();
 	}
 	
@@ -137,7 +135,6 @@ public class ControleDados {
 						(Integer.parseInt(dadosCliente[4])), (Double.parseDouble(dadosCliente[5])), (Integer.parseInt(dadosCliente[6])));
 				d.inserirEditarClientePessoa(c, Integer.parseInt(dadosCliente[0]));
 				return true;
-
 	}
 	
 	/**
@@ -252,44 +249,6 @@ public class ControleDados {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	/**
-	 * Finaliza uma compra feita e altera os 
-	 * dados de Vendedor e Cliente relacionados a compra.
-	 * 
-	 * Cria uma nova instancia de Recibo com as informacoes da venda realizada.
-	 * 
-	 * @param pos - index do Cliente que fez a compra.
-	 * @param listaProd - lista de produtos que foram comprados.
-	 * @param listaQtd - lista de quantidades dos produtos comprados.
-	 * @return boolean
-	 */
-	public boolean finalizarCompra(int pos, Produto[] listaProd, int[] listaQtd) {
-		Random rand = new Random();
-		Cliente comprador = d.getClientePes()[pos];
-		Vendedor vendedor = d.getVendedor();
-		double valorTotal = 0;
-		Date date = Calendar.getInstance().getTime();
-		
-		for (int i = 0; i < 10; i++) {
-			if (listaProd[i] != null) {
-				valorTotal += (listaProd[i].getValor() * listaQtd[i]);
-			}
-		}
-		
-		int recPosicao = comprador.getQtdRecibos();
-		Recibo r = new Recibo(rand.nextInt(9999999)+100000, comprador, date, valorTotal, listaQtd, listaProd);
-		
-		vendedor.setSaldo(vendedor.getSaldo() + valorTotal);
-		vendedor.setQtd_vendas(vendedor.getQtd_vendas() + 1);
-
-		comprador.setTotal_pago(comprador.getTotal_pago() + valorTotal);
-		comprador.setCompras_realizadas(comprador.getCompras_realizadas() + 1);
-		comprador.comprar(r, recPosicao);
-		
-		return true;
-	}
-
 
 }
 

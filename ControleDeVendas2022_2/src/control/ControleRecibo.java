@@ -36,8 +36,8 @@ public class ControleRecibo {
 		return String.valueOf(rec[i].getCodigo());
 	}
 
-	public Cliente getComprador(int i) {
-		return rec[i].getComprador();
+	public ClientePessoa getComprador(int i) {
+		return rec[i].getCompradorFis();
 	}
 
 	public String getData(int i) {

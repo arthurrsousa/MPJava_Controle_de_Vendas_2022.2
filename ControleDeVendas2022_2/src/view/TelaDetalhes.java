@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import control.*;
+import model.*;
 
 /**
  * Tela de detalhes das instancias das classes do software
@@ -99,7 +100,10 @@ public class TelaDetalhes implements ActionListener {
 	private JTextField valorqtd;
 	private JLabel labelComprador = new JLabel("Quantidade comprada: ");
 	private JTextField valorComprador;
-	
+	private JLabel[] listaRecibo = new JLabel[10];
+	private Produto[] listaItens;
+	private int[] listaQtds;
+			
 			
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
@@ -210,6 +214,11 @@ public class TelaDetalhes implements ActionListener {
 			valorCateg = new JTextField(200);
 			valorDesc = new JTextField(200);
 			valorCompra = new JTextField(200);
+			
+			/*valorcodigo = new JTextField(200);
+			valorComprador = new JTextField(200);
+			valordata = new JTextField(200);
+			vvalor_total = new JTextField(200);*/
 
 			botaoSalvar.setBounds(245, 205, 115, 30);
 			this.janela.add(botaoSalvar);
@@ -651,6 +660,7 @@ public class TelaDetalhes implements ActionListener {
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
+	
 		janela.dispose();
 	}
 
