@@ -25,6 +25,10 @@ public class ClientePessoa extends PessoaFisica{
 	public void setRecibo(Recibo[] recibos) {
 		this.recibos = recibos;
 	}
+	
+	public void setRecibo(int i, Recibo rec) {
+		this.recibos[i] = rec;
+	}
 
 	public int getQtdRecibos() {
 		return qtdRecibos;
