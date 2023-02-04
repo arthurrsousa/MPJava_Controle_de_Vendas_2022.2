@@ -586,7 +586,7 @@ public class TelaDetalhes implements ActionListener {
 					novoDado[3] =  valorEntrada.getText();
 					res = dados.inserirEditarFluxoDeCaixa(novoDado);
 
-				//OK
+				
 				}
 
 				if(res) {

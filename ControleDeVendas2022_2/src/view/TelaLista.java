@@ -80,7 +80,7 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaProdsCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Produtos");
 			titulo = new JLabel("Produtos Cadastrados");
-			cadastroProd = new JButton("Cadastrar");
+			//cadastroProd = new JButton("Cadastrar");
 			refreshProd = new JButton("Refresh");
 
 			titulo.setFont(new Font("Arial", Font.BOLD, 30));
@@ -90,20 +90,20 @@ public class TelaLista implements ActionListener, ListSelectionListener {
 			listaProdsCadastrados.setVisibleRowCount(10);
 
 
-			cadastroProd.setBounds(175, 400, 200, 50);
-			refreshProd.setBounds(400, 400, 200, 50);
+			//cadastroProd.setBounds(175, 400, 200, 50);
+			refreshProd.setBounds(300, 400, 200, 50);
 
 			janela.setLayout(null);
 
 			janela.add(titulo);
 			janela.add(listaProdsCadastrados);
-			janela.add(cadastroProd);
+			//janela.add(cadastroProd);
 			janela.add(refreshProd);
 
 			janela.setSize(800, 600);
 			janela.setVisible(true);
 
-			cadastroProd.addActionListener(this);
+			//cadastroProd.addActionListener(this);
 			refreshProd.addActionListener(this);
 			listaProdsCadastrados.addListSelectionListener(this);
 			break;
