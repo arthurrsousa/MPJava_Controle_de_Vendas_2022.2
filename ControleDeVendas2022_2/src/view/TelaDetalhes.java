@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 
 import control.*;
 import model.*;
-import modelo.Produto;
+
 
 /**
  * Tela de detalhes das instancias das classes do software
@@ -423,6 +423,11 @@ public class TelaDetalhes implements ActionListener {
 			this.janela.add(botaoExcluir);
 			this.janela.add(botaoEstoque);
 		}
+		
+		if (op == 80) {
+            botaoSalvar.setBounds(170, 175, 115, 30);
+            this.janela.add(botaoSalvar);
+        }
 		
 		if (op == 30) {
 			botaoSalvar.setBounds(200, 205, 70, 30);
