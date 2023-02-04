@@ -89,7 +89,7 @@ public class ControleDados {
 	
 	/**
 	 * Confere se os dados do Vendedor que devem ser do tipo INTEIRO estao corretos
-	 * retorna FALSO caso o dado fornecido não seja um inteiro
+	 * retorna FALSO caso o dado fornecido nï¿½o seja um inteiro
 	 * e retorna TRUE caso seja e insere os novos dados do vendedor no sistema.
 	 * @return boolean
 	 */
@@ -155,12 +155,13 @@ public class ControleDados {
 	public boolean removerProduto(int i) {
 		String prodRemovido = d.getProduto()[i].getNome();
 
-		if(i == (d.getQtdProdutos() - 1)) { // O prof a ser removido está no final do array
+		if(i == (d.getQtdProdutos() - 1)) { // O prof a ser removido estÃ¡ no final do array
 			d.setQtdProdutos(d.getQtdProdutos() - 1);
 			d.getProduto()[d.getQtdProdutos()] = null;
+			d.getEstoques()[d.getQtdProdutos()]= null;
 			return true;
 			
-		} else { // o prod a ser removido está no meio do array
+		} else { // o prod a ser removido estÃ¡ no meio do array
 			int cont = 0;
 			while(d.getProduto()[cont].getNome().compareTo(prodRemovido) != 0)
 				cont++;
@@ -169,12 +170,15 @@ public class ControleDados {
 			for(int j = cont; j < d.getQtdProdutos() - 1; j++) {
 				d.getProduto()[j] = null;
 				d.getProduto()[j] = d.getProduto()[j+1];
+				d.getEstoques()[j] = null;
+				d.getEstoques()[j] = d.getEstoques()[j+1];
 			}
 			
 			d.getProduto()[d.getQtdProdutos()] = null;
 			d.setQtdProdutos(d.getQtdProdutos() - 1);
 			return true;
 		}
+			
 	}
 	
 	/**
@@ -187,11 +191,11 @@ public class ControleDados {
 	public boolean removerCliente(int i) {
 		String clienteRemovido = d.getClientePes()[i].getNome();
 		
-		if(i == (d.getQtdClientesPes() - 1)) { // O Cliente a ser removido está no final do array
+		if(i == (d.getQtdClientesPes() - 1)) { // O Cliente a ser removido estï¿½ no final do array
 			d.setQtdClientesPes(d.getQtdClientesPes() - 1);
 			d.getClientePes()[d.getQtdClientesPes()] = null;
 			return true;
-		} else { // o Cliente a ser removido está no meio do array
+		} else { // o Cliente a ser removido estï¿½ no meio do array
 			int cont = 0;
 			while(d.getClientePes()[cont].getNome().compareTo(clienteRemovido) != 0) {
 				cont++;
@@ -216,11 +220,11 @@ public class ControleDados {
 	public boolean removerVendedor(int i) {
 		String vendedorRemovido = d.getVendedor()[i].getNome();
 		
-		if(i == (d.getQtdVendedor() - 1)) { // O Vendedor a ser removido está no final do array
+		if(i == (d.getQtdVendedor() - 1)) { // O Vendedor a ser removido estï¿½ no final do array
 			d.setQtdVendedor(d.getQtdVendedor() - 1);
 			d.getVendedor()[d.getQtdVendedor()] = null;
 			return true;
-		} else { // o Cliente a ser removido está no meio do array
+		} else { // o Cliente a ser removido estï¿½ no meio do array
 			int cont = 0;
 			while(d.getVendedor()[cont].getNome().compareTo(vendedorRemovido) != 0) {
 				cont++;
